@@ -36,6 +36,7 @@ void About() {
 
 }
 
+
 CurrentMemory FindDmaAddy( HANDLE hProcHandle, DWORD_PTR BaseAddress,DWORD_PTR offsets[] , int PointerLevel)
 {
 	DWORD_PTR pointer = BaseAddress;
