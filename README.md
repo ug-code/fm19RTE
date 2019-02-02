@@ -15,7 +15,20 @@ fm 19 v19.1.1 1159619 (64)
 
 
 ## Features
+  -Add My Current Club section
+  -Add Average Attendance to Club section
+  -Add Minimum Attendance to Club section
+  -Add Maximum Attendance to Club section
+  -Add Tactical Attributes (including Formations) to Club section
+  -Add Full Name to Player section
+  -Add Morale to Player section
 
+
+##  Changes Log:
+  v1.0 - Released 02-Feb-2019 -
+  -- Added Money
+  -First realeased
+}
 ## 🙌 Contribution
 
 - Open pull request with improvements
