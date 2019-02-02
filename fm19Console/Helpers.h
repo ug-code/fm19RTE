@@ -28,7 +28,8 @@ void About() {
 	cout << "----------------------------------------------------\n" << endl;
 	cout << "     FM19 REAL TIME EDITOR\n" << endl;
 	cout << "     Author  :   ug-code" << endl;
-	cout << "     website :   https://github.com/ug-code \n" << endl;
+	cout << "     website :   https://github.com/ug-code " << endl;
+	cout << "     version :   fm 19 v19.1.1 1159619 (64) \n"<< endl;
 	cout << "----------------------------------------------------\n\n" << endl;
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
 
