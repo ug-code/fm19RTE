@@ -17,7 +17,7 @@ int main() {
 	HANDLE phandle = GameLoad(windowName);
 
 	CurrentMemory currentMoney = FindDmaAddy(phandle, moneyAddress, moneyOffsets, 5);
-	cout << "currentMoney value: " << currentMoney.currentValue << endl;
+	cout << "Current money value: " << currentMoney.currentValue << endl;
 	cout << "Please enter an new money value: ";
 	cin >> newMoney;
 
@@ -27,7 +27,7 @@ int main() {
 		std::cerr << "Couldn't write process memory:" << GetLastError() << std::endl;
 		getchar();
 	}
-	cout << "changed money : " << newMoney <<endl;
+	cout << "New money value : " << newMoney <<endl;
 
 	//Close any handles once the program is over
 	CloseHandle(phandle);
