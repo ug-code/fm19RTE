@@ -21,8 +21,20 @@ struct CurrentClub
 		
 		DWORD_PTR fullNameAddr = 0x1469BBAD8;
 		DWORD_PTR fullNameOffset[5] = { 0x160,0x30,0x18,0xC0,0x4 };
-			
+
+		DWORD_PTR reputationAddr = 0x1469D3900;
+		DWORD_PTR reputationOffset[1] = { 0xB0 };
+
+		DWORD_PTR competitionAddr = 0x1469D3900;
+		DWORD_PTR competitionOffset[3] = { 0x120,0x58,0x4 };
+
+
+		DWORD_PTR nationAddr = 0x1469D3900;
+		DWORD_PTR nationOffset[4] = { 0x18,0xD0,0xB8,0x4 };
+		
+
 	};
+
 	struct Finances
 	{
 		DWORD_PTR moneyAddr = 0x1469B91F0;

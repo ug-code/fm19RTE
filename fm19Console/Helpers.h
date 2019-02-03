@@ -4,6 +4,10 @@
 #include <windows.h>
 #include <tchar.h>
 #include <vector>
+#include <sstream>
+#include <iostream>
+#include <string>
+
 
 using namespace std;
 
@@ -12,6 +16,8 @@ struct CurrentMemory
 	DWORD_PTR currentAddress;
 	DWORD_PTR currentValue;
 };
+
+
 
 void About() {
 	//12 no red
@@ -59,16 +65,19 @@ CurrentMemory FindDmaAddy(HANDLE hProcHandle, DWORD_PTR BaseAddress, DWORD_PTR o
 }
 
 
-string int2text(int value) {
+
+string myInt2text(SIZE_T value) {
+
 	string  temp = "";
 	unsigned char *p = (unsigned char *)&value;
 
-	for (int i = 0; i < sizeof(value); ++i)
+	for (int i = 0; i < sizeof(p); ++i)
 	{
 		temp += p[i];
 	}
 	return temp;
 }
+
 
 
 HANDLE GameLoad(LPCSTR windowName) {
