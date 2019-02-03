@@ -17,10 +17,10 @@ struct CurrentClub
 		DWORD_PTR rowIdOffset[3] = { 0x10,0x18,0x8 };
 
 		DWORD_PTR uniqeIdAddr = 0x50E1DEA0;
-		DWORD_PTR uniqeIddOffset[3] = { 0x18 ,0xC };
+		DWORD_PTR uniqeIddOffset[2] = { 0x18 ,0xC };
 		
-		DWORD_PTR fullNameAddr = 0x41B08838;
-		DWORD_PTR fullNameOffset[3] = { 0x18,0xB8,0x4 };
+		DWORD_PTR fullNameAddr = 0x1469BBAD8;
+		DWORD_PTR fullNameOffset[5] = { 0x160,0x30,0x18,0xC0,0x4 };
 			
 	};
 	struct Finances

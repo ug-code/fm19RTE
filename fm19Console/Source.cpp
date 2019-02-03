@@ -19,7 +19,7 @@ int main() {
 	CurrentClub currentClub;
 
 	CurrentMemory clubFullname = FindDmaAddy(phandle, currentClub.information.fullNameAddr, currentClub.information.fullNameOffset, 5);
-	cout << "Current My Team: " << clubFullname.currentValue << endl;
+	cout << "Current My Team: " << int2text(clubFullname.currentValue) << endl;
 
 
 	CurrentMemory currentMoney = FindDmaAddy(phandle, currentClub.finances.moneyAddr, currentClub.finances.moneyOffsets, 5);
@@ -33,7 +33,7 @@ int main() {
 		std::cerr << "Couldn't write process memory:" << GetLastError() << std::endl;
 		getchar();
 	}
-	cout << "New money value : " << newMoney <<endl;
+	cout << "New money value : " << newMoney << endl;
 
 	//Close any handles once the program is over
 	CloseHandle(phandle);
