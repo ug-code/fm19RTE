@@ -19,7 +19,6 @@ int main() {
 	SetConsoleTitle("FM19 REAL EDITOR");
 	About();
 	HANDLE phandle = GameLoad(windowName);
-	CurrentClub currentClub;
 	ServiceClub serviceClub;
 
 	cout << "Current Team                    :" << serviceClub.getClubFullname(phandle) << endl;
