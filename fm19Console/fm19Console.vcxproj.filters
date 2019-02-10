@@ -26,5 +26,8 @@
     <ClInclude Include="Helpers.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="service\ServiceClub.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
