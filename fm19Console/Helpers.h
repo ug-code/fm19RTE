@@ -65,7 +65,16 @@ CurrentMemory FindDmaAddy(HANDLE hProcHandle, DWORD_PTR BaseAddress, DWORD_PTR o
 }
 
 
-
+char readChar(HANDLE hProcess, DWORD64 address) {
+	char value;
+	ReadProcessMemory(hProcess, (LPVOID)address, &value, sizeof(char), NULL);
+	return value;
+}
+  char* readBuffer(HANDLE hProcess, DWORD64 address, SIZE_T size) {
+    char* buffer = new char[size];
+    ReadProcessMemory(hProcess, (LPVOID)address, buffer, size, NULL);
+    return buffer;
+  }
 string myInt2text(SIZE_T value) {
 
 	string  temp = "";
