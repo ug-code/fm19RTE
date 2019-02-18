@@ -7,6 +7,7 @@
 #include <sstream>
 #include <iostream>
 #include <string>
+#include <fstream>
 
 
 using namespace std;
@@ -70,11 +71,21 @@ char readChar(HANDLE hProcess, DWORD64 address) {
 	ReadProcessMemory(hProcess, (LPVOID)address, &value, sizeof(char), NULL);
 	return value;
 }
-  char* readBuffer(HANDLE hProcess, DWORD64 address, SIZE_T size) {
-    char* buffer = new char[size];
-    ReadProcessMemory(hProcess, (LPVOID)address, buffer, size, NULL);
-    return buffer;
-  }
+
+
+char* readBuffer(HANDLE hProcess, DWORD64 address, SIZE_T size) {
+	char* buffer = new char[size];
+	ReadProcessMemory(hProcess, (LPVOID)address, buffer, size, NULL);
+	return buffer;
+}
+
+
+int readInt(HANDLE hProcess, DWORD64 address) {
+	DWORD_PTR tempAdress;
+	ReadProcessMemory(hProcess, (LPVOID)address, &tempAdress, sizeof(address), NULL);
+	return tempAdress;
+}
+
 string myInt2text(SIZE_T value) {
 
 	string  temp = "";
@@ -130,6 +141,31 @@ int WritePointer(HANDLE pHandle, DWORD_PTR BaseAddr, int newValue, DWORD_PTR off
 
 	return WriteProcessMemory(pHandle, (VOID*)(currentMemory.currentAddress), &newValue, sizeof(newValue), NULL);
 }
+
+
+//delete file then create new file
+ofstream fileWrite(string filename) {
+	ifstream infile(filename);
+	if (infile.good()) {
+		remove(filename.c_str());
+	}
+
+	ofstream searchFile;
+	searchFile.open(filename, std::ios_base::app);
+	return searchFile;
+}
+
+//Current Folder
+string ExePath() {
+	char buffer[MAX_PATH];
+	GetModuleFileName(NULL, buffer, MAX_PATH);
+	string::size_type pos = string(buffer).find_last_of("\\/");
+	return string(buffer).substr(0, pos);
+}
+
+
+
+
 
 
 
