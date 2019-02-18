@@ -41,7 +41,8 @@ serviceClub.setClubMoney(phandle, newMoney);
 
 
 ##  Changes Log:
-
+  - Added Player List
+  - Added Club List
   - v1.0 - Released 02-Feb-2019 
   - Added Money
   -First realeased
