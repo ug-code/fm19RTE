@@ -148,6 +148,8 @@
     <ClInclude Include="GameVersions.h" />
     <ClInclude Include="Helpers.h" />
     <ClInclude Include="service\ServiceClub.h" />
+    <ClInclude Include="service\ServicePlayer.h" />
+    <ClInclude Include="service\ServiceCurrentClub.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

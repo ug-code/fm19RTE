@@ -18,7 +18,7 @@ struct CurrentClub
 
 		DWORD_PTR uniqeIdAddr = 0x50E1DEA0;
 		DWORD_PTR uniqeIddOffset[2] = { 0x18 ,0xC };
-		
+
 		DWORD_PTR fullNameAddr = 0x1469BBAD8;
 		DWORD_PTR fullNameOffset[5] = { 0x160,0x30,0x18,0xC0,0x4 };
 
@@ -31,7 +31,7 @@ struct CurrentClub
 
 		DWORD_PTR nationAddr = 0x1469D3900;
 		DWORD_PTR nationOffset[4] = { 0x18,0xD0,0xB8,0x4 };
-		
+
 
 	};
 
@@ -47,7 +47,36 @@ struct CurrentClub
 };
 
 
+struct Player {
 
+	struct Information
+	{
+		int  guidingID = 1177858536;
+		DWORD_PTR firstNameOffset[2] = { 0x0,0x4 };
+		DWORD_PTR lastNameOffset[2] = { 0x0,0x4 };
+
+
+
+	};
+
+	Information information;
+};
+
+
+struct Club {
+
+	struct Information
+	{
+		int  guidingID = 1177833896;
+		DWORD_PTR clubNameOffset[2] = { 0xC0,0x24 };
+		DWORD_PTR leagueNameOffset[2] = { 0x58,0x4 };
+
+
+
+	};
+
+	Information information;
+};
 
 
 #endif
