@@ -35,5 +35,8 @@
     <ClInclude Include="service\ServicePlayer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="service\ServiceMyProfile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
