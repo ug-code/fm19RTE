@@ -1,10 +1,9 @@
 
 [![Language](https://img.shields.io/badge/language-C++-blue.svg)](https://isocpp.org/)
 
-# fm19rte
+# fm19rte (BETA)
 
 Read and write memory for FM19 (Football Manager 2019)
-
 
 Grafic Example : https://ug-code.github.io/fm19RTE/app
 
@@ -12,7 +11,10 @@ Grafic Example : https://ug-code.github.io/fm19RTE/app
 ## Support
 fm 19 v19.1.1 1159619 (64)
 
+
 ## Usage
+
+ If you are using C++
 ```c++
 HANDLE phandle = GameLoad(windowName);
 ServiceClub serviceClub;
@@ -25,6 +27,25 @@ cout << "Please enter an new money value : ";
 cin >> newMoney;
 serviceClub.setClubMoney(phandle, newMoney);
 ```
+If you are using NodeJs
+```c++
+const fm19js = require('./build/Release/fm19js.node');
+console.log(fm19js.myProfile()); 
+/*
+{ reputation: { getHomeRep: 5043, getCurrentRep: 550, getWorldRep: 1471 },
+  characteristic:
+   { getHandsOnApproach: 50,
+     getTacticalConsistency: 50,
+     getClubPlayerLoyalty: 50,
+     getSquadDiscipline: 50,
+     getFinancialControl: 50,
+     getMediaHandling: 47 } }
+*/     
+     
+
+
+```
+
 
 ## Cheating
 #### Current Team
@@ -51,12 +72,18 @@ serviceClub.setClubMoney(phandle, newMoney);
   -First realeased
 
 ## Screen 
-<img src="https://raw.githubusercontent.com/ug-code/fm19RTE/master/Resource/basic.JPG?" width="800" height="400"/>
-<img src="https://raw.githubusercontent.com/ug-code/fm19RTE/master/Resource/playerList.JPG?" width="800" height="400"/>
+<img src="https://raw.githubusercontent.com/ug-code/fm19RTE/master/cpp/Resource/basic.JPG?" width="800" height="400"/>
+<img src="https://raw.githubusercontent.com/ug-code/fm19RTE/master/cpp/Resource/playerList.JPG?" width="800" height="400"/>
 
 ## 🙌 Contribution
 
 - Open pull request with improvements
 - Discuss ideas in issues
+
+## Referance
+
+https://stackoverflow.com/questions/48208782/read-memory-of-process-c
+
+https://nodejs.org/api/addons.html
 
 
