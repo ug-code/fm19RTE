@@ -99,4 +99,4 @@ myApp.run(['$rootScope', function($rootScope) {
 $('#myList a').on('click', function (e) {
     e.preventDefault();
     $(this).tab('show');
-})
+});

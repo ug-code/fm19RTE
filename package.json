@@ -12,7 +12,8 @@
     "bootstrap": "^4.3.1",
     "datatables": "^1.10.18",
     "express": "^4.16.4",
-    "jquery": "^3.3.1"
+    "jquery": "^3.3.1",
+    "nodemon": "^1.18.10"
   },
   "devDependencies": {
     "cpx": "^1.5.0",
@@ -23,6 +24,7 @@
   "gypfile": true,
   "scripts": {
     "start": "node server.js",
+    "startNodeman": "nodemon server.js",
     "cpp-build": "node-gyp rebuild",
     "start-http": "http-server -a localhost -p 8000 -c-1 ./app",
     "postinstall": "npm run copyAngularjs && npm run copyBootstrap && npm run copyjQueryJS",
