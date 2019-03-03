@@ -29,7 +29,10 @@ public:
 		return readBuffer(phandle, memory.currentAddress, 32);
 	}
 
-	short getYearfounded(HANDLE phandle) {}
+	short getYearfounded(HANDLE phandle) {
+		CurrentMemory memory = FindDmaAddy(phandle, currentClub.information.yearFoundedAddr, currentClub.information.yearFoundedOffset, 3);
+		return  memory.currentValue;
+	}
 
 	//byte
 	short getTeamtype(HANDLE phandle) {
@@ -37,9 +40,15 @@ public:
 		return (char)memory.currentValue;
 	}
 
-	short getReputation(HANDLE phandle) {}
+	short getReputation(HANDLE phandle) {
+		CurrentMemory memory = FindDmaAddy(phandle, currentClub.information.reputationAddr, currentClub.information.reputationOffset, 1);
+		return  memory.currentValue;
+	}
 
-	char* getNation(HANDLE phandle) {}
+	char* getNation(HANDLE phandle) {
+		CurrentMemory memory = FindDmaAddy(phandle, currentClub.information.nationAddr, currentClub.information.nationOffset, 1);
+		return readBuffer(phandle, memory.currentAddress, 32);
+	}
 
 	//byte
 	short getStatus(HANDLE phandle) {
@@ -103,47 +112,36 @@ public:
 		return (char)memory.currentValue;
 	}
 
-	short getAverageattendance(HANDLE phandle) {}
-
-	int getMinimumattendance(HANDLE phandle) {}
-
-	int getMaximumattendance(HANDLE phandle) {}
-
-	short getCompetition(HANDLE phandle) {}
-
-
-
-
-
-
-	/* */
-	char* getClubFullname(HANDLE phandle) {
-		CurrentMemory clubFullname = FindDmaAddy(phandle, currentClub.information.fullNameAddr, currentClub.information.fullNameOffset, 5);
-		return readBuffer(phandle, clubFullname.currentAddress, 32);
+	short getAverageattendance(HANDLE phandle) {
+		CurrentMemory memory = FindDmaAddy(phandle, currentClub.information.averageAttendanceAddr, currentClub.information.averageAttendanceOffset, 3);
+		return memory.currentValue;
 	}
 
-	short getClubReputation(HANDLE phandle) {
-		CurrentMemory clubReputation = FindDmaAddy(phandle, currentClub.information.reputationAddr, currentClub.information.reputationOffset, 1);
-		short repulationValue = clubReputation.currentValue;
+	int getMinimumattendance(HANDLE phandle) {
+		CurrentMemory memory = FindDmaAddy(phandle, currentClub.information.minimumAttendanceAddr, currentClub.information.minimumAttendanceOffset, 3);
+		return memory.currentValue;
+	}
+
+	int getMaximumattendance(HANDLE phandle) {
+		CurrentMemory memory = FindDmaAddy(phandle, currentClub.information.maximumAttendanceAddr, currentClub.information.maximumAttendanceOffset, 3);
+		return memory.currentValue;
+	}
+
+	short getCompetition(HANDLE phandle) {
+		CurrentMemory memory = FindDmaAddy(phandle, currentClub.information.competitionAddr, currentClub.information.competitionOffset, 3);
+		short repulationValue = memory.currentValue;
 		return repulationValue;
 	}
 
-	char* getClubCompetition(HANDLE phandle) {
-		CurrentMemory clubCompetition = FindDmaAddy(phandle, currentClub.information.competitionAddr, currentClub.information.competitionOffset, 3);
-		return readBuffer(phandle, clubCompetition.currentAddress, 32);
-	}
-	char* getClubNation(HANDLE phandle) {
-		CurrentMemory clubNation = FindDmaAddy(phandle, currentClub.information.nationAddr, currentClub.information.nationOffset, 4);
-		return readBuffer(phandle, clubNation.currentAddress, 32);
-	}
+	struct Finances
+	{
+		CurrentClub currentClub;
+	};
+	Finances finances;
 
-	double getClubMoney(HANDLE phandle) {
-		CurrentMemory currentMoney = FindDmaAddy(phandle, currentClub.finances.moneyAddr, currentClub.finances.moneyOffsets, 5);
-		return currentMoney.currentValue;
-	}
 
 	int setClubMoney(HANDLE phandle, double &newMoney) {
-		int isWriteProcess = WritePointer(phandle, currentClub.finances.moneyAddr, newMoney, currentClub.finances.moneyOffsets, 5);
+		int isWriteProcess = WritePointer(phandle, currentClub.finances.balanceAddr, newMoney, currentClub.finances.balanceOffset, 3);
 		if (!isWriteProcess) {
 			std::cerr << "Couldn't write process memory:" << GetLastError() << std::endl;
 			getchar();
