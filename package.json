@@ -1,0 +1,36 @@
+{
+  "name": "angularjs-skeleton",
+  "private": true,
+  "version": "0.0.0",
+  "description": "A starter project for AngularJS",
+  "repository": "https://github.com/ug-code/angular-skeleton",
+  "license": "MIT",
+  "main": "server.js",
+  "dependencies": {
+    "angular": "^1.7.7",
+    "angular-route": "^1.7.7",
+    "bootstrap": "^4.3.1",
+    "datatables": "^1.10.18",
+    "express": "^4.16.4",
+    "jquery": "^3.3.1"
+  },
+  "devDependencies": {
+    "cpx": "^1.5.0",
+    "http-server": "^0.11.1",
+    "bindings": "~1.2.1",
+    "nan": "^2.0.0"
+  },
+  "gypfile": true,
+  "scripts": {
+    "start": "node server.js",
+    "cpp-build": "node-gyp rebuild",
+    "start-http": "http-server -a localhost -p 8000 -c-1 ./app",
+    "postinstall": "npm run copyAngularjs && npm run copyBootstrap && npm run copyjQueryJS",
+    "update-deps": "npm update",
+    "delModules": "rmdir node_modules /s /q",
+    "postupdate-deps": "npm run copyAngularjs && npm run copyBootstrap && npm run copyjQueryJS",
+    "copyAngularjs": "cpx \"node_modules/{angular,angular-*}/*.min.js\" app/assets/js -C",
+    "copyBootstrap": "cpx \"node_modules/bootstrap/dist/js/bootstrap.min.js\" app/assets/js -C && cpx \"node_modules/bootstrap/dist/css/bootstrap.min.css\" app/assets/css -C",
+    "copyjQueryJS": "cpx \"node_modules/jquery/dist/jquery.min.js\" app/assets/js -C"
+  }
+}

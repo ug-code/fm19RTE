@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <table id="player_table" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                <thead>
+                <tr>
+                    <th>E-mail</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Phone</th>
+                    <th>Permissions</th>
+                    <th class="blank-cell"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr data-ng-repeat="user in users track by $index">
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.name.first }}</td>
+                    <td>{{ user.name.last }}</td>
+                    <td>{{ user.phone }}</td>
+                    <td>{{ user.permissions }}</td>
+                    <td class="users controls blank-cell">
+                        <a class="btn pointer" data-ng-click="showEditUser( $index )">Edit</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

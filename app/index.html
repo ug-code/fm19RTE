@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en" class="h-100" ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="ug-code">
+    <title ng-bind="'Football manager 19 &mdash; ' + title"></title>
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/v/dt/dt-1.10.18/r-2.2.2/datatables.min.css"/>
+
+
+
+    <!-- Custom styles for this template -->
+    <style>
+        /* Custom page CSS  */
+        .footer {
+            background-color: #f5f5f5;
+        }
+
+        .footer > .container {
+            padding-right: 15px;
+            padding-left: 15px;
+        }
+        .bg-custom{
+            background: #31184D;
+            background: -webkit-linear-gradient(135deg, #31184D 0%, #a52a33 100%);
+            background: linear-gradient(135deg, #31184D 19%, #a52a33 100%);
+        }
+
+        .my-profile, .my-profile .form-control{
+            font-size:12px !important;
+        }
+    </style>
+</head>
+<body class="d-flex flex-column h-100">
+<app-header></app-header>
+<!-- Begin page content -->
+<div class="page pt-5 mt-5">
+    <ng-view></ng-view>
+</div>
+<!-- End page content -->
+<app-footer></app-footer>
+
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="//cdn.datatables.net/v/dt/dt-1.10.18/r-2.2.2/datatables.min.js"></script>
+<script src="assets/js/angular/angular.min.js"></script>
+<script src="assets/js/angular-route/angular-route.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
+

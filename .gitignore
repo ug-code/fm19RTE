@@ -339,3 +339,9 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+logs/*
+!.gitkeep
+node_modules/
+tmp
+.DS_Store
+package-lock.json
