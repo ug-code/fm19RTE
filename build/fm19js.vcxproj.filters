@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="..">
+      <UniqueIdentifier>{739DB09A-CC57-A953-A6CF-F64FA08E4FA7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\app">
+      <UniqueIdentifier>{796C56B0-A938-902A-0081-40464DA4EDD9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\app\lib">
+      <UniqueIdentifier>{2739B19F-16DF-601C-060A-FF86F6A40045}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..">
+      <UniqueIdentifier>{739DB09A-CC57-A953-A6CF-F64FA08E4FA7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\cpp">
+      <UniqueIdentifier>{9938E6E5-8F6B-7587-726E-6CE774E44BEE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\cpp\fm19Console">
+      <UniqueIdentifier>{731385AD-13D3-8EA5-576C-3EDA291C3429}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..">
+      <UniqueIdentifier>{739DB09A-CC57-A953-A6CF-F64FA08E4FA7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\cpp">
+      <UniqueIdentifier>{9938E6E5-8F6B-7587-726E-6CE774E44BEE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\cpp\fm19Console">
+      <UniqueIdentifier>{731385AD-13D3-8EA5-576C-3EDA291C3429}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..">
+      <UniqueIdentifier>{739DB09A-CC57-A953-A6CF-F64FA08E4FA7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\cpp">
+      <UniqueIdentifier>{9938E6E5-8F6B-7587-726E-6CE774E44BEE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\cpp\fm19Console">
+      <UniqueIdentifier>{731385AD-13D3-8EA5-576C-3EDA291C3429}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\cpp\fm19Console\service">
+      <UniqueIdentifier>{C9210780-0906-CC9E-BEC1-0AB6BFD1B977}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="C:">
+      <UniqueIdentifier>{7B735499-E5DD-1C2B-6C26-70023832A1CF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="C:\Users">
+      <UniqueIdentifier>{E9F714C1-DA89-54E2-60CF-39FEB20BF756}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="C:\Users\uur">
+      <UniqueIdentifier>{90286259-BA98-4A0B-14CB-0332B08B9BAD}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="C:\Users\uur\AppData">
+      <UniqueIdentifier>{F852EB63-437C-846A-220F-8D9ED6DAEC1D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="C:\Users\uur\AppData\Roaming">
+      <UniqueIdentifier>{D51E5808-912B-5C70-4BB7-475D1DBFA067}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="C:\Users\uur\AppData\Roaming\npm">
+      <UniqueIdentifier>{741E0E76-39B2-B1AB-9FA1-F1A20B16F295}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="C:\Users\uur\AppData\Roaming\npm\node_modules">
+      <UniqueIdentifier>{56DF7A98-063D-FB9D-485C-089023B4C16A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="C:\Users\uur\AppData\Roaming\npm\node_modules\npm">
+      <UniqueIdentifier>{741E0E76-39B2-B1AB-9FA1-F1A20B16F295}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="C:\Users\uur\AppData\Roaming\npm\node_modules\npm\node_modules">
+      <UniqueIdentifier>{56DF7A98-063D-FB9D-485C-089023B4C16A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="C:\Users\uur\AppData\Roaming\npm\node_modules\npm\node_modules\node-gyp">
+      <UniqueIdentifier>{77348C0E-2034-7791-74D5-63C077DF5A3B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="C:\Users\uur\AppData\Roaming\npm\node_modules\npm\node_modules\node-gyp\src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..">
+      <UniqueIdentifier>{739DB09A-CC57-A953-A6CF-F64FA08E4FA7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\app\lib\fm19js.cc">
+      <Filter>..\app\lib</Filter>
+    </ClCompile>
+    <ClInclude Include="..\cpp\fm19Console\GameVersions.h">
+      <Filter>..\cpp\fm19Console</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cpp\fm19Console\Helpers.h">
+      <Filter>..\cpp\fm19Console</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cpp\fm19Console\service\ServiceMyProfile.h">
+      <Filter>..\cpp\fm19Console\service</Filter>
+    </ClInclude>
+    <ClCompile Include="C:\Users\uur\AppData\Roaming\npm\node_modules\npm\node_modules\node-gyp\src\win_delay_load_hook.cc">
+      <Filter>C:\Users\uur\AppData\Roaming\npm\node_modules\npm\node_modules\node-gyp\src</Filter>
+    </ClCompile>
+    <None Include="..\binding.gyp">
+      <Filter>..</Filter>
+    </None>
+  </ItemGroup>
+</Project>
