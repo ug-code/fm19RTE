@@ -115,11 +115,11 @@ void CurrenTeamGroup() {
 	About();
 	HANDLE phandle = GameLoad(windowName);
 	ServiceCurrentClub serviceCurrentClub;
-	cout << "Current Team                    :" << serviceCurrentClub.getClubFullname(phandle) << endl;
-	cout << "Current repulation              :" << serviceCurrentClub.getClubReputation(phandle) << endl;
-	cout << "Current competition             :" << serviceCurrentClub.getClubCompetition(phandle) << endl;
-	cout << "Current nation                  :" << serviceCurrentClub.getClubNation(phandle) << endl;
-	cout << "Current money value             :" << serviceCurrentClub.getClubMoney(phandle) << endl;
+	cout << "Current Team                    :" << serviceCurrentClub.getFullname(phandle) << endl;
+	cout << "Current repulation              :" << serviceCurrentClub.getReputation(phandle) << endl;
+	cout << "Current competition             :" << serviceCurrentClub.getCompetition(phandle) << endl;
+	cout << "Current nation                  :" << serviceCurrentClub.getNation(phandle) << endl;
+	//cout << "Current money value             :" << serviceCurrentClub.getMoney(phandle) << endl;
 	cout << "Please enter an new money value : ";
 	cin >> newMoney;
 
@@ -158,13 +158,23 @@ void MyProfileGroup(HANDLE phandle) {
 	system("pause");
 
 }
+void scanPlayerList(HANDLE phandle) {
+	ServicePlayer servicePlayer;
+	cout << "|--------------Player-------------------||" << endl;
+	const char someData[] = "boluspor";
 
+	servicePlayer.findPlayer(phandle);
+
+	//Close any handles once the program is over
+	CloseHandle(phandle);
+	system("pause");
+}
 int main() {
 	SetConsoleTitle("FM19 REAL EDITOR");
 	About();
 	HANDLE phandle = GameLoad(windowName);
-	MyProfileGroup(phandle);
-
+	//MyProfileGroup(phandle);
+	scanPlayerList(phandle);
 	return 0;
 
 }
