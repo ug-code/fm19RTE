@@ -7,6 +7,9 @@ app.route('/api/service/myProfile').get((req, res) => {
     res.send(fm19js.myProfile());
 });
 
+app.route('/api/service/currentClub').get((req, res) => {
+    res.send(fm19js.currentClub());
+});
 
 // Declare static folder to be served. It contains the js, images, css, etc.
 app.use(express.static('app'));

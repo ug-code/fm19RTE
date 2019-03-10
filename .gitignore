@@ -345,3 +345,4 @@ node_modules/
 tmp
 .DS_Store
 package-lock.json
+cpp/fm19Console/search_player_id.txt

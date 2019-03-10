@@ -40,6 +40,18 @@
     <Filter Include="..\cpp\fm19Console\service">
       <UniqueIdentifier>{C9210780-0906-CC9E-BEC1-0AB6BFD1B977}</UniqueIdentifier>
     </Filter>
+    <Filter Include="..">
+      <UniqueIdentifier>{739DB09A-CC57-A953-A6CF-F64FA08E4FA7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\cpp">
+      <UniqueIdentifier>{9938E6E5-8F6B-7587-726E-6CE774E44BEE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\cpp\fm19Console">
+      <UniqueIdentifier>{731385AD-13D3-8EA5-576C-3EDA291C3429}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\cpp\fm19Console\service">
+      <UniqueIdentifier>{C9210780-0906-CC9E-BEC1-0AB6BFD1B977}</UniqueIdentifier>
+    </Filter>
     <Filter Include="C:">
       <UniqueIdentifier>{7B735499-E5DD-1C2B-6C26-70023832A1CF}</UniqueIdentifier>
     </Filter>
@@ -88,6 +100,9 @@
       <Filter>..\cpp\fm19Console</Filter>
     </ClInclude>
     <ClInclude Include="..\cpp\fm19Console\service\ServiceMyProfile.h">
+      <Filter>..\cpp\fm19Console\service</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cpp\fm19Console\service\ServiceCurrentClub.h">
       <Filter>..\cpp\fm19Console\service</Filter>
     </ClInclude>
     <ClCompile Include="C:\Users\uur\AppData\Roaming\npm\node_modules\npm\node_modules\node-gyp\src\win_delay_load_hook.cc">

@@ -104,7 +104,7 @@ struct CurrentClub
 		DWORD_PTR reputationOffset[1] = { 0xB0 };
 
 		DWORD_PTR nationAddr = 0x1469D3900;
-		DWORD_PTR nationOffset[1] = { 0xB0 };
+		DWORD_PTR nationOffset[4] = { 0x18,0xD0,0xB8,0x4 };
 	
 		DWORD_PTR statusAddr = 0x1469D3900;
 		DWORD_PTR statusOffset[2] = { 0x18,0x158 };

@@ -1,0 +1,188 @@
+<div class="container-fluid fixed-size">
+    <div class="row">
+        <div class="col-lg-2 col-md-12 mb-2">
+            <div class="list-group" id="list-tab" role="tablist">
+                <a class="list-group-item list-group-item-action active" id="list-information-list" data-toggle="list" data-target="#list-information" role="tab" aria-controls="information">Information</a>
+                <a class="list-group-item list-group-item-action" id="list-contract-list" data-toggle="list"
+                        data-target="#list-contract" role="tab" aria-controls="contract">Finance</a>
+            </div>
+        </div>
+        <div class="col-lg-10 col-md-12">
+            <div class="tab-content" id="nav-tabContent">
+                <!-- Start information -->
+                <div class="tab-pane fade show active" id="list-information" role="tabpanel" aria-labelledby="list-information-list">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-12 col-sm-12">
+                            <div class="row">
+                                <!-- s Information -->
+                                <div class="col-md-12">
+                                    <div class="card border-secondary mb-3">
+                                        <div class="card-header">Overview</div>
+                                        <div class="card-body text-secondary">
+                                            <form>
+                                                <div class="form-group row">
+                                                    <label for="getRowId" class="col-sm-6 col-form-label">RowId</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="text" class="form-control" id="getRowId"
+                                                                value="{{ myClub.information.getRowId }}">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="getUniqeId" class="col-sm-6 col-form-label">Unique ID</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="text" class="form-control" id="getUniqeId" value="{{ myClub.information.getUniqeId }}">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="getFullname" class="col-sm-6 col-form-label">Fullname </label>
+                                                    <div class="col-sm-6">
+                                                        <input type="text" class="form-control" id="getFullname"
+                                                                value="{{ myClub.information.getFullname }}">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="getNickname" class="col-sm-6 col-form-label">Nickname </label>
+                                                    <div class="col-sm-6">
+                                                        <input type="text" class="form-control" id="getNickname" value="{{ myClub.information.getNickname }}">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="getTeamType" class="col-sm-6 col-form-label">Team
+                                                        Type </label>
+                                                    <div class="col-sm-6">
+                                                        <input type="number" class="form-control" id="getTeamType" value="{{ myClub.information.getTeamType }}">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="getReputation" class="col-sm-6 col-form-label">Reputation </label>
+                                                    <div class="col-sm-6">
+                                                        <input type="number" class="form-control" id="getReputation" value="{{ myClub.information.getReputation }}">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="getNation" class="col-sm-6 col-form-label">Nation </label>
+                                                    <div class="col-sm-6">
+                                                        <input type="text" class="form-control" id="getNation" value="{{ myClub.information.getNation }}">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="getOwnershipType"
+                                                            class="col-sm-6 col-form-label">Ownership Type </label>
+                                                    <div class="col-sm-6">
+                                                        <input type="number" class="form-control" id="getOwnershipType" value="{{ myClub.information.getOwnershipType }}">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="getChairmanTitle"
+                                                            class="col-sm-6 col-form-label">Chairman Title </label>
+                                                    <div class="col-sm-6">
+                                                        <input type="number" class="form-control" id="getChairmanTitle" value="{{ myClub.information.getChairmanTitle }}">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="getChairmanStatus"
+                                                            class="col-sm-6 col-form-label">Chairman Status </label>
+                                                    <div class="col-sm-6">
+                                                        <input type="number" class="form-control" id="getChairmanStatus" value="{{ myClub.information.getChairmanStatus }}">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="getTrainingFacilities"
+                                                            class="col-sm-6 col-form-label">Training Facilities </label>
+                                                    <div class="col-sm-6">
+                                                        <input type="number" max="20" class="form-control"
+                                                                id="getTrainingFacilities" value="{{ myClub.information.getTrainingFacilities }}">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="getYouthFacilities"
+                                                            class="col-sm-6 col-form-label">Youth Facilities </label>
+                                                    <div class="col-sm-6">
+                                                        <input type="number" max="20" class="form-control"
+                                                                id="getYouthFacilities" value="{{ myClub.information.getYouthFacilities }}">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="getYouthImportance"
+                                                            class="col-sm-6 col-form-label">Youth Importance </label>
+                                                    <div class="col-sm-6">
+                                                        <input type="number" max="20" class="form-control"
+                                                                id="getYouthImportance" value="{{ myClub.information.getYouthImportance }}">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="getYouthRecruitment"
+                                                            class="col-sm-6 col-form-label">Youth Recruitment </label>
+                                                    <div class="col-sm-6">
+                                                        <input type="number" max="20" class="form-control"
+                                                                id="getYouthRecruitment" value="{{ myClub.information.getYouthRecruitment }}">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="getJuniorCoaching"
+                                                            class="col-sm-6 col-form-label">Junior Coaching </label>
+                                                    <div class="col-sm-6">
+                                                        <input type="number" max="20" class="form-control"
+                                                                id="getJuniorCoaching" value="{{ myClub.information.getJuniorCoaching }}">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="getCorporateFacilities"
+                                                            class="col-sm-6 col-form-label">Corporate Facilities
+                                                    </label>
+                                                    <div class="col-sm-6">
+                                                        <input type="number" max="20" class="form-control"
+                                                                id="getCorporateFacilities"
+                                                                value="{{ myClub.information.getCorporateFacilities }}">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="getMorale" class="col-sm-6 col-form-label">Morale </label>
+                                                    <div class="col-sm-6">
+                                                        <input type="number" max="20" class="form-control"
+                                                                id="getMorale" value="{{ myClub.information.getMorale }}">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="getAverageAttendance"
+                                                            class="col-sm-6 col-form-label">Average Attendance
+                                                    </label>
+                                                    <div class="col-sm-6">
+                                                        <input type="number" class="form-control" id="getAverageAttendance" value="{{ myClub.information.getAverageAttendance }}">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="getMinimumAttendance"
+                                                            class="col-sm-6 col-form-label">Minimum Attendance </label>
+                                                    <div class="col-sm-6">
+                                                        <input type="number"  class="form-control"
+                                                                id="getMinimumAttendance" value="{{ myClub.information.getMinimumAttendance }}">
+                                                    </div>
+                                                </div>
+
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- s Information -->
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-12 col-sm-12">
+                            <div class="row">
+                                <!-- s  -->
+                                <div class="col-md-12"></div>
+                                <!-- e  -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End information -->
+                <!-- Start Finance -->
+                <div class="tab-pane fade" id="list-contract" role="tabpanel" aria-labelledby="list-contract-list">
+                    Finance
+                </div>
+                <!-- End Finance -->
+            </div>
+        </div>
+    </div>
+</div>

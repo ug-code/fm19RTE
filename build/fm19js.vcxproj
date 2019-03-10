@@ -145,6 +145,7 @@
     <ClInclude Include="..\cpp\fm19Console\GameVersions.h"/>
     <ClInclude Include="..\cpp\fm19Console\Helpers.h"/>
     <ClInclude Include="..\cpp\fm19Console\service\ServiceMyProfile.h"/>
+    <ClInclude Include="..\cpp\fm19Console\service\ServiceCurrentClub.h"/>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\app\lib\fm19js.cc"/>

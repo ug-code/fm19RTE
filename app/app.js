@@ -1,11 +1,11 @@
 'use strict';
 
-const myApp =  angular.module('myApp', [
+const myApp = angular.module('myApp', [
     'ngRoute'
 ]);
 
 
-myApp.config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
+myApp.config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
     $locationProvider.hashPrefix('!');
 
     $routeProvider.when('/', {
@@ -28,6 +28,12 @@ myApp.config(['$locationProvider', '$routeProvider', function($locationProvider,
 
     });
 
+    $routeProvider.when('/myClub', {
+        title: 'otherView',
+        templateUrl: 'view/club/myClub.html',
+        controller: "MyClubController"
+
+    });
 
     $routeProvider.otherwise({redirectTo: '/'});
 }]);
@@ -37,11 +43,11 @@ myApp.directive('appFooter', function () {
         restrict: 'E',
         replace: true,
         templateUrl: 'view/shared/footer/footer.html',
-        controller: function(){
-            this.date = Date.now();
+        controller: function () {
+            this.date       = Date.now();
             this.dateFormat = 'yyyy'
         },
-        controllerAs:'footer'
+        controllerAs: 'footer'
     };
 });
 
@@ -79,7 +85,7 @@ myApp.controller('PlayerController', ['$scope', '$http', '$q', '$timeout', funct
         }
     ];
 
-    angular.element(document).ready( function () {
+    angular.element(document).ready(function () {
         const dTable = $('#player_table');
         dTable.DataTable({
             responsive: true
@@ -88,9 +94,19 @@ myApp.controller('PlayerController', ['$scope', '$http', '$q', '$timeout', funct
 
 }]);
 
+myApp.controller('MyClubController', ['$scope', '$http', '$q', '$timeout', function ($scope, $http, $q, $timeout) {
+
+    $http.get('api/service/currentClub').then(function (response) {
+        console.log("response", response.data);
+        $scope.myClub = response.data;
+    });
+
+}]);
 
 
-myApp.run(['$rootScope', function($rootScope) {
+//controller: 'PlayerController'
+
+myApp.run(['$rootScope', function ($rootScope) {
     $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
         $rootScope.title = current.$$route.title;
     });

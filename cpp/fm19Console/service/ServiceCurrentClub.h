@@ -9,12 +9,12 @@ class ServiceCurrentClub
 
 public:
 
-	int getRowid(HANDLE phandle) {
+	int getRowId(HANDLE phandle) {
 		CurrentMemory memory = FindDmaAddy(phandle, currentClub.information.rowIdAddr, currentClub.information.rowIdOffset, 3);
 		return memory.currentValue;
 	}
 
-	int getUniqeid(HANDLE phandle) {
+	int getUniqeId(HANDLE phandle) {
 		CurrentMemory memory = FindDmaAddy(phandle, currentClub.information.uniqeIdAddr, currentClub.information.uniqeIddOffset, 2);
 		return memory.currentValue;
 	}
@@ -29,13 +29,13 @@ public:
 		return readBuffer(phandle, memory.currentAddress, 32);
 	}
 
-	short getYearfounded(HANDLE phandle) {
+	short getYearFounded(HANDLE phandle) {
 		CurrentMemory memory = FindDmaAddy(phandle, currentClub.information.yearFoundedAddr, currentClub.information.yearFoundedOffset, 3);
 		return  memory.currentValue;
 	}
 
 	//byte
-	short getTeamtype(HANDLE phandle) {
+	short getTeamType(HANDLE phandle) {
 		CurrentMemory memory = FindDmaAddy(phandle, currentClub.information.teamTypeAddr, currentClub.information.teamTypeOffset, 1);
 		return (char)memory.currentValue;
 	}
@@ -46,7 +46,7 @@ public:
 	}
 
 	char* getNation(HANDLE phandle) {
-		CurrentMemory memory = FindDmaAddy(phandle, currentClub.information.nationAddr, currentClub.information.nationOffset, 1);
+		CurrentMemory memory = FindDmaAddy(phandle, currentClub.information.nationAddr, currentClub.information.nationOffset, 4);
 		return readBuffer(phandle, memory.currentAddress, 32);
 	}
 
@@ -57,51 +57,54 @@ public:
 	}
 
 	//byte
-	short  getOwnershiptype(HANDLE phandle) {
+	short  getOwnershipType(HANDLE phandle) {
 		CurrentMemory memory = FindDmaAddy(phandle, currentClub.information.ownershipTypeAddr, currentClub.information.ownershipTypeOffset, 3);
 		return (char)memory.currentValue;
 	}
 
 	//byte
-	short getChairmantitle(HANDLE phandle) {
+	short getChairmanTitle(HANDLE phandle) {
 		CurrentMemory memory = FindDmaAddy(phandle, currentClub.information.chairmanTitleAddr, currentClub.information.chairmanTitleOffset, 3);
 		return (char)memory.currentValue;
 	}
 
-	short getChairmanstatus(HANDLE phandle) {}
+	short getChairmanStatus(HANDLE phandle) {
+		CurrentMemory memory = FindDmaAddy(phandle, currentClub.information.chairmanStatusAddr, currentClub.information.chairmanStatusOffset, 3);
+		return memory.currentValue;
+	}
 
 	//byte
-	short getTrainingfacilities(HANDLE phandle) {
+	short getTrainingFacilities(HANDLE phandle) {
 		CurrentMemory memory = FindDmaAddy(phandle, currentClub.information.trainingFacilitiesAddr, currentClub.information.trainingFacilitiesOffset, 3);
 		return (char)memory.currentValue;
 	}
 
 	//byte
-	short getYouthfacilities(HANDLE phandle) {
+	short getYouthFacilities(HANDLE phandle) {
 		CurrentMemory memory = FindDmaAddy(phandle, currentClub.information.youthFacilitiesAddr, currentClub.information.youthFacilitiesOffset, 3);
 		return (char)memory.currentValue;
 	}
 
 	//byte
-	short getYouthimportance(HANDLE phandle) {
+	short getYouthImportance(HANDLE phandle) {
 		CurrentMemory memory = FindDmaAddy(phandle, currentClub.information.youthImportanceAddr, currentClub.information.youthImportanceOffset, 3);
 		return (char)memory.currentValue;
 	}
 
 	//byte
-	short getYouthrecruitment(HANDLE phandle) {
+	short getYouthRecruitment(HANDLE phandle) {
 		CurrentMemory memory = FindDmaAddy(phandle, currentClub.information.youthRecruitmentAddr, currentClub.information.youthRecruitmentOffset, 3);
 		return (char)memory.currentValue;
 	}
 
 	//byte
-	short getJuniorcoaching(HANDLE phandle) {
+	short getJuniorCoaching(HANDLE phandle) {
 		CurrentMemory memory = FindDmaAddy(phandle, currentClub.information.juniorCoachingAddr, currentClub.information.juniorCoachingOffset, 3);
 		return (char)memory.currentValue;
 	}
 
 	//byte
-	short getCorporatefacilities(HANDLE phandle) {
+	short getCorporateFacilities(HANDLE phandle) {
 		CurrentMemory memory = FindDmaAddy(phandle, currentClub.information.corporateFacilitiesAddr, currentClub.information.corporateFacilitiesOffset, 3);
 		return (char)memory.currentValue;
 	}
@@ -112,12 +115,12 @@ public:
 		return (char)memory.currentValue;
 	}
 
-	short getAverageattendance(HANDLE phandle) {
+	short getAverageAttendance(HANDLE phandle) {
 		CurrentMemory memory = FindDmaAddy(phandle, currentClub.information.averageAttendanceAddr, currentClub.information.averageAttendanceOffset, 3);
 		return memory.currentValue;
 	}
 
-	int getMinimumattendance(HANDLE phandle) {
+	int getMinimumAttendance(HANDLE phandle) {
 		CurrentMemory memory = FindDmaAddy(phandle, currentClub.information.minimumAttendanceAddr, currentClub.information.minimumAttendanceOffset, 3);
 		return memory.currentValue;
 	}
