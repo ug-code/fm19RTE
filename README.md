@@ -7,6 +7,28 @@ Read and write memory for FM19 (Football Manager 2019)
 
 Grafic Example : https://ug-code.github.io/fm19RTE/app
 
+## System Requirement
+```
+If you are using C++
+   visual Studio 2015 C++
+
+If you are using Nodejs
+  C++ Nodejs Addons
+  const fm19js = require('./build/Release/fm19js.node');
+  nodejs backend for C++ api   : expressjs
+  nodejs frontend              : angularjs
+```
+
+## How to work
+
+```js
+For Nodejs
+
+npm install
+npm run cpp-build
+npm run startNodeman or npm start
+
+```
 
 ## Support
 fm 19 v19.1.1 1159619 (64)
