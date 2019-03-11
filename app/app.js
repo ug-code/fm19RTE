@@ -4,7 +4,7 @@ const myApp = angular.module('myApp', [
     'ngRoute'
 ]);
 
-
+/**----------Routing----------**/
 myApp.config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
     $locationProvider.hashPrefix('!');
 
@@ -15,6 +15,13 @@ myApp.config(['$locationProvider', '$routeProvider', function ($locationProvider
     });
 
     $routeProvider.when('/player', {
+        title: 'otherView',
+        templateUrl: 'view/player/player-list.html',
+        controller: 'PlayerListController'
+
+    });
+
+    $routeProvider.when('/player/:id', {
         title: 'otherView',
         templateUrl: 'view/player/player.html',
         controller: 'PlayerController'
@@ -38,6 +45,7 @@ myApp.config(['$locationProvider', '$routeProvider', function ($locationProvider
     $routeProvider.otherwise({redirectTo: '/'});
 }]);
 
+/**----------appFooter----------**/
 myApp.directive('appFooter', function () {
     return {
         restrict: 'E',
@@ -51,6 +59,7 @@ myApp.directive('appFooter', function () {
     };
 });
 
+/**----------appHeader----------**/
 myApp.directive('appHeader', function () {
     return {
         restrict: 'E',
@@ -59,10 +68,8 @@ myApp.directive('appHeader', function () {
     };
 });
 
-
-//Angularjs and jquery.datatable with ui.bootstrap and ui.utils
-
-myApp.controller('PlayerController', ['$scope', '$http', '$q', '$timeout', function ($scope, $http, $q, $timeout) {
+/**----------PlayerListController----------**/
+myApp.controller('PlayerListController', ['$scope', '$http', '$q', '$timeout', function ($scope, $http, $q, $timeout) {
 
     $scope.users = [
         {
@@ -94,6 +101,7 @@ myApp.controller('PlayerController', ['$scope', '$http', '$q', '$timeout', funct
 
 }]);
 
+/**----------MyClubController----------**/
 myApp.controller('MyClubController', ['$scope', '$http', '$q', '$timeout', function ($scope, $http, $q, $timeout) {
 
     $http.get('api/service/currentClub').then(function (response) {
@@ -104,8 +112,7 @@ myApp.controller('MyClubController', ['$scope', '$http', '$q', '$timeout', funct
 }]);
 
 
-//controller: 'PlayerController'
-
+/**----------title----------**/
 myApp.run(['$rootScope', function ($rootScope) {
     $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
         $rootScope.title = current.$$route.title;
