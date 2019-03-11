@@ -163,7 +163,40 @@ void scanPlayerList(HANDLE phandle) {
 	cout << "|--------------Player-------------------||" << endl;
 	const char someData[] = "boluspor";
 
-	servicePlayer.findPlayer(phandle);
+	//servicePlayer.getPlayers(phandle);
+	//servicePlayer.testPlayerList(phandle);
+
+	servicePlayer.getPlayerBaseAddress(phandle, 70103100);
+
+	//Close any handles once the program is over
+	CloseHandle(phandle);
+	system("pause");
+}
+
+void playerDetail(HANDLE phandle) {
+	ServicePlayer servicePlayer;
+
+	PlayerDetail player = servicePlayer.getPlayerDetail(phandle, 70103100);
+	cout << "|--------------Player Detail-------------------||" << endl;
+	cout << "getRowID                       : " << player.getRowID << endl;
+	cout << "getUniqeID                     : " << player.getUniqeID << endl;
+	cout << "getFirstname                   : " << player.getFirstname << endl;
+	cout << "getLastname                    : " << player.getLastname << endl;
+	cout << "getFullname                    : " << player.getFullname << endl;
+	cout << "getBirthYear                   : " << player.getBirthYear << endl;
+	cout << "getEthnicity                   : " << player.getEthnicity << endl;
+	cout << "getHairColour                  : " << player.getHairColour << endl;
+	cout << "getHairLength                  : " << player.getHairLength << endl;
+	cout << "getSkinTone                    : " << player.getSkinTone << endl;
+	cout << "getHeight                      : " << player.getHeight << endl;
+	cout << "getWeight                      : " << player.getWeight << endl;
+	cout << "getMorale                      : " << player.getMorale << endl;
+	cout << "getDeclaredForNation           : " << player.getDeclaredForNation << endl;
+	cout << "getInternationalApps           : " << player.getInternationalApps << endl;
+	cout << "getInternationalGoals          : " << player.getInternationalGoals << endl;
+	cout << "getGeneralOptions              : " << player.getGeneralOptions << endl;
+	cout << "getBans                        : " << player.getBans << endl;
+	cout << "getInjuries                    : " << player.getInjuries << endl;
 
 	//Close any handles once the program is over
 	CloseHandle(phandle);
@@ -174,7 +207,8 @@ int main() {
 	About();
 	HANDLE phandle = GameLoad(windowName);
 	//MyProfileGroup(phandle);
-	scanPlayerList(phandle);
+	//scanPlayerList(phandle);
+	playerDetail(phandle);
 	return 0;
 
 }
