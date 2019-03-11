@@ -80,9 +80,15 @@ char* readBuffer(HANDLE hProcess, DWORD64 address, SIZE_T size) {
 }
 
 
-int readInt(HANDLE hProcess, DWORD64 address) {
-	DWORD_PTR tempAdress;
-	ReadProcessMemory(hProcess, (LPVOID)address, &tempAdress, sizeof(address), NULL);
+int readInt(HANDLE hProcess, DWORD_PTR address) {
+	int tempAdress;
+	ReadProcessMemory(hProcess, (LPVOID)address, &tempAdress, sizeof(int), NULL);
+	return tempAdress;
+}
+
+short readShort(HANDLE hProcess, DWORD_PTR address) {
+	short tempAdress;
+	ReadProcessMemory(hProcess, (LPVOID)address, &tempAdress, sizeof(short), NULL);
 	return tempAdress;
 }
 
