@@ -108,4 +108,7 @@ https://stackoverflow.com/questions/48208782/read-memory-of-process-c
 
 https://nodejs.org/api/addons.html
 
+##  License
+fm19RTE is released under the GNU General Public License v2.0 Please read the LICENSE file for a full version of the License
+
 
