@@ -70,7 +70,6 @@ struct PlayerDetail
 			short getTeamwork;
 			short getVision;
 			short getWorkRate;
-
 		};
 		struct Physical {
 
@@ -156,7 +155,36 @@ public:
 		playerDetail.attributes.goalkeeping.getRushingOut = attributes.goalkeeping.getRushingOut(phandle, playerUniqueAdress);
 		playerDetail.attributes.goalkeeping.getTendencyToPunch = attributes.goalkeeping.getTendencyToPunch(phandle, playerUniqueAdress);
 		playerDetail.attributes.goalkeeping.getThrowing = attributes.goalkeeping.getThrowing(phandle, playerUniqueAdress);
-		
+		//-mental
+		playerDetail.attributes.mental.getAggression = attributes.mental.getAggression(phandle, playerUniqueAdress);
+		playerDetail.attributes.mental.getAnticipation = attributes.mental.getAnticipation(phandle, playerUniqueAdress);
+		playerDetail.attributes.mental.getBravery = attributes.mental.getBravery(phandle, playerUniqueAdress);
+		playerDetail.attributes.mental.getComposure = attributes.mental.getComposure(phandle, playerUniqueAdress);
+		playerDetail.attributes.mental.getConcentration = attributes.mental.getConcentration(phandle, playerUniqueAdress);
+		playerDetail.attributes.mental.getDecision = attributes.mental.getDecision(phandle, playerUniqueAdress);
+		playerDetail.attributes.mental.getDetermination = attributes.mental.getDetermination(phandle, playerUniqueAdress);
+		playerDetail.attributes.mental.getFlair = attributes.mental.getFlair(phandle, playerUniqueAdress);
+		playerDetail.attributes.mental.getLeadership = attributes.mental.getLeadership(phandle, playerUniqueAdress);
+		playerDetail.attributes.mental.getOffTheBall = attributes.mental.getOffTheBall(phandle, playerUniqueAdress);
+		playerDetail.attributes.mental.getPositioning = attributes.mental.getPositioning(phandle, playerUniqueAdress);
+		playerDetail.attributes.mental.getTeamwork = attributes.mental.getTeamwork(phandle, playerUniqueAdress);
+		playerDetail.attributes.mental.getVision = attributes.mental.getVision(phandle, playerUniqueAdress);
+		playerDetail.attributes.mental.getWorkRate = attributes.mental.getWorkRate(phandle, playerUniqueAdress);
+		//-physical
+		playerDetail.attributes.physical.getAcceleration = attributes.physical.getAcceleration(phandle, playerUniqueAdress);
+		playerDetail.attributes.physical.getAgility = attributes.physical.getAgility(phandle, playerUniqueAdress);
+		playerDetail.attributes.physical.getBalance = attributes.physical.getBalance(phandle, playerUniqueAdress);
+		playerDetail.attributes.physical.getJumpingReach = attributes.physical.getJumpingReach(phandle, playerUniqueAdress);
+		playerDetail.attributes.physical.getNaturalFitness = attributes.physical.getNaturalFitness(phandle, playerUniqueAdress);
+		playerDetail.attributes.physical.getPace = attributes.physical.getPace(phandle, playerUniqueAdress);
+		playerDetail.attributes.physical.getStamina = attributes.physical.getStamina(phandle, playerUniqueAdress);
+		//-hidden
+		playerDetail.attributes.hidden.getDirtiness = attributes.hidden.getDirtiness(phandle, playerUniqueAdress);
+		playerDetail.attributes.hidden.getConsistency = attributes.hidden.getConsistency(phandle, playerUniqueAdress);
+		playerDetail.attributes.hidden.getImpMatches = attributes.hidden.getImpMatches(phandle, playerUniqueAdress);
+		playerDetail.attributes.hidden.getInjuryProneness = attributes.hidden.getInjuryProneness(phandle, playerUniqueAdress);
+		playerDetail.attributes.hidden.getVersatility = attributes.hidden.getVersatility(phandle, playerUniqueAdress);
+
 
 		return playerDetail;
 	}
@@ -288,7 +316,6 @@ public:
 		}
 	}// while 
 
-
 	auto getPlayeList(HANDLE pHandle) {
 
 		map<int, DWORD_PTR> playersList;
@@ -337,7 +364,6 @@ public:
 		return playersList;
 	}// while 
 
-
 	void testPlayerList(HANDLE pHandle) {
 		map<int, DWORD_PTR> playersList = getPlayeList(pHandle);
 		// Iterating the map and printing ordered values 
@@ -350,8 +376,6 @@ public:
 		map<int, DWORD_PTR> playersList = getPlayeList(pHandle);
 		return  playersList[PlayerID];
 	}
-
-
 
 	int getRowID(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
 		DWORD_PTR pplayer = getBasePlayer(playerUniqueAdress);
@@ -380,10 +404,10 @@ public:
 		CurrentMemory memory = FindDmaAddy(phandle, (pplayer + 0x208), offset, 1);
 		return readBuffer(phandle, memory.currentAddress, 32);
 	}
+
 	short getBirthYear(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
 		return readShortPUA(phandle, playerUniqueAdress, 0x206);
 	}
-
 
 	/*
 	-1:Unknown
@@ -459,12 +483,10 @@ public:
 
 	short getHeight(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
 		return readShortPUA(phandle, playerUniqueAdress, 0x15E);
-
 	}
 
 	short getWeight(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
 		return readShortPUA(phandle, playerUniqueAdress, 0x15C);
-
 	}
 
 	short getMorale(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
@@ -481,12 +503,10 @@ public:
 
 	short getInternationalApps(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
 		return readBytePUA(phandle, playerUniqueAdress, 0x324);
-
 	}
 
 	short getInternationalGoals(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
 		return readBytePUA(phandle, playerUniqueAdress, 0x326);
-
 	}
 	/*
 	0:None
@@ -496,17 +516,14 @@ public:
 	*/
 	short getGeneralOptions(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
 		return readBytePUA(phandle, playerUniqueAdress, 0xFA);
-
 	}
 
 	short getBans(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
 		return readBytePUA(phandle, playerUniqueAdress, 0x18);
-
 	}
 
 	short getInjuries(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
 		return readBytePUA(phandle, playerUniqueAdress, 0xD8);
-
 	}
 
 	struct Attributes {

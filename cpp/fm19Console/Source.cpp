@@ -18,7 +18,6 @@ unsigned int currentMoney;
 //Change team setting
 double newMoney;
 
-
 void TestGroup(HANDLE phandle) {
 	ServiceCurrentClub serviceCurrentClub;
 	ServiceClub serviceClub;
@@ -172,7 +171,6 @@ void scanPlayerList(HANDLE phandle) {
 	CloseHandle(phandle);
 	system("pause");
 }
-
 void playerDetail(HANDLE phandle) {
 	ServicePlayer servicePlayer;
 
@@ -229,6 +227,8 @@ void playerDetail(HANDLE phandle) {
 	CloseHandle(phandle);
 	system("pause");
 }
+
+
 int main() {
 	SetConsoleTitle("FM19 REAL EDITOR");
 	About();
