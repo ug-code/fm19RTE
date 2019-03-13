@@ -182,7 +182,7 @@ void playerDetail(HANDLE phandle) {
 	cout << "getUniqeID                     : " << player.getUniqeID << endl;
 	cout << "getFirstname                   : " << player.getFirstname << endl;
 	cout << "getLastname                    : " << player.getLastname << endl;
-	cout << "getFullname                    : " << player.getFullname << endl;
+	//cout << "getFullname                    : " << player.getFullname << endl;
 	cout << "getBirthYear                   : " << player.getBirthYear << endl;
 	cout << "getEthnicity                   : " << player.getEthnicity << endl;
 	cout << "getHairColour                  : " << player.getHairColour << endl;
@@ -197,7 +197,34 @@ void playerDetail(HANDLE phandle) {
 	cout << "getGeneralOptions              : " << player.getGeneralOptions << endl;
 	cout << "getBans                        : " << player.getBans << endl;
 	cout << "getInjuries                    : " << player.getInjuries << endl;
-
+	cout << "|--------------Player attributes-------------------||" << endl;
+	cout << "|--------------^Player technical-------------------||" << endl;
+	cout << "getCorners                     : " << player.attributes.technical.getCorners << endl;
+	cout << "getCrossing                    : " << player.attributes.technical.getCrossing << endl;
+	cout << "getDribbling                   : " << player.attributes.technical.getDribbling << endl;
+	cout << "getFinishing                   : " << player.attributes.technical.getFinishing << endl;
+	cout << "getFirstTouch                  : " << player.attributes.technical.getFirstTouch << endl;
+	cout << "getFreeKickTaking              : " << player.attributes.technical.getFreeKickTaking << endl;
+	cout << "getHeading                     : " << player.attributes.technical.getHeading << endl;
+	cout << "getLongShots                   : " << player.attributes.technical.getLongShots << endl;
+	cout << "getLongThrows                  : " << player.attributes.technical.getLongThrows << endl;
+	cout << "getMarking                     : " << player.attributes.technical.getMarking << endl;
+	cout << "getPassing                     : " << player.attributes.technical.getPassing << endl;
+	cout << "getPenaltyTaking               : " << player.attributes.technical.getPenaltyTaking << endl;
+	cout << "getTackling                    : " << player.attributes.technical.getTackling << endl;
+	cout << "getTechnique                   : " << player.attributes.technical.getTechnique << endl;
+	cout << "|--------------^Player goalkeeping-------------------||" << endl;
+	cout << "getAerialReach                 : " << player.attributes.goalkeeping.getAerialReach << endl;
+	cout << "getCommandOfArea               : " << player.attributes.goalkeeping.getCommandOfArea << endl;
+	cout << "getCommunication               : " << player.attributes.goalkeeping.getCommunication << endl;
+	cout << "getEccentricity                : " << player.attributes.goalkeeping.getEccentricity << endl;
+	cout << "getHandling                    : " << player.attributes.goalkeeping.getHandling << endl;
+	cout << "getKicking                     : " << player.attributes.goalkeeping.getKicking << endl;
+	cout << "getOneOnOnes                   : " << player.attributes.goalkeeping.getOneOnOnes << endl;
+	cout << "getReflexes                    : " << player.attributes.goalkeeping.getReflexes << endl;
+	cout << "getRushingOut                  : " << player.attributes.goalkeeping.getRushingOut << endl;
+	cout << "getTendencyToPunch             : " << player.attributes.goalkeeping.getTendencyToPunch << endl;
+	cout << "getThrowing                    : " << player.attributes.goalkeeping.getThrowing << endl;
 	//Close any handles once the program is over
 	CloseHandle(phandle);
 	system("pause");

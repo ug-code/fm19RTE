@@ -25,6 +25,78 @@ struct PlayerDetail
 	short getGeneralOptions;
 	short getBans;
 	short getInjuries;
+	struct Attributes {
+		struct Technical {
+			short getCorners;
+			short getCrossing;
+			short getDribbling;
+			short getFinishing;
+			short getFirstTouch;
+			short getFreeKickTaking;
+			short getHeading;
+			short getLongShots;
+			short getLongThrows;
+			short getMarking;
+			short getPassing;
+			short getPenaltyTaking;
+			short getTackling;
+			short getTechnique;
+		};
+		struct Goalkeeping {
+			short getAerialReach;
+			short getCommandOfArea;
+			short getCommunication;
+			short getEccentricity;
+			short getHandling;
+			short getKicking;
+			short getOneOnOnes;
+			short getReflexes;
+			short getRushingOut;
+			short getTendencyToPunch;
+			short getThrowing;
+		};
+		struct Mental {
+			short getAggression;
+			short getAnticipation;
+			short getBravery;
+			short getComposure;
+			short getConcentration;
+			short getDecision;
+			short getDetermination;
+			short getFlair;
+			short getLeadership;
+			short getOffTheBall;
+			short getPositioning;
+			short getTeamwork;
+			short getVision;
+			short getWorkRate;
+
+		};
+		struct Physical {
+
+			short getAcceleration;
+			short getAgility;
+			short getBalance;
+			short getJumpingReach;
+			short getNaturalFitness;
+			short getPace;
+			short getStamina;
+		};
+		struct Hidden {
+			short getDirtiness;
+			short getConsistency;
+			short getImpMatches;
+			short getInjuryProneness;
+			short getVersatility;
+		};
+
+		Technical technical;
+		Goalkeeping goalkeeping;
+		Mental mental;
+		Physical physical;
+		Hidden hidden;
+	};
+	Attributes attributes;
 };
 
 class ServicePlayer
@@ -32,6 +104,82 @@ class ServicePlayer
 	Player player;
 
 public:
+
+	PlayerDetail getPlayerDetail(HANDLE phandle, int PlayerID) {
+		PlayerDetail playerDetail;
+		DWORD_PTR playerUniqueAdress = getPlayerBaseAddress(phandle, PlayerID);
+		//Information
+		playerDetail.getRowID = getRowID(phandle, playerUniqueAdress);
+		playerDetail.getUniqeID = PlayerID;
+		playerDetail.getFirstname = getFirstname(phandle, playerUniqueAdress);
+		playerDetail.getLastname = getLastname(phandle, playerUniqueAdress);
+		playerDetail.getFullname = getFullname(phandle, playerUniqueAdress);
+		playerDetail.getBirthYear = getBirthYear(phandle, playerUniqueAdress);
+		playerDetail.getEthnicity = getEthnicity(phandle, playerUniqueAdress);
+		playerDetail.getHairColour = getHairColour(phandle, playerUniqueAdress);
+		playerDetail.getHairLength = getHairLength(phandle, playerUniqueAdress);
+		playerDetail.getSkinTone = getSkinTone(phandle, playerUniqueAdress);
+		playerDetail.getHeight = getHeight(phandle, playerUniqueAdress);
+		playerDetail.getWeight = getWeight(phandle, playerUniqueAdress);
+		playerDetail.getMorale = getMorale(phandle, playerUniqueAdress);
+		playerDetail.getDeclaredForNation = getDeclaredForNation(phandle, playerUniqueAdress);
+		playerDetail.getInternationalApps = getInternationalApps(phandle, playerUniqueAdress);
+		playerDetail.getInternationalGoals = getInternationalGoals(phandle, playerUniqueAdress);
+		playerDetail.getGeneralOptions = getGeneralOptions(phandle, playerUniqueAdress);
+		playerDetail.getBans = getBans(phandle, playerUniqueAdress);
+		playerDetail.getInjuries = getInjuries(phandle, playerUniqueAdress);
+		//Attributes
+		//-techical
+		playerDetail.attributes.technical.getCorners = attributes.technical.getCorners(phandle, playerUniqueAdress);
+		playerDetail.attributes.technical.getCrossing = attributes.technical.getCrossing(phandle, playerUniqueAdress);
+		playerDetail.attributes.technical.getDribbling = attributes.technical.getDribbling(phandle, playerUniqueAdress);
+		playerDetail.attributes.technical.getFinishing = attributes.technical.getFinishing(phandle, playerUniqueAdress);
+		playerDetail.attributes.technical.getFirstTouch = attributes.technical.getFirstTouch(phandle, playerUniqueAdress);
+		playerDetail.attributes.technical.getFreeKickTaking = attributes.technical.getFreeKickTaking(phandle, playerUniqueAdress);
+		playerDetail.attributes.technical.getHeading = attributes.technical.getHeading(phandle, playerUniqueAdress);
+		playerDetail.attributes.technical.getLongShots = attributes.technical.getLongShots(phandle, playerUniqueAdress);
+		playerDetail.attributes.technical.getLongThrows = attributes.technical.getLongThrows(phandle, playerUniqueAdress);
+		playerDetail.attributes.technical.getMarking = attributes.technical.getMarking(phandle, playerUniqueAdress);
+		playerDetail.attributes.technical.getPassing = attributes.technical.getPassing(phandle, playerUniqueAdress);
+		playerDetail.attributes.technical.getPenaltyTaking = attributes.technical.getPenaltyTaking(phandle, playerUniqueAdress);
+		playerDetail.attributes.technical.getTackling = attributes.technical.getTackling(phandle, playerUniqueAdress);
+		playerDetail.attributes.technical.getTechnique = attributes.technical.getTechnique(phandle, playerUniqueAdress);
+		//-goalkeeping
+		playerDetail.attributes.goalkeeping.getAerialReach = attributes.goalkeeping.getAerialReach(phandle, playerUniqueAdress);
+		playerDetail.attributes.goalkeeping.getCommandOfArea = attributes.goalkeeping.getCommandOfArea(phandle, playerUniqueAdress);
+		playerDetail.attributes.goalkeeping.getCommunication = attributes.goalkeeping.getCommunication(phandle, playerUniqueAdress);
+		playerDetail.attributes.goalkeeping.getEccentricity = attributes.goalkeeping.getEccentricity(phandle, playerUniqueAdress);
+		playerDetail.attributes.goalkeeping.getHandling = attributes.goalkeeping.getHandling(phandle, playerUniqueAdress);
+		playerDetail.attributes.goalkeeping.getKicking = attributes.goalkeeping.getKicking(phandle, playerUniqueAdress);
+		playerDetail.attributes.goalkeeping.getOneOnOnes = attributes.goalkeeping.getOneOnOnes(phandle, playerUniqueAdress);
+		playerDetail.attributes.goalkeeping.getReflexes = attributes.goalkeeping.getReflexes(phandle, playerUniqueAdress);
+		playerDetail.attributes.goalkeeping.getRushingOut = attributes.goalkeeping.getRushingOut(phandle, playerUniqueAdress);
+		playerDetail.attributes.goalkeeping.getTendencyToPunch = attributes.goalkeeping.getTendencyToPunch(phandle, playerUniqueAdress);
+		playerDetail.attributes.goalkeeping.getThrowing = attributes.goalkeeping.getThrowing(phandle, playerUniqueAdress);
+		
+
+		return playerDetail;
+	}
+
+	static DWORD_PTR getBasePlayer(DWORD_PTR playerUniqueAdress) {
+		return playerUniqueAdress - 0x1CC;
+	}
+
+	static int readIntPUA(HANDLE phandle, DWORD_PTR playerUniqueAdress, DWORD_PTR offset) {
+		DWORD_PTR pplayer = getBasePlayer(playerUniqueAdress);
+		return readInt(phandle, (pplayer + offset));
+	}
+
+	static short readBytePUA(HANDLE phandle, DWORD_PTR playerUniqueAdress, DWORD_PTR offset) {
+		DWORD_PTR pplayer = getBasePlayer(playerUniqueAdress);
+		return (char)readShort(phandle, (pplayer + offset));
+	}
+
+	static short readShortPUA(HANDLE phandle, DWORD_PTR playerUniqueAdress, DWORD_PTR offset) {
+		DWORD_PTR pplayer = getBasePlayer(playerUniqueAdress);
+		return readShort(phandle, (pplayer + offset));
+	}
+
 
 	//get player list with uniqueId 4 byte
 	void scanPlayerList(HANDLE pHandle) {
@@ -203,9 +351,7 @@ public:
 		return  playersList[PlayerID];
 	}
 
-	DWORD_PTR getBasePlayer(DWORD_PTR playerUniqueAdress) {
-		return playerUniqueAdress - 0x1CC;
-	}
+
 
 	int getRowID(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
 		DWORD_PTR pplayer = getBasePlayer(playerUniqueAdress);
@@ -213,8 +359,7 @@ public:
 	}
 
 	int  getUniqeID(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
-		DWORD_PTR pplayer = getBasePlayer(playerUniqueAdress);
-		return readInt(phandle, (pplayer + 0x1CC));
+		return readIntPUA(phandle, playerUniqueAdress, 0x1CC);
 	}
 
 	char* getFirstname(HANDLE phandle, DWORD_PTR playerUIDaddress) {
@@ -236,8 +381,7 @@ public:
 		return readBuffer(phandle, memory.currentAddress, 32);
 	}
 	short getBirthYear(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
-		DWORD_PTR pplayer = getBasePlayer(playerUniqueAdress);
-		return readShort(phandle, (pplayer + 0x206));
+		return readShortPUA(phandle, playerUniqueAdress, 0x206);
 	}
 
 
@@ -256,10 +400,7 @@ public:
 	10:East Asian
 	*/
 	short getEthnicity(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
-		DWORD_PTR pplayer = getBasePlayer(playerUniqueAdress);
-
-		return (char)readShort(phandle, (pplayer + 0x251));
-
+		return readBytePUA(phandle, playerUniqueAdress, 0x251);
 	}
 
 	/*
@@ -274,9 +415,7 @@ public:
 	9:Changeable (Dramatic)
 	*/
 	short getHairColour(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
-		DWORD_PTR pplayer = getBasePlayer(playerUniqueAdress);
-
-		return (char)readShort(phandle, (pplayer + 0x252));
+		return readBytePUA(phandle, playerUniqueAdress, 0x252);
 
 	}
 
@@ -288,10 +427,7 @@ public:
 	3:Long
 	*/
 	short getHairLength(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
-		DWORD_PTR pplayer = getBasePlayer(playerUniqueAdress);
-
-		return (char)readShort(phandle, (pplayer + 0x253));
-
+		return readBytePUA(phandle, playerUniqueAdress, 0x253);
 	}
 
 	/*
@@ -318,25 +454,21 @@ public:
 	19:Skin Tone 20
 	*/
 	short getSkinTone(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
-		DWORD_PTR pplayer = getBasePlayer(playerUniqueAdress);
-
-		return (char)readShort(phandle, (pplayer + 0x254));
-
+		return readBytePUA(phandle, playerUniqueAdress, 0x254);
 	}
 
 	short getHeight(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
-		DWORD_PTR pplayer = getBasePlayer(playerUniqueAdress);
-		return readShort(phandle, (pplayer + 0x15E));
+		return readShortPUA(phandle, playerUniqueAdress, 0x15E);
+
 	}
 
 	short getWeight(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
-		DWORD_PTR pplayer = getBasePlayer(playerUniqueAdress);
-		return readShort(phandle, (pplayer + 0x15C));
+		return readShortPUA(phandle, playerUniqueAdress, 0x15C);
+
 	}
 
 	short getMorale(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
-		DWORD_PTR pplayer = getBasePlayer(playerUniqueAdress);
-		return (char)readShort(phandle, (pplayer + 0x1AB));
+		return readBytePUA(phandle, playerUniqueAdress, 0x1AB);
 	}
 
 	/*
@@ -344,18 +476,17 @@ public:
 	1:Yes
 	*/
 	short getDeclaredForNation(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
-		DWORD_PTR pplayer = getBasePlayer(playerUniqueAdress);
-		return (char)readShort(phandle, (pplayer + 0x1A9));
+		return readBytePUA(phandle, playerUniqueAdress, 0x1A9);
 	}
 
 	short getInternationalApps(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
-		DWORD_PTR pplayer = getBasePlayer(playerUniqueAdress);
-		return (char)readShort(phandle, (pplayer + 0x324));
+		return readBytePUA(phandle, playerUniqueAdress, 0x324);
+
 	}
 
 	short getInternationalGoals(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
-		DWORD_PTR pplayer = getBasePlayer(playerUniqueAdress);
-		return (char)readShort(phandle, (pplayer + 0x326));
+		return readBytePUA(phandle, playerUniqueAdress, 0x326);
+
 	}
 	/*
 	0:None
@@ -364,50 +495,247 @@ public:
 	10:Has No Work Permit / Treated As Non-EU In Italy
 	*/
 	short getGeneralOptions(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
-		DWORD_PTR pplayer = getBasePlayer(playerUniqueAdress);
-		return (char)readShort(phandle, (pplayer + 0xFA));
+		return readBytePUA(phandle, playerUniqueAdress, 0xFA);
+
 	}
 
 	short getBans(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
-		DWORD_PTR pplayer = getBasePlayer(playerUniqueAdress);
-		return (char)readShort(phandle, (pplayer + 0x18));
+		return readBytePUA(phandle, playerUniqueAdress, 0x18);
+
 	}
 
 	short getInjuries(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
-		DWORD_PTR pplayer = getBasePlayer(playerUniqueAdress);
-		return (char)readShort(phandle, (pplayer + 0xD8));
+		return readBytePUA(phandle, playerUniqueAdress, 0xD8);
+
 	}
 
+	struct Attributes {
 
-	PlayerDetail getPlayerDetail(HANDLE phandle, int PlayerID) {
-		PlayerDetail playerDetail;
-		DWORD_PTR playerUniqueAdress = getPlayerBaseAddress(phandle, PlayerID);
-		playerDetail.getRowID				= getRowID(phandle, playerUniqueAdress);
-		playerDetail.getUniqeID				= PlayerID;
-		playerDetail.getFirstname			= getFirstname(phandle, playerUniqueAdress);
-		playerDetail.getLastname			= getLastname(phandle, playerUniqueAdress);
-		playerDetail.getFullname			= getFullname(phandle, playerUniqueAdress);
-		playerDetail.getBirthYear			= getBirthYear(phandle, playerUniqueAdress);
-		playerDetail.getEthnicity			= getEthnicity(phandle, playerUniqueAdress);
-		playerDetail.getHairColour			= getHairColour(phandle, playerUniqueAdress);
-		playerDetail.getHairLength			= getHairLength(phandle, playerUniqueAdress);
-		playerDetail.getSkinTone			= getSkinTone(phandle, playerUniqueAdress);
-		playerDetail.getHeight				= getHeight(phandle, playerUniqueAdress);
-		playerDetail.getWeight				= getWeight(phandle, playerUniqueAdress);
-		playerDetail.getMorale				= getMorale(phandle, playerUniqueAdress);
-		playerDetail.getDeclaredForNation	= getDeclaredForNation(phandle, playerUniqueAdress);
-		playerDetail.getInternationalApps	= getInternationalApps(phandle, playerUniqueAdress);
-		playerDetail.getInternationalGoals	= getInternationalGoals(phandle, playerUniqueAdress);
-		playerDetail.getGeneralOptions		= getGeneralOptions(phandle, playerUniqueAdress);
-		playerDetail.getBans				= getBans(phandle, playerUniqueAdress);
-		playerDetail.getInjuries			= getInjuries(phandle, playerUniqueAdress);
-		return playerDetail;
-	}
+		struct Technical {
+			short getCorners(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+				return readBytePUA(phandle, playerUniqueAdress, 0x18E);
+			}
+
+			short getCrossing(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+				return readBytePUA(phandle, playerUniqueAdress, 0x173);
+			}
+
+			short getDribbling(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+				return readBytePUA(phandle, playerUniqueAdress, 0x174);
+			}
+
+			short getFinishing(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+				return readBytePUA(phandle, playerUniqueAdress, 0x175);
+			}
+
+			short getFirstTouch(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+				return readBytePUA(phandle, playerUniqueAdress, 0x189);
+			}
+
+			short getFreeKickTaking(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+				return readBytePUA(phandle, playerUniqueAdress, 0x196);
+			}
+
+			short getHeading(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+				return readBytePUA(phandle, playerUniqueAdress, 0x176);
+			}
+
+			short getLongShots(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+				return readBytePUA(phandle, playerUniqueAdress, 0x177);
+			}
+
+			short getLongThrows(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+				return readBytePUA(phandle, playerUniqueAdress, 0x191);
+			}
+
+			short getMarking(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+				return readBytePUA(phandle, playerUniqueAdress, 0x178);
+			}
+
+			short getPassing(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+				return readBytePUA(phandle, playerUniqueAdress, 0x17A);
+			}
+
+			short getPenaltyTaking(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+				return readBytePUA(phandle, playerUniqueAdress, 0x17B);
+			}
+
+			short getTackling(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+				return readBytePUA(phandle, playerUniqueAdress, 0x17C);
+			}
+
+			short getTechnique(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+				return readBytePUA(phandle, playerUniqueAdress, 0x18A);
+			}
+
+
+		};
+
+		struct Goalkeeping {
+			short getAerialReach(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+				return readBytePUA(phandle, playerUniqueAdress, 0x17F);
+			}
+
+			short getCommandOfArea(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+				return readBytePUA(phandle, playerUniqueAdress, 0x180);
+			}
+
+			short getCommunication(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+				return readBytePUA(phandle, playerUniqueAdress, 0x181);
+			}
+
+			short getEccentricity(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+				return readBytePUA(phandle, playerUniqueAdress, 0x192);
+			}
+
+			short getHandling(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+				return readBytePUA(phandle, playerUniqueAdress, 0x17E);
+			}
+			short getKicking(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+				return readBytePUA(phandle, playerUniqueAdress, 0x182);
+			}
+
+			short getOneOnOnes(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+				return readBytePUA(phandle, playerUniqueAdress, 0x186);
+			}
+
+			short getReflexes(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+				return readBytePUA(phandle, playerUniqueAdress, 0x188);
+			}
+
+			short getRushingOut(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+				return readBytePUA(phandle, playerUniqueAdress, 0x193);
+			}
+
+			short getTendencyToPunch(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+				return readBytePUA(phandle, playerUniqueAdress, 0x194);
+			}
+
+			short getThrowing(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+				return readBytePUA(phandle, playerUniqueAdress, 0x183);
+			}
+
+		};
+
+		struct Mental {
+
+			short getAggression(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+				return readBytePUA(phandle, playerUniqueAdress, 0x1A0);
+			}
+
+			short getAnticipation(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+				return readBytePUA(phandle, playerUniqueAdress, 0x184);
+			}
+
+			short getBravery(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+				return readBytePUA(phandle, playerUniqueAdress, 0x19E);
+			}
+
+			short getComposure(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+				return readBytePUA(phandle, playerUniqueAdress, 0x1A7);
+			}
+
+			short getConcentration(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+				return readBytePUA(phandle, playerUniqueAdress, 0x1A8);
+			}
+
+			short getDecision(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+				return readBytePUA(phandle, playerUniqueAdress, 0x185);
+			}
+
+			short getDetermination(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+				return readBytePUA(phandle, playerUniqueAdress, 0x1A6);
+			}
+
+			short getFlair(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+				return readBytePUA(phandle, playerUniqueAdress, 0x18D);
+			}
+
+			short getLeadership(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+				return readBytePUA(phandle, playerUniqueAdress, 0x19B);
+			}
+
+			short getOffTheBall(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+				return readBytePUA(phandle, playerUniqueAdress, 0x179);
+			}
+
+			short getPositioning(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+				return readBytePUA(phandle, playerUniqueAdress, 0x187);
+			}
+
+			short getTeamwork(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+				return readBytePUA(phandle, playerUniqueAdress, 0x18F);
+			}
+
+			short getVision(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+				return readBytePUA(phandle, playerUniqueAdress, 0x17D);
+			}
+
+			short getWorkRate(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+				return readBytePUA(phandle, playerUniqueAdress, 0x190);
+			}
+
+		};
+
+		struct Physical {
+
+			short getAcceleration(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+				return readBytePUA(phandle, playerUniqueAdress, 0x195);
+			}
+
+			short getAgility(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+				return readBytePUA(phandle, playerUniqueAdress, 0xA1);
+			}
+
+			short getBalance(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+				return readBytePUA(phandle, playerUniqueAdress, 0x19D);
+			}
+
+			short getJumpingReach(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+				return readBytePUA(phandle, playerUniqueAdress, 0x19A);
+			}
+
+			short getNaturalFitness(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+				return readBytePUA(phandle, playerUniqueAdress, 0x1A5);
+			}
+
+			short getPace(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+				return readBytePUA(phandle, playerUniqueAdress, 0x199);
+
+			}
+			short getStamina(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+				return readBytePUA(phandle, playerUniqueAdress, 0x198);
+			}
+		};
+
+		struct Hidden {
+			short getDirtiness(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+				return readBytePUA(phandle, playerUniqueAdress, 0x19C);
+			}
+			short getConsistency(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+				return readBytePUA(phandle, playerUniqueAdress, 0x19F);
+			}
+			short getImpMatches(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+				return readBytePUA(phandle, playerUniqueAdress, 0x1A2);
+			}
+			short getInjuryProneness(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+				return readBytePUA(phandle, playerUniqueAdress, 0x1A3);
+			}
+			short getVersatility(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+				return readBytePUA(phandle, playerUniqueAdress, 0x1A4);
+			}
+		};
+
+		Technical technical;
+		Goalkeeping goalkeeping;
+		Mental mental;
+		Physical physical;
+		Hidden hidden;
+
+	};
+	Attributes attributes;
+
 };
-
-
-
-
 
 #endif
 
