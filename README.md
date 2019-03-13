@@ -98,9 +98,10 @@ console.log(fm19js.myProfile());
 <img src="https://raw.githubusercontent.com/ug-code/fm19RTE/master/cpp/Resource/playerList.JPG?" width="800" height="400"/>
 
 ## 🙌 Contribution
-
+- We need more devs and support!
 - Open pull request with improvements
 - Discuss ideas in issues
+- Alternatively, bug reporting is vital! Use the Github's Issues page to do that!
 
 ## Referance
 
