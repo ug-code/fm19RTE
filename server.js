@@ -11,6 +11,11 @@ app.route('/api/service/currentClub').get((req, res) => {
     res.send(fm19js.currentClub());
 });
 
+
+app.get('/api/service/player/:playerId', function (req, res) {
+    let playerId =parseInt(req.params.playerId);
+    res.send(fm19js.player(playerId));
+});
 // Declare static folder to be served. It contains the js, images, css, etc.
 app.use(express.static('app'));
 app.route('/*')
