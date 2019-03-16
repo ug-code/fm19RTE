@@ -95,7 +95,20 @@ myApp.controller('PlayerListController', ['$scope', '$http', '$q', '$timeout', f
     angular.element(document).ready(function () {
         const dTable = $('#player_table');
         dTable.DataTable({
-            responsive: true
+            "processing": true,
+            responsive: true,
+            "ajax": '/assets/json/playerDt.json',
+            "columns": [
+                { "data": "playerUniqueID" },
+                { "data": "getFirstname" },
+                { "data": "getLastname" },
+                { "data": "getCA" },
+                { "data": "getPA" },
+                { "data": "getClubUniqueID" },
+                { "data": "getValue" },
+                { "data": "" }
+
+            ]
         });
     });
 

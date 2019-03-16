@@ -159,7 +159,68 @@ void mapEthnicity(const FunctionCallbackInfo<Value>& args) {
     args.GetReturnValue().Set(myArray);
 }
 
+void playerDatatable(const FunctionCallbackInfo<Value>& args) {
+    Isolate* isolate = Isolate::GetCurrent();
+	HANDLE phandle = GameLoad(windowName);
+    ServicePlayer servicePlayer;
+    map<int, DWORD_PTR> playersList = servicePlayer.getPlayerList(phandle);
+    // Iterating the map and printing ordered values
 
+    Local<Object> obj = Object::New(isolate);
+    Local<Array> data = Array::New(isolate);
+
+    int x = 0;
+    for (auto i = playersList.begin(); i != playersList.end(); i++) {
+
+        int playerUniqueID             = i->first;
+        DWORD_PTR playerPointerAddress = i->second;
+
+		int getClubUniqueID = servicePlayer.contract.getClubUniqueID(phandle, playerPointerAddress);
+		int getValue        = servicePlayer.contract.getValue(phandle, playerPointerAddress);
+
+        Local<Object> info = Object::New(isolate);
+
+
+          info->Set(String::NewFromUtf8(isolate, "playerUniqueID"), Integer::New(isolate,   playerUniqueID ));
+        info->Set(String::NewFromUtf8(isolate, "getFirstname"), String::NewFromUtf8(isolate,   servicePlayer.getFirstname(phandle, playerPointerAddress) ));
+        info->Set(String::NewFromUtf8(isolate, "getLastname"), String::NewFromUtf8(isolate,  servicePlayer.getLastname
+        (phandle, playerPointerAddress ) ));
+
+        info->Set(String::NewFromUtf8(isolate, "getCA"), Integer::New(isolate,  servicePlayer.abilities.getCA(phandle, playerPointerAddress)));
+        info->Set(String::NewFromUtf8(isolate, "getPA"), Integer::New(isolate,  servicePlayer.abilities.getPA(phandle,
+        playerPointerAddress)));
+
+        info->Set(String::NewFromUtf8(isolate, "getClubUniqueID"), Integer::New(isolate,  getClubUniqueID));
+        info->Set(String::NewFromUtf8(isolate, "getValue"), Integer::New(isolate,  getValue));
+
+
+
+
+        data->Set(x, info);
+
+        x++;
+
+
+
+    }
+    obj->Set(String::NewFromUtf8(isolate, "data"), data);
+
+    args.GetReturnValue().Set(obj);
+
+    /*
+    Local<Object> myArray = Object::New(isolate);
+
+    for (int i = 0; i < 10; i++) {
+        Local<Object> obj = Object::New(isolate);
+        obj->Set(String::NewFromUtf8(isolate, "tag1"), String::NewFromUtf8(isolate, "test"));
+        myArray->Set(i, obj);
+    }
+
+    args.GetReturnValue().Set(myArray);
+    */
+
+
+}
 
 
 void player(const FunctionCallbackInfo<Value>& args) {
@@ -178,7 +239,8 @@ void player(const FunctionCallbackInfo<Value>& args) {
 
     HANDLE phandle = GameLoad(windowName);
     ServicePlayer servicePlayer;
-    PlayerDetail player = servicePlayer.getPlayerDetail(phandle, args[0]->IntegerValue());
+    DWORD_PTR playerUniqueAdress  = servicePlayer.findPlayerUniqueAdress(phandle, args[0]->IntegerValue());
+    PlayerDetail player           = servicePlayer.getPlayerDetail(phandle, args[0]->IntegerValue(),playerUniqueAdress);
 
 
     Local<Object> obj = Object::New(isolate);
@@ -355,6 +417,9 @@ void init(Local<Object> exports) {
   NODE_SET_METHOD(exports, "myProfile", myProfile);
   NODE_SET_METHOD(exports, "currentClub", currentClub);
   NODE_SET_METHOD(exports, "player", player);
+  NODE_SET_METHOD(exports, "playerDatatable", playerDatatable);
+
+
  //NODE_SET_METHOD(exports, "mapEthnicity", mapEthnicity);
 
 }

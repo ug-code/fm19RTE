@@ -169,9 +169,14 @@ class ServicePlayer
 
 public:
 
-	PlayerDetail getPlayerDetail(HANDLE phandle, int PlayerID) {
+	DWORD_PTR findPlayerUniqueAdress(HANDLE phandle, int PlayerID){
+		 DWORD_PTR playerUniqueAdress = getPlayerBaseAddress(phandle, PlayerID);
+		 return playerUniqueAdress;
+	}
+
+	PlayerDetail getPlayerDetail(HANDLE phandle, int PlayerID, DWORD_PTR playerUniqueAdress) {
 		PlayerDetail playerDetail;
-		DWORD_PTR playerUniqueAdress = getPlayerBaseAddress(phandle, PlayerID);
+		//DWORD_PTR playerUniqueAdress = getPlayerBaseAddress(phandle, PlayerID);
 		//Information
 		playerDetail.getRowID = getRowID(phandle, playerUniqueAdress);
 		playerDetail.getUniqeID = PlayerID;
@@ -328,39 +333,6 @@ public:
 	}
 
 
-	//get player list with uniqueId 4 byte
-	void scanPlayerList(HANDLE pHandle) {
-
-		//DWORD_PTR startAddress = 0x430B6600;
-		//DWORD_PTR finalAddress = 0x472FED20;
-		UINT startAddress = 0x1FFFFF;
-		UINT finalAddress = 0x7fffffffffffffff;
-
-		DWORD_PTR address = 0;
-		int value;
-		DWORD_PTR unique_id;
-		DWORD_PTR playerUIDaddress;
-
-		ofstream searchFile;
-		searchFile.open("search_player_id.txt", std::ios_base::app);
-		searchFile << " Unique ID  || " << "FULL NAME " << '\n';
-
-
-		for (address = startAddress; address <= finalAddress; address += sizeof(value)) {
-			ReadProcessMemory(pHandle, (void*)address, &value, sizeof(value), 0);
-			if (value == player.information.guidingID) {
-				playerUIDaddress = (address - 0x1C);
-				ReadProcessMemory(pHandle, (LPCVOID*)playerUIDaddress, &unique_id, sizeof(DWORD_PTR), NULL);
-				CurrentMemory personalN = FindDmaAddy(pHandle, (playerUIDaddress + 0x4C), player.information.firstNameOffset, 2);
-				CurrentMemory personalL = FindDmaAddy(pHandle, (playerUIDaddress + 0x54), player.information.lastNameOffset, 2);
-
-				searchFile << personalN.currentAddress << "  " << (int)unique_id << "  " << readBuffer(pHandle, personalN.currentAddress, 32) << " " << readBuffer(pHandle, personalL.currentAddress, 32) << '\n';;
-
-			}
-		}
-
-
-	}
 
 	/**
 		FullList staff + Player
@@ -368,7 +340,8 @@ public:
 		playerUIDaddress = ((DWORD_PTR)mbi.BaseAddress + x -0x24 );
 
 	*/
-
+	
+	// we don't need this,remove it
 	void getPlayers(HANDLE pHandle) {
 		//to write 
 		int found = 0;
@@ -435,7 +408,7 @@ public:
 		}
 	}// while 
 
-	auto getPlayeList(HANDLE pHandle) {
+	auto getPlayerList(HANDLE pHandle) {
 
 		map<int, DWORD_PTR> playersList;
 
@@ -484,7 +457,7 @@ public:
 	}// while 
 
 	void testPlayerList(HANDLE pHandle) {
-		map<int, DWORD_PTR> playersList = getPlayeList(pHandle);
+		map<int, DWORD_PTR> playersList = getPlayerList(pHandle);
 		// Iterating the map and printing ordered values 
 		for (auto i = playersList.begin(); i != playersList.end(); i++) {
 			std::cout << i->first << " : " << i->second << '\n';
@@ -492,7 +465,7 @@ public:
 	}
 
 	DWORD_PTR getPlayerBaseAddress(HANDLE pHandle, int PlayerID) {
-		map<int, DWORD_PTR> playersList = getPlayeList(pHandle);
+		map<int, DWORD_PTR> playersList = getPlayerList(pHandle);
 		return  playersList[PlayerID];
 	}
 
@@ -879,11 +852,11 @@ public:
 
 	struct Abilities {
 		short getCA(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
-			return readBytePUA(phandle, playerUniqueAdress, 0x158);
+			return readShortPUA(phandle, playerUniqueAdress, 0x158);
 		}
 
 		short getPA(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
-			return readBytePUA(phandle, playerUniqueAdress, 0x15A);
+			return readShortPUA(phandle, playerUniqueAdress, 0x15A);
 		}
 
 		short getLeftFoot(HANDLE phandle, DWORD_PTR playerUniqueAdress) {

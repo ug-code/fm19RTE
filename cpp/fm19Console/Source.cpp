@@ -18,96 +18,6 @@ unsigned int currentMoney;
 //Change team setting
 double newMoney;
 
-void TestGroup(HANDLE phandle) {
-	ServiceCurrentClub serviceCurrentClub;
-	ServiceClub serviceClub;
-	ServicePlayer servicePlayer;
-
-	DWORD_PTR pTemp;
-	DWORD_PTR pointerAddr;
-
-
-	//playerlist 	unique number =1177858536
-	servicePlayer.scanPlayerList(phandle);//1177786120
-
-										  //teamlist  unique number =1177833896
-	serviceClub.scanClubList(phandle);
-	system("pause");
-	exit(0);
-
-
-
-
-	char rightStr[] = "Mezitlispor";
-	std::ofstream searchFile;
-	searchFile.open("search.txt", std::ios_base::app);
-	DWORD_PTR firstSearch = 0x09E330BC;
-	DWORD_PTR lastSearch = 0x0A10E59C;
-	int searchCount = ((lastSearch - firstSearch) / 0x20);
-	cout << "searchCount    :" << searchCount << endl;
-	for (int c = 0; c < searchCount; c++) {
-		searchFile << readBuffer(phandle, firstSearch + (c * 0x20), 32) << '\n';;
-
-	}
-	DWORD_PTR firstSearch42 = 0x42CF896C;
-	DWORD_PTR lastSearch42 = 0x42D289AC;
-	int searchCount42 = ((lastSearch42 - firstSearch42) / 0x20);
-	cout << "searchCount    :" << searchCount42 << endl;
-	for (int c = 0; c < searchCount42; c++) {
-		searchFile << readBuffer(phandle, firstSearch42 + (c * 0x20), 32) << '\n';;
-	}
-
-	system("pause");
-	exit(0);
-
-
-
-
-
-	std::ofstream teamfile;
-	teamfile.open("team_list.txt", std::ios_base::app);
-	DWORD_PTR firstTeamPointer = 0x42D189CC;
-	DWORD_PTR lastTeamPointer = 0x42D289AC;
-	int teamCount = ((lastTeamPointer - firstTeamPointer) / 0x20);
-	cout << "cityCount    :" << teamCount << endl;
-	for (int c = 0; c < teamCount; c++) {
-		teamfile << readBuffer(phandle, firstTeamPointer + (c * 0x20), 32) << '\n';;
-
-	}
-
-	system("pause");
-	exit(0);
-
-
-	std::ofstream cityfile;
-	cityfile.open("juventus_load_city.txt", std::ios_base::app);
-	DWORD_PTR firstCityPointer = 0x09E430EC;
-	DWORD_PTR lastCityPointer = 0x09E530CC;
-	int cityCount = ((lastCityPointer - firstCityPointer) / 0x20);
-	cout << "cityCount    :" << cityCount << endl;
-	for (int c = 0; c < cityCount; c++) {
-		cityfile << readBuffer(phandle, firstCityPointer + (c * 0x20), 32) << '\n';;
-
-	}
-
-	system("pause");
-	exit(0);
-
-
-
-
-	std::ofstream outfile;
-	outfile.open("juventus_load_team.txt", std::ios_base::app);
-	DWORD_PTR teamPointer = 0x0A0F38AC;
-	for (int c = 0; c < 122333; c++) {
-		outfile << readBuffer(phandle, teamPointer + (c * 0x20), 32) << '\n';;
-		//cout << "First Team    :" << readBuffer(phandle, 0x09E330BC+(c*0x20), 32) << endl;
-
-	}
-	//Close any handles once the program is over
-	CloseHandle(phandle);
-	system("pause");
-}
 void CurrenTeamGroup() {
 
 	SetConsoleTitle("FM19 REAL EDITOR");
@@ -163,18 +73,23 @@ void scanPlayerList(HANDLE phandle) {
 	const char someData[] = "boluspor";
 
 	//servicePlayer.getPlayers(phandle);
-	//servicePlayer.testPlayerList(phandle);
+	servicePlayer.testPlayerList(phandle);
 
-	servicePlayer.getPlayerBaseAddress(phandle, 70103100);
 
 	//Close any handles once the program is over
 	CloseHandle(phandle);
 	system("pause");
 }
-void playerDetail(HANDLE phandle) {
+void playerDetail(HANDLE phandle,int playerUniqueID= 70103100, DWORD_PTR playerUniqueAdress=0) {
 	ServicePlayer servicePlayer;
-
-	PlayerDetail player = servicePlayer.getPlayerDetail(phandle, 70103100);
+	DWORD_PTR playerUA;
+	if (playerUniqueAdress == 0) {
+		 playerUA = servicePlayer.findPlayerUniqueAdress(phandle, playerUniqueID);
+	}
+	else {
+		 playerUA = playerUniqueAdress;
+	}
+	PlayerDetail player = servicePlayer.getPlayerDetail(phandle, playerUniqueID, playerUA);
 	cout << "|--------------Player Detail-------------------||" << endl;
 	cout << "getRowID                       : " << player.getRowID << endl;
 	cout << "getUniqeID                     : " << player.getUniqeID << endl;
@@ -223,6 +138,13 @@ void playerDetail(HANDLE phandle) {
 	cout << "getRushingOut                  : " << player.attributes.goalkeeping.getRushingOut << endl;
 	cout << "getTendencyToPunch             : " << player.attributes.goalkeeping.getTendencyToPunch << endl;
 	cout << "getThrowing                    : " << player.attributes.goalkeeping.getThrowing << endl;
+	cout << "|--------------^Player abilities-------------------||" << endl;
+	cout << "getCA                         : " << player.abilities.getCA << endl;
+	cout << "getPA                         : " << player.abilities.getPA << endl;
+	cout << "getLeftFoot                   : " << player.abilities.getLeftFoot << endl;
+	cout << "getRightFoot                  : " << player.abilities.getRightFoot << endl;
+	cout << "getMatchSharpness             : " << player.abilities.getMatchSharpness << endl;
+	cout << "getMatchExercise              : " << player.abilities.getMatchExercise << endl;
 	cout << "|--------------^Player Contract-------------------||" << endl;
 	cout << "getClubUniqueID               : " << player.contract.getClubUniqueID << endl;
 	cout << "getType                       : " << player.contract.getType << endl;
@@ -239,19 +161,61 @@ void playerDetail(HANDLE phandle) {
 	cout << "getLoyaltyBonus               : " << player.contract.getLoyaltyBonus << endl;
 	cout << "getSquadStatus                : " << player.contract.getSquadStatus << endl;
 	cout << "getSquadNumber                : " << player.contract.getSquadNumber << endl;
-	//Close any handles once the program is over
-	CloseHandle(phandle);
-	system("pause");
+
 }
 
 
+void playerDatatable(HANDLE phandle) {
+	ServicePlayer servicePlayer;
+	map<int, DWORD_PTR> playersList = servicePlayer.getPlayerList(phandle);
+	// Iterating the map and printing ordered values 
+	for (auto i = playersList.begin(); i != playersList.end(); i++) {
+		int PlayerUniqueID = i->first;
+		DWORD_PTR playerPointerAddress = i->second;
+
+		string getFirstname = servicePlayer.getFirstname(phandle, playerPointerAddress);
+		string getLastname = servicePlayer.getLastname(phandle, playerPointerAddress);
+		short getCA = servicePlayer.abilities.getCA(phandle, playerPointerAddress);
+		short getPA = servicePlayer.abilities.getPA(phandle, playerPointerAddress);
+		int getClubUniqueID = servicePlayer.contract.getClubUniqueID(phandle, playerPointerAddress);
+		int getValue = servicePlayer.contract.getValue(phandle, playerPointerAddress);
+		
+		//PlayerDetail player = servicePlayer.getPlayerDetail(phandle, PlayerUniqueID, playerPointerAddress);
+		//playerDetail(phandle, PlayerUniqueID, playerPointerAddress);
+		std::cout << PlayerUniqueID << " " 
+			<< getFirstname << " "
+			<< getLastname<< " "
+			<< getCA<< " "
+			<< getPA << " "
+			<< getClubUniqueID << " "
+			<< getValue <<" "
+			
+			<<'\n';
+	}
+	//DWORD_PTR playerUniqueAdress = servicePlayer.findPlayerUniqueAdress(phandle, 70103100);
+}
+
+
+void benchmarkFindPlayerUniqueAdress(HANDLE phandle, int playerUniqueID = 70103100) {
+	ServicePlayer servicePlayer;
+	DWORD_PTR playerUniqueAdress = servicePlayer.findPlayerUniqueAdress(phandle, playerUniqueID);
+}
+
 int main() {
+
+	const clock_t begin_time = clock();
+
 	SetConsoleTitle("FM19 REAL EDITOR");
 	About();
 	HANDLE phandle = GameLoad(windowName);
 	//MyProfileGroup(phandle);
 	//scanPlayerList(phandle);
-	playerDetail(phandle);
+	playerDetail(phandle, 470884);
+	//playerDatatable(phandle);
+	//benchmarkFindPlayerUniqueAdress(phandle);
+	CloseHandle(phandle);
+	printf("Time taken: %.2fs\n", (double)(clock() - begin_time) / CLOCKS_PER_SEC);
+	system("pause");
 	return 0;
 
 }
