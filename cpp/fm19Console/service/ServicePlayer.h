@@ -225,7 +225,7 @@ public:
 		playerDetail.attributes.physical.getPace = attributes.physical.getPace(phandle, playerUniqueAdress);
 		playerDetail.attributes.physical.getStamina = attributes.physical.getStamina(phandle, playerUniqueAdress);
 		playerDetail.attributes.physical.getStrength = attributes.physical.getStrength(phandle, playerUniqueAdress);
-		
+
 		//-hidden
 		playerDetail.attributes.hidden.getDirtiness = attributes.hidden.getDirtiness(phandle, playerUniqueAdress);
 		playerDetail.attributes.hidden.getConsistency = attributes.hidden.getConsistency(phandle, playerUniqueAdress);
@@ -493,74 +493,20 @@ public:
 		return readShortPUA(phandle, playerUniqueAdress, 0x206);
 	}
 
-	/*
-	-1:Unknown
-	0:Northern European
-	1:Mediterranean / Hispanic
-	2:North African / Middle Eastern
-	3:African / Caribbean
-	4:Asian
-	5:South East Asian
-	6:Pacific Islander
-	7:Native American
-	8:Native Australian
-	9:Mixed Race (Black / White)
-	10:East Asian
-	*/
+	//mapEthnicity
 	short getEthnicity(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
 		return readBytePUA(phandle, playerUniqueAdress, 0x251);
 	}
 
-	/*
-	0:Unknown
-	1:Blonde
-	2:Light Brown
-	3:Dark Brown
-	4:Red
-	5:Black
-	6:Grey
-	8:Changeable (Normal)
-	9:Changeable (Dramatic)
-	*/
 	short getHairColour(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
 		return readBytePUA(phandle, playerUniqueAdress, 0x252);
-
 	}
 
-	/*
-	4:Unknown
-	0:Bald
-	1:Short
-	2:Medium
-	3:Long
-	*/
+	//mapHairLength
 	short getHairLength(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
 		return readBytePUA(phandle, playerUniqueAdress, 0x253);
 	}
 
-	/*
-	-1:Unknown
-	0:Skin Tone 1
-	1:Skin Tone 2
-	2:Skin Tone 3
-	3:Skin Tone 4
-	4:Skin Tone 5
-	5:Skin Tone 6
-	6:Skin Tone 7
-	7:Skin Tone 8
-	8:Skin Tone 9
-	9:Skin Tone 10
-	10:Skin Tone 11
-	11:Skin Tone 12
-	12:Skin Tone 13
-	13:Skin Tone 14
-	14:Skin Tone 15
-	15:Skin Tone 16
-	16:Skin Tone 17
-	17:Skin Tone 18
-	18:Skin Tone 19
-	19:Skin Tone 20
-	*/
 	short getSkinTone(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
 		return readBytePUA(phandle, playerUniqueAdress, 0x254);
 	}
@@ -577,10 +523,7 @@ public:
 		return readBytePUA(phandle, playerUniqueAdress, 0x1AB);
 	}
 
-	/*
-	0:No
-	1:Yes
-	*/
+	//mapDeclaredForNation
 	short getDeclaredForNation(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
 		return readBytePUA(phandle, playerUniqueAdress, 0x1A9);
 	}
@@ -592,12 +535,8 @@ public:
 	short getInternationalGoals(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
 		return readBytePUA(phandle, playerUniqueAdress, 0x326);
 	}
-	/*
-	0:None
-	2:Has No Work Permit
-	8:Treated As Non-EU In Italy
-	10:Has No Work Permit / Treated As Non-EU In Italy
-	*/
+
+	//mapGeneralOptions
 	short getGeneralOptions(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
 		return readBytePUA(phandle, playerUniqueAdress, 0xFA);
 	}
@@ -812,7 +751,7 @@ public:
 			short getStrength(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
 				return readBytePUA(phandle, playerUniqueAdress, 0x197);
 			}
-			
+
 		};
 
 		struct Hidden {
@@ -842,66 +781,12 @@ public:
 	};
 	struct Positions {
 
-	/*
-	-1:Automatic
-	0:Goalkeeper
-	12:Sweeper Keeper
-	14:Libero
-	2:Full-Back
-	3:Wing-Back
-	36:No-Nonsense Full-Back
-	38:Complete Wing-Back
-	44:Inverted Wing-Back
-	1:Central Defender
-	24:Ball Playing Defender
-	29:No-Nonsense Centre-Back
-	4:Defensive Midfielder
-	15:Deep Lying Playmaker
-	33:Anchor Man
-	35:Half Back
-	39:Regista
-	28:Ball Winning Midfielder
-	46:Roaming Playmaker
-	6:Wide Midfielder
-	30:Defensive Winger
-	43:Wide Playmaker
-	5:Central Midfielder
-	16:Box To Box Midfielder
-	17:Advanced Playmaker
-	7:Winger
-	27:Inside Forward
-	49:Inverted Winger
-	42:Wide Target Man
-	45:Raumdeuter
-	9:Attacking Midfielder
-	37:Enganche
-	41:Shadow Striker
-	32:Trequartista
-	31:Pressing Forward
-	10:Deep Lying Forward
-	40:False Nine
-	11:Advanced Forward
-	18:Target Man
-	19:Poacher
-	20:Complete Forward
-	47:Mezzala
-	50:Segundo Volante
-	48:Carrilero
-	*/
+		//mapRoleUsedToFillEmptyAttributes
 		short getRoleUsedToFillEmptyAttributes(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
 			return readBytePUA(phandle, playerUniqueAdress, 0x1B3);
 		}
-		/*
-		<DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">0:Not Set
-		1:Right
-		2:Left
-		3:Right Or Central When Three
-		4:Left Or Central When Three
-		5:Central When Three
-		6:Right Of Two Or Right / Central When Three
-		7:Left Of Two Or Left / Central When Three
-		</DropDownList>
-		*/
+
+		//mapRoleUsedToFillEmptyAttributes
 		short getPreferredCentralPosition(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
 			return readBytePUA(phandle, playerUniqueAdress, 0x1B2);
 		}
@@ -909,7 +794,7 @@ public:
 		short getGK(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
 			return readBytePUA(phandle, playerUniqueAdress, 0x164);
 		}
-		
+
 		short getSW(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
 			return readBytePUA(phandle, playerUniqueAdress, 0x165);
 		}
@@ -1017,1019 +902,1019 @@ public:
 
 	};
 
-	struct Contract{
-	/*
-	        <CheatEntry>
-          <ID>177</ID>
-          <Description>"Contract -&gt;"</Description>
-          <Options moHideChildren="1"/>
-          <LastState Value="" RealAddress="00000000"/>
-          <Color>16CC1C</Color>
-          <GroupHeader>1</GroupHeader>
-          <CheatEntries>
-            <CheatEntry>
-              <ID>180</ID>
-              <Description>"Club (Unique ID)[4]"</Description>
-              <DropDownList ReadOnly="1" DescriptionOnly="1">:
-</DropDownList>
-              <LastState Value="2082082528" RealAddress="5E2D9594"/>
-              <VariableType>4 Bytes</VariableType>
-              <Address>[pplayer_base]+288</Address>
-              <Offsets>
-                <Offset>C</Offset>
-                <Offset>10</Offset>
-              </Offsets>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>179</ID>
-              <Description>"Type"</Description>
-              <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">-1:Invalid
-0:Part Time
-1:Full Time
-2:Amateur
-3:Youth
-4:Non-Contract
-5:Future Professional
-7:Generation Adidas (USA)
-8:Senior Minimum Salary (USA)
-9:Reserve (USA)
-11:Designated Player (USA)
-13:Designated Player
-16:Guest Player (Australia)
-18:Mature Age Rookie Player (Australia)
-</DropDownList>
-              <LastState Value="1" RealAddress="68C14B82"/>
-              <ShowAsSigned>1</ShowAsSigned>
-              <VariableType>Byte</VariableType>
-              <Address>[pplayer_base]+288</Address>
-              <Offsets>
-                <Offset>9A</Offset>
-              </Offsets>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>172</ID>
-              <Description>"Job Type"</Description>
-              <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">0:Free
-1:Player
-2:Coach
-3:Player/Coach
-4:Chairman
-6:Director
-8:Managing Director
-10:Director of Football
-12:Physiotherapist
-14:Scout
-16:Manager
-17:Player/Manager
-20:Assistant Manager
-21:Player/Assistant Manager
-22:Media Pundit
-24:General Manager
-26:Fitness Coach
-27:Player/Fitness Coach
-34:Goalkeeper Coach
-35:Player/Goalkeeper Coach
-36:Chief Data Analyst
-38:Chief Doctor
-40:Head of Sports Science
-42:U18 Data Analyst
-44:Chief Scout
-45:Player/Chief Scout
-46:U18 Sports Scientis
-48:U23 Sports Scientist
-49:Player/Youth Team Coach
-50:Head of Physiotherapy
-52:U19 Manager
-54:First Team Coach
-64:Head of Youth Development
-65:Player/Head of Youth Development
-66:Owner
-70:President
-144:Caretaker Manager
-</DropDownList>
-              <LastState Value="1" RealAddress="68C14B04"/>
-              <VariableType>Byte</VariableType>
-              <Address>[pplayer_base]+288</Address>
-              <Offsets>
-                <Offset>1C</Offset>
-              </Offsets>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>117</ID>
-              <Description>"Value"</Description>
-              <LastState Value="56990420" RealAddress="68CFD670"/>
-              <ShowAsSigned>0</ShowAsSigned>
-              <VariableType>4 Bytes</VariableType>
-              <Address>[pplayer_base]+128</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>163</ID>
-              <Description>"Asking Price (aprox)"</Description>
-              <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">-1:Not Set
-</DropDownList>
-              <LastState Value="-1" RealAddress="68CFD674"/>
-              <ShowAsSigned>1</ShowAsSigned>
-              <VariableType>4 Bytes</VariableType>
-              <Address>[pplayer_base]+12C</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>170</ID>
-              <Description>"Weekly Wage"</Description>
-              <LastState Value="14568" RealAddress="68C14B00"/>
-              <VariableType>4 Bytes</VariableType>
-              <Address>[pplayer_base]+288</Address>
-              <Offsets>
-                <Offset>18</Offset>
-              </Offsets>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>185</ID>
-              <Description>"Start Date[3] -&gt;"</Description>
-              <Options moHideChildren="1"/>
-              <LastState Value="" RealAddress="00000000"/>
-              <Color>292CCC</Color>
-              <GroupHeader>1</GroupHeader>
-              <CheatEntries>
-                <CheatEntry>
-                  <ID>181</ID>
-                  <Description>"Day of Year"</Description>
-                  <LastState Value="32" RealAddress="68C14B24"/>
-                  <VariableType>Byte</VariableType>
-                  <Address>[pplayer_base]+288</Address>
-                  <Offsets>
-                    <Offset>3C</Offset>
-                  </Offsets>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>184</ID>
-                  <Description>"Year"</Description>
-                  <LastState Value="2018" RealAddress="68C14B26"/>
-                  <VariableType>2 Bytes</VariableType>
-                  <Address>[pplayer_base]+288</Address>
-                  <Offsets>
-                    <Offset>3E</Offset>
-                  </Offsets>
-                </CheatEntry>
-              </CheatEntries>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>186</ID>
-              <Description>"End Date[3] -&gt;"</Description>
-              <Options moHideChildren="1"/>
-              <LastState Value="" RealAddress="00000000"/>
-              <Color>292CCC</Color>
-              <GroupHeader>1</GroupHeader>
-              <CheatEntries>
-                <CheatEntry>
-                  <ID>183</ID>
-                  <Description>"Day of Year"</Description>
-                  <LastState Value="347" RealAddress="68C14B28"/>
-                  <VariableType>2 Bytes</VariableType>
-                  <Address>[pplayer_base]+288</Address>
-                  <Offsets>
-                    <Offset>40</Offset>
-                  </Offsets>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>182</ID>
-                  <Description>"Year"</Description>
-                  <LastState Value="2023" RealAddress="68C14B2A"/>
-                  <VariableType>2 Bytes</VariableType>
-                  <Address>[pplayer_base]+288</Address>
-                  <Offsets>
-                    <Offset>42</Offset>
-                  </Offsets>
-                </CheatEntry>
-              </CheatEntries>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>187</ID>
-              <Description>"Join Date[3] -&gt;"</Description>
-              <Options moHideChildren="1"/>
-              <LastState Value="" RealAddress="00000000"/>
-              <Color>292CCC</Color>
-              <GroupHeader>1</GroupHeader>
-              <CheatEntries>
-                <CheatEntry>
-                  <ID>189</ID>
-                  <Description>"Day of Year"</Description>
-                  <LastState Value="32" RealAddress="68C14B2C"/>
-                  <VariableType>Byte</VariableType>
-                  <Address>[pplayer_base]+288</Address>
-                  <Offsets>
-                    <Offset>44</Offset>
-                  </Offsets>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>188</ID>
-                  <Description>"Year"</Description>
-                  <LastState Value="2018" RealAddress="68C14B2E"/>
-                  <VariableType>2 Bytes</VariableType>
-                  <Address>[pplayer_base]+288</Address>
-                  <Offsets>
-                    <Offset>46</Offset>
-                  </Offsets>
-                </CheatEntry>
-              </CheatEntries>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>178</ID>
-              <Description>"Loyalty Bonus"</Description>
-              <LastState Value="628694" RealAddress="68C14B78"/>
-              <VariableType>4 Bytes</VariableType>
-              <Address>[pplayer_base]+288</Address>
-              <Offsets>
-                <Offset>90</Offset>
-              </Offsets>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>176</ID>
-              <Description>"Squad Status"</Description>
-              <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">-1:Invalid
-0:Not Set
-1:Key Player
-2:First Team Regular
-3:Squad Rotation
-4:Backup Player
-5:Hot Prospect
-6:Decent Youngster
-7:Not Needed
-8:Squad Status Count
-</DropDownList>
-              <LastState Value="1" RealAddress="68C14B34"/>
-              <VariableType>Byte</VariableType>
-              <Address>[pplayer_base]+288</Address>
-              <Offsets>
-                <Offset>4C</Offset>
-              </Offsets>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>174</ID>
-              <Description>"Squad Number"</Description>
-              <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">-1:Not Set
-</DropDownList>
-              <LastState Value="-1" RealAddress="68C14B3B"/>
-              <ShowAsSigned>1</ShowAsSigned>
-              <VariableType>Byte</VariableType>
-              <Address>[pplayer_base]+288</Address>
-              <Offsets>
-                <Offset>53</Offset>
-              </Offsets>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>175</ID>
-              <Description>"Transfer Status"</Description>
-              <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">4:Not Set
-5:Transfer Listed
-6:Listed for Loan
-7:Transfer and Load Listed
-12:Transfer Lister by Request
-15:Listed by Request &amp; Loan Listed
-68:Not Available for Loan
-69:Transfer Listed / NA for Loan
-76:Listed by Request / NA for Loan
-</DropDownList>
-              <LastState Value="4" RealAddress="68C14B36"/>
-              <VariableType>Byte</VariableType>
-              <Address>[pplayer_base]+288</Address>
-              <Offsets>
-                <Offset>4E</Offset>
-              </Offsets>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>1002</ID>
-              <Description>"Clauses &amp; Bonuses -&gt;"</Description>
-              <Options moHideChildren="1"/>
-              <LastState Value="" RealAddress="00000000"/>
-              <Color>292CCC</Color>
-              <GroupHeader>1</GroupHeader>
-              <CheatEntries>
-                <CheatEntry>
-                  <ID>1026</ID>
-                  <Description>"1 -&gt;"</Description>
-                  <Options moHideChildren="1"/>
-                  <LastState Value="" RealAddress="00000000"/>
-                  <Color>16CC1C</Color>
-                  <GroupHeader>1</GroupHeader>
-                  <CheatEntries>
-                    <CheatEntry>
-                      <ID>1003</ID>
-                      <Description>"Type"</Description>
-                      <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">0:Minimum Fee Release / None
-1:Relegation Release
-2:Non Promotion Release
-3:Yearly Wage Rise (%)
-4:Promotion Wage Rise
-5:Relegation Wage Drop
-6:Non-Playing Job Offer Release
-7:Sell On Fee (%)
-8:Sell On Fee (%)
-9:Sell On Fee Profit (%)
-10:Seasonal Landmark Goal Bonus
-11:One-Year Extension After League Games (Final Season)
-12:Match Highest Earner
-13:Wage After Reaching Club League Games
-14:Top Division Promotion Wage Rise
-15:Top Division Relegation Wage Drop
-16:Minimum Fee Release Clause (Foreign Clubs)
-17:Minimum Fee Release Clause (Domestic Clubs in Higher Division)
-18:Minimum Fee Release Clause (Domestic Clubs)
-19:Wage After Reaching International Appearances
-22:Optional Contract Extension By Club
-25:One-Year Extension After League Games (Promoted Final Season)
-26:One-Year Extension After League Games (Avoid Relegation Final Season)
-27:Minimum Fee Release Clause (Clubs in a Major Continental Competition)
-29:Contract Extension After Promotion
-30:Injury Release Clause
-31:Minimum Fee Release Clause (Clubs in a Continental Competition)
-32:Appearance Fee
-33:Goal Bonus
-34:Clean Sheet Bonus
-35:Team of the Year Bonus (Division)
-36:Top Goalscorer Bonus (Division)
-37:International Cap Bonus
-38:Unused Substitute Fee
-54:Will Leave At End Of Contract
-55:Active Relegation Release Clause
-56:Active Non Promotion Release Clause
-57:Committee Assigned Minimum Fee Release Clause
-</DropDownList>
-                      <LastState Value="15" RealAddress="68B7A166"/>
-                      <VariableType>2 Bytes</VariableType>
-                      <Address>[pplayer_base]+288</Address>
-                      <Offsets>
-                        <Offset>6</Offset>
-                        <Offset>58</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1001</ID>
-                      <Description>"Value"</Description>
-                      <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">-1:N/A
-0:None
-</DropDownList>
-                      <LastState Value="-1" RealAddress="68B7A160"/>
-                      <ShowAsSigned>1</ShowAsSigned>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>[pplayer_base]+288</Address>
-                      <Offsets>
-                        <Offset>0</Offset>
-                        <Offset>58</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1004</ID>
-                      <Description>"Info"</Description>
-                      <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">-1:N/A
-0:None
-</DropDownList>
-                      <LastState Value="25" RealAddress="68B7A164"/>
-                      <ShowAsSigned>1</ShowAsSigned>
-                      <VariableType>2 Bytes</VariableType>
-                      <Address>[pplayer_base]+288</Address>
-                      <Offsets>
-                        <Offset>4</Offset>
-                        <Offset>58</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                  </CheatEntries>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>1027</ID>
-                  <Description>"2 -&gt;"</Description>
-                  <Options moHideChildren="1"/>
-                  <LastState Value="" RealAddress="00000000"/>
-                  <Color>16CC1C</Color>
-                  <GroupHeader>1</GroupHeader>
-                  <CheatEntries>
-                    <CheatEntry>
-                      <ID>1025</ID>
-                      <Description>"Type"</Description>
-                      <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">0:Minimum Fee Release / None
-1:Relegation Release
-2:Non Promotion Release
-3:Yearly Wage Rise (%)
-4:Promotion Wage Rise
-5:Relegation Wage Drop
-6:Non-Playing Job Offer Release
-7:Sell On Fee (%)
-8:Sell On Fee (%)
-9:Sell On Fee Profit (%)
-10:Seasonal Landmark Goal Bonus
-11:One-Year Extension After League Games (Final Season)
-12:Match Highest Earner
-13:Wage After Reaching Club League Games
-14:Top Division Promotion Wage Rise
-15:Top Division Relegation Wage Drop
-16:Minimum Fee Release Clause (Foreign Clubs)
-17:Minimum Fee Release Clause (Domestic Clubs in Higher Division)
-18:Minimum Fee Release Clause (Domestic Clubs)
-19:Wage After Reaching International Appearances
-22:Optional Contract Extension By Club
-25:One-Year Extension After League Games (Promoted Final Season)
-26:One-Year Extension After League Games (Avoid Relegation Final Season)
-27:Minimum Fee Release Clause (Clubs in a Major Continental Competition)
-29:Contract Extension After Promotion
-30:Injury Release Clause
-31:Minimum Fee Release Clause (Clubs in a Continental Competition)
-32:Appearance Fee
-33:Goal Bonus
-34:Clean Sheet Bonus
-35:Team of the Year Bonus (Division)
-36:Top Goalscorer Bonus (Division)
-37:International Cap Bonus
-38:Unused Substitute Fee
-54:Will Leave At End Of Contract
-55:Active Relegation Release Clause
-56:Active Non Promotion Release Clause
-57:Committee Assigned Minimum Fee Release Clause
-</DropDownList>
-                      <LastState Value="32" RealAddress="68B7A16E"/>
-                      <VariableType>2 Bytes</VariableType>
-                      <Address>[pplayer_base]+288</Address>
-                      <Offsets>
-                        <Offset>E</Offset>
-                        <Offset>58</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1023</ID>
-                      <Description>"Value"</Description>
-                      <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">-1:N/A
-0:None
-</DropDownList>
-                      <LastState Value="2913" RealAddress="68B7A168"/>
-                      <ShowAsSigned>1</ShowAsSigned>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>[pplayer_base]+288</Address>
-                      <Offsets>
-                        <Offset>8</Offset>
-                        <Offset>58</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1024</ID>
-                      <Description>"Info"</Description>
-                      <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">-1:N/A
-0:None
-</DropDownList>
-                      <LastState Value="-1" RealAddress="68B7A16C"/>
-                      <ShowAsSigned>1</ShowAsSigned>
-                      <VariableType>2 Bytes</VariableType>
-                      <Address>[pplayer_base]+288</Address>
-                      <Offsets>
-                        <Offset>C</Offset>
-                        <Offset>58</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                  </CheatEntries>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>1028</ID>
-                  <Description>"3 -&gt;"</Description>
-                  <Options moHideChildren="1"/>
-                  <LastState Value="" RealAddress="00000000"/>
-                  <Color>16CC1C</Color>
-                  <GroupHeader>1</GroupHeader>
-                  <CheatEntries>
-                    <CheatEntry>
-                      <ID>1022</ID>
-                      <Description>"Type"</Description>
-                      <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">0:Minimum Fee Release / None
-1:Relegation Release
-2:Non Promotion Release
-3:Yearly Wage Rise (%)
-4:Promotion Wage Rise
-5:Relegation Wage Drop
-6:Non-Playing Job Offer Release
-7:Sell On Fee (%)
-8:Sell On Fee (%)
-9:Sell On Fee Profit (%)
-10:Seasonal Landmark Goal Bonus
-11:One-Year Extension After League Games (Final Season)
-12:Match Highest Earner
-13:Wage After Reaching Club League Games
-14:Top Division Promotion Wage Rise
-15:Top Division Relegation Wage Drop
-16:Minimum Fee Release Clause (Foreign Clubs)
-17:Minimum Fee Release Clause (Domestic Clubs in Higher Division)
-18:Minimum Fee Release Clause (Domestic Clubs)
-19:Wage After Reaching International Appearances
-22:Optional Contract Extension By Club
-25:One-Year Extension After League Games (Promoted Final Season)
-26:One-Year Extension After League Games (Avoid Relegation Final Season)
-27:Minimum Fee Release Clause (Clubs in a Major Continental Competition)
-29:Contract Extension After Promotion
-30:Injury Release Clause
-31:Minimum Fee Release Clause (Clubs in a Continental Competition)
-32:Appearance Fee
-33:Goal Bonus
-34:Clean Sheet Bonus
-35:Team of the Year Bonus (Division)
-36:Top Goalscorer Bonus (Division)
-37:International Cap Bonus
-38:Unused Substitute Fee
-54:Will Leave At End Of Contract
-55:Active Relegation Release Clause
-56:Active Non Promotion Release Clause
-57:Committee Assigned Minimum Fee Release Clause
-</DropDownList>
-                      <LastState Value="33" RealAddress="68B7A176"/>
-                      <VariableType>2 Bytes</VariableType>
-                      <Address>[pplayer_base]+288</Address>
-                      <Offsets>
-                        <Offset>16</Offset>
-                        <Offset>58</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1020</ID>
-                      <Description>"Value"</Description>
-                      <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">-1:N/A
-0:None
-</DropDownList>
-                      <LastState Value="1456" RealAddress="68B7A170"/>
-                      <ShowAsSigned>1</ShowAsSigned>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>[pplayer_base]+288</Address>
-                      <Offsets>
-                        <Offset>10</Offset>
-                        <Offset>58</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1021</ID>
-                      <Description>"Info"</Description>
-                      <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">-1:N/A
-0:None
-</DropDownList>
-                      <LastState Value="-1" RealAddress="68B7A174"/>
-                      <ShowAsSigned>1</ShowAsSigned>
-                      <VariableType>2 Bytes</VariableType>
-                      <Address>[pplayer_base]+288</Address>
-                      <Offsets>
-                        <Offset>14</Offset>
-                        <Offset>58</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                  </CheatEntries>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>1029</ID>
-                  <Description>"4 -&gt;"</Description>
-                  <Options moHideChildren="1"/>
-                  <LastState Value="" RealAddress="00000000"/>
-                  <Color>16CC1C</Color>
-                  <GroupHeader>1</GroupHeader>
-                  <CheatEntries>
-                    <CheatEntry>
-                      <ID>1019</ID>
-                      <Description>"Type"</Description>
-                      <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">0:Minimum Fee Release / None
-1:Relegation Release
-2:Non Promotion Release
-3:Yearly Wage Rise (%)
-4:Promotion Wage Rise
-5:Relegation Wage Drop
-6:Non-Playing Job Offer Release
-7:Sell On Fee (%)
-8:Sell On Fee (%)
-9:Sell On Fee Profit (%)
-10:Seasonal Landmark Goal Bonus
-11:One-Year Extension After League Games (Final Season)
-12:Match Highest Earner
-13:Wage After Reaching Club League Games
-14:Top Division Promotion Wage Rise
-15:Top Division Relegation Wage Drop
-16:Minimum Fee Release Clause (Foreign Clubs)
-17:Minimum Fee Release Clause (Domestic Clubs in Higher Division)
-18:Minimum Fee Release Clause (Domestic Clubs)
-19:Wage After Reaching International Appearances
-22:Optional Contract Extension By Club
-25:One-Year Extension After League Games (Promoted Final Season)
-26:One-Year Extension After League Games (Avoid Relegation Final Season)
-27:Minimum Fee Release Clause (Clubs in a Major Continental Competition)
-29:Contract Extension After Promotion
-30:Injury Release Clause
-31:Minimum Fee Release Clause (Clubs in a Continental Competition)
-32:Appearance Fee
-33:Goal Bonus
-34:Clean Sheet Bonus
-35:Team of the Year Bonus (Division)
-36:Top Goalscorer Bonus (Division)
-37:International Cap Bonus
-38:Unused Substitute Fee
-54:Will Leave At End Of Contract
-55:Active Relegation Release Clause
-56:Active Non Promotion Release Clause
-57:Committee Assigned Minimum Fee Release Clause
-</DropDownList>
-                      <LastState Value="38" RealAddress="68B7A17E"/>
-                      <VariableType>2 Bytes</VariableType>
-                      <Address>[pplayer_base]+288</Address>
-                      <Offsets>
-                        <Offset>1E</Offset>
-                        <Offset>58</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1017</ID>
-                      <Description>"Value"</Description>
-                      <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">-1:N/A
-0:None
-</DropDownList>
-                      <LastState Value="728" RealAddress="68B7A178"/>
-                      <ShowAsSigned>1</ShowAsSigned>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>[pplayer_base]+288</Address>
-                      <Offsets>
-                        <Offset>18</Offset>
-                        <Offset>58</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1018</ID>
-                      <Description>"Info"</Description>
-                      <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">-1:N/A
-0:None
-</DropDownList>
-                      <LastState Value="-1" RealAddress="68B7A17C"/>
-                      <ShowAsSigned>1</ShowAsSigned>
-                      <VariableType>2 Bytes</VariableType>
-                      <Address>[pplayer_base]+288</Address>
-                      <Offsets>
-                        <Offset>1C</Offset>
-                        <Offset>58</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                  </CheatEntries>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>1030</ID>
-                  <Description>"5 -&gt;"</Description>
-                  <Options moHideChildren="1"/>
-                  <LastState Value="" RealAddress="00000000"/>
-                  <Color>16CC1C</Color>
-                  <GroupHeader>1</GroupHeader>
-                  <CheatEntries>
-                    <CheatEntry>
-                      <ID>1016</ID>
-                      <Description>"Type"</Description>
-                      <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">0:Minimum Fee Release / None
-1:Relegation Release
-2:Non Promotion Release
-3:Yearly Wage Rise (%)
-4:Promotion Wage Rise
-5:Relegation Wage Drop
-6:Non-Playing Job Offer Release
-7:Sell On Fee (%)
-8:Sell On Fee (%)
-9:Sell On Fee Profit (%)
-10:Seasonal Landmark Goal Bonus
-11:One-Year Extension After League Games (Final Season)
-12:Match Highest Earner
-13:Wage After Reaching Club League Games
-14:Top Division Promotion Wage Rise
-15:Top Division Relegation Wage Drop
-16:Minimum Fee Release Clause (Foreign Clubs)
-17:Minimum Fee Release Clause (Domestic Clubs in Higher Division)
-18:Minimum Fee Release Clause (Domestic Clubs)
-19:Wage After Reaching International Appearances
-22:Optional Contract Extension By Club
-25:One-Year Extension After League Games (Promoted Final Season)
-26:One-Year Extension After League Games (Avoid Relegation Final Season)
-27:Minimum Fee Release Clause (Clubs in a Major Continental Competition)
-29:Contract Extension After Promotion
-30:Injury Release Clause
-31:Minimum Fee Release Clause (Clubs in a Continental Competition)
-32:Appearance Fee
-33:Goal Bonus
-34:Clean Sheet Bonus
-35:Team of the Year Bonus (Division)
-36:Top Goalscorer Bonus (Division)
-37:International Cap Bonus
-38:Unused Substitute Fee
-54:Will Leave At End Of Contract
-55:Active Relegation Release Clause
-56:Active Non Promotion Release Clause
-57:Committee Assigned Minimum Fee Release Clause
-</DropDownList>
-                      <LastState Value="0" RealAddress="68B7A186"/>
-                      <VariableType>2 Bytes</VariableType>
-                      <Address>[pplayer_base]+288</Address>
-                      <Offsets>
-                        <Offset>26</Offset>
-                        <Offset>58</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1014</ID>
-                      <Description>"Value"</Description>
-                      <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">-1:N/A
-0:None
-</DropDownList>
-                      <LastState Value="1757639504" RealAddress="68B7A180"/>
-                      <ShowAsSigned>1</ShowAsSigned>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>[pplayer_base]+288</Address>
-                      <Offsets>
-                        <Offset>20</Offset>
-                        <Offset>58</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1015</ID>
-                      <Description>"Info"</Description>
-                      <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">-1:N/A
-0:None
-</DropDownList>
-                      <LastState Value="0" RealAddress="68B7A184"/>
-                      <ShowAsSigned>1</ShowAsSigned>
-                      <VariableType>2 Bytes</VariableType>
-                      <Address>[pplayer_base]+288</Address>
-                      <Offsets>
-                        <Offset>24</Offset>
-                        <Offset>58</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                  </CheatEntries>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>1031</ID>
-                  <Description>"6 -&gt;"</Description>
-                  <Options moHideChildren="1"/>
-                  <LastState Value="" RealAddress="00000000"/>
-                  <Color>16CC1C</Color>
-                  <GroupHeader>1</GroupHeader>
-                  <CheatEntries>
-                    <CheatEntry>
-                      <ID>1013</ID>
-                      <Description>"Type"</Description>
-                      <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">0:Minimum Fee Release / None
-1:Relegation Release
-2:Non Promotion Release
-3:Yearly Wage Rise (%)
-4:Promotion Wage Rise
-5:Relegation Wage Drop
-6:Non-Playing Job Offer Release
-7:Sell On Fee (%)
-8:Sell On Fee (%)
-9:Sell On Fee Profit (%)
-10:Seasonal Landmark Goal Bonus
-11:One-Year Extension After League Games (Final Season)
-12:Match Highest Earner
-13:Wage After Reaching Club League Games
-14:Top Division Promotion Wage Rise
-15:Top Division Relegation Wage Drop
-16:Minimum Fee Release Clause (Foreign Clubs)
-17:Minimum Fee Release Clause (Domestic Clubs in Higher Division)
-18:Minimum Fee Release Clause (Domestic Clubs)
-19:Wage After Reaching International Appearances
-22:Optional Contract Extension By Club
-25:One-Year Extension After League Games (Promoted Final Season)
-26:One-Year Extension After League Games (Avoid Relegation Final Season)
-27:Minimum Fee Release Clause (Clubs in a Major Continental Competition)
-29:Contract Extension After Promotion
-30:Injury Release Clause
-31:Minimum Fee Release Clause (Clubs in a Continental Competition)
-32:Appearance Fee
-33:Goal Bonus
-34:Clean Sheet Bonus
-35:Team of the Year Bonus (Division)
-36:Top Goalscorer Bonus (Division)
-37:International Cap Bonus
-38:Unused Substitute Fee
-54:Will Leave At End Of Contract
-55:Active Relegation Release Clause
-56:Active Non Promotion Release Clause
-57:Committee Assigned Minimum Fee Release Clause
-</DropDownList>
-                      <LastState Value="0" RealAddress="68B7A18E"/>
-                      <VariableType>2 Bytes</VariableType>
-                      <Address>[pplayer_base]+288</Address>
-                      <Offsets>
-                        <Offset>2E</Offset>
-                        <Offset>58</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1011</ID>
-                      <Description>"Value"</Description>
-                      <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">-1:N/A
-0:None
-</DropDownList>
-                      <LastState Value="1757639520" RealAddress="68B7A188"/>
-                      <ShowAsSigned>1</ShowAsSigned>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>[pplayer_base]+288</Address>
-                      <Offsets>
-                        <Offset>28</Offset>
-                        <Offset>58</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1012</ID>
-                      <Description>"Info"</Description>
-                      <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">-1:N/A
-0:None
-</DropDownList>
-                      <LastState Value="0" RealAddress="68B7A18C"/>
-                      <ShowAsSigned>1</ShowAsSigned>
-                      <VariableType>2 Bytes</VariableType>
-                      <Address>[pplayer_base]+288</Address>
-                      <Offsets>
-                        <Offset>2C</Offset>
-                        <Offset>58</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                  </CheatEntries>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>1032</ID>
-                  <Description>"7 -&gt;"</Description>
-                  <Options moHideChildren="1"/>
-                  <LastState Value="" RealAddress="00000000"/>
-                  <Color>16CC1C</Color>
-                  <GroupHeader>1</GroupHeader>
-                  <CheatEntries>
-                    <CheatEntry>
-                      <ID>1010</ID>
-                      <Description>"Type"</Description>
-                      <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">0:Minimum Fee Release / None
-1:Relegation Release
-2:Non Promotion Release
-3:Yearly Wage Rise (%)
-4:Promotion Wage Rise
-5:Relegation Wage Drop
-6:Non-Playing Job Offer Release
-7:Sell On Fee (%)
-8:Sell On Fee (%)
-9:Sell On Fee Profit (%)
-10:Seasonal Landmark Goal Bonus
-11:One-Year Extension After League Games (Final Season)
-12:Match Highest Earner
-13:Wage After Reaching Club League Games
-14:Top Division Promotion Wage Rise
-15:Top Division Relegation Wage Drop
-16:Minimum Fee Release Clause (Foreign Clubs)
-17:Minimum Fee Release Clause (Domestic Clubs in Higher Division)
-18:Minimum Fee Release Clause (Domestic Clubs)
-19:Wage After Reaching International Appearances
-22:Optional Contract Extension By Club
-25:One-Year Extension After League Games (Promoted Final Season)
-26:One-Year Extension After League Games (Avoid Relegation Final Season)
-27:Minimum Fee Release Clause (Clubs in a Major Continental Competition)
-29:Contract Extension After Promotion
-30:Injury Release Clause
-31:Minimum Fee Release Clause (Clubs in a Continental Competition)
-32:Appearance Fee
-33:Goal Bonus
-34:Clean Sheet Bonus
-35:Team of the Year Bonus (Division)
-36:Top Goalscorer Bonus (Division)
-37:International Cap Bonus
-38:Unused Substitute Fee
-54:Will Leave At End Of Contract
-55:Active Relegation Release Clause
-56:Active Non Promotion Release Clause
-57:Committee Assigned Minimum Fee Release Clause
-</DropDownList>
-                      <LastState Value="0" RealAddress="68B7A196"/>
-                      <VariableType>2 Bytes</VariableType>
-                      <Address>[pplayer_base]+288</Address>
-                      <Offsets>
-                        <Offset>36</Offset>
-                        <Offset>58</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1008</ID>
-                      <Description>"Value"</Description>
-                      <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">-1:N/A
-0:None
-</DropDownList>
-                      <LastState Value="1757639520" RealAddress="68B7A190"/>
-                      <ShowAsSigned>1</ShowAsSigned>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>[pplayer_base]+288</Address>
-                      <Offsets>
-                        <Offset>30</Offset>
-                        <Offset>58</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1009</ID>
-                      <Description>"Info"</Description>
-                      <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">-1:N/A
-0:None
-</DropDownList>
-                      <ShowAsSigned>1</ShowAsSigned>
-                      <VariableType>2 Bytes</VariableType>
-                      <Address>"fm.exe"+17743D10</Address>
-                      <Offsets>
-                        <Offset>34</Offset>
-                        <Offset>58</Offset>
-                        <Offset>288</Offset>
-                        <Offset>38</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                  </CheatEntries>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>1033</ID>
-                  <Description>"8 -&gt;"</Description>
-                  <Options moHideChildren="1"/>
-                  <LastState Value="" RealAddress="00000000"/>
-                  <Color>16CC1C</Color>
-                  <GroupHeader>1</GroupHeader>
-                  <CheatEntries>
-                    <CheatEntry>
-                      <ID>1007</ID>
-                      <Description>"Type"</Description>
-                      <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">0:Minimum Fee Release / None
-1:Relegation Release
-2:Non Promotion Release
-3:Yearly Wage Rise (%)
-4:Promotion Wage Rise
-5:Relegation Wage Drop
-6:Non-Playing Job Offer Release
-7:Sell On Fee (%)
-8:Sell On Fee (%)
-9:Sell On Fee Profit (%)
-10:Seasonal Landmark Goal Bonus
-11:One-Year Extension After League Games (Final Season)
-12:Match Highest Earner
-13:Wage After Reaching Club League Games
-14:Top Division Promotion Wage Rise
-15:Top Division Relegation Wage Drop
-16:Minimum Fee Release Clause (Foreign Clubs)
-17:Minimum Fee Release Clause (Domestic Clubs in Higher Division)
-18:Minimum Fee Release Clause (Domestic Clubs)
-19:Wage After Reaching International Appearances
-22:Optional Contract Extension By Club
-25:One-Year Extension After League Games (Promoted Final Season)
-26:One-Year Extension After League Games (Avoid Relegation Final Season)
-27:Minimum Fee Release Clause (Clubs in a Major Continental Competition)
-29:Contract Extension After Promotion
-30:Injury Release Clause
-31:Minimum Fee Release Clause (Clubs in a Continental Competition)
-32:Appearance Fee
-33:Goal Bonus
-34:Clean Sheet Bonus
-35:Team of the Year Bonus (Division)
-36:Top Goalscorer Bonus (Division)
-37:International Cap Bonus
-38:Unused Substitute Fee
-54:Will Leave At End Of Contract
-55:Active Relegation Release Clause
-56:Active Non Promotion Release Clause
-57:Committee Assigned Minimum Fee Release Clause
-</DropDownList>
-                      <LastState Value="0" RealAddress="68B7A19E"/>
-                      <VariableType>2 Bytes</VariableType>
-                      <Address>[pplayer_base]+288</Address>
-                      <Offsets>
-                        <Offset>3E</Offset>
-                        <Offset>58</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1005</ID>
-                      <Description>"Value"</Description>
-                      <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">-1:N/A
-0:None
-</DropDownList>
-                      <LastState Value="0" RealAddress="68B7A198"/>
-                      <ShowAsSigned>1</ShowAsSigned>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>[pplayer_base]+288</Address>
-                      <Offsets>
-                        <Offset>38</Offset>
-                        <Offset>58</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1006</ID>
-                      <Description>"Info"</Description>
-                      <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">-1:N/A
-0:None
-</DropDownList>
-                      <LastState Value="0" RealAddress="68B7A19C"/>
-                      <ShowAsSigned>1</ShowAsSigned>
-                      <VariableType>2 Bytes</VariableType>
-                      <Address>[pplayer_base]+288</Address>
-                      <Offsets>
-                        <Offset>3C</Offset>
-                        <Offset>58</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                  </CheatEntries>
-                </CheatEntry>
-              </CheatEntries>
-            </CheatEntry>
-          </CheatEntries>
-        </CheatEntry>
-	*/
+	struct Contract {
+		/*
+				<CheatEntry>
+			  <ID>177</ID>
+			  <Description>"Contract -&gt;"</Description>
+			  <Options moHideChildren="1"/>
+			  <LastState Value="" RealAddress="00000000"/>
+			  <Color>16CC1C</Color>
+			  <GroupHeader>1</GroupHeader>
+			  <CheatEntries>
+				<CheatEntry>
+				  <ID>180</ID>
+				  <Description>"Club (Unique ID)[4]"</Description>
+				  <DropDownList ReadOnly="1" DescriptionOnly="1">:
+	</DropDownList>
+				  <LastState Value="2082082528" RealAddress="5E2D9594"/>
+				  <VariableType>4 Bytes</VariableType>
+				  <Address>[pplayer_base]+288</Address>
+				  <Offsets>
+					<Offset>C</Offset>
+					<Offset>10</Offset>
+				  </Offsets>
+				</CheatEntry>
+				<CheatEntry>
+				  <ID>179</ID>
+				  <Description>"Type"</Description>
+				  <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">-1:Invalid
+	0:Part Time
+	1:Full Time
+	2:Amateur
+	3:Youth
+	4:Non-Contract
+	5:Future Professional
+	7:Generation Adidas (USA)
+	8:Senior Minimum Salary (USA)
+	9:Reserve (USA)
+	11:Designated Player (USA)
+	13:Designated Player
+	16:Guest Player (Australia)
+	18:Mature Age Rookie Player (Australia)
+	</DropDownList>
+				  <LastState Value="1" RealAddress="68C14B82"/>
+				  <ShowAsSigned>1</ShowAsSigned>
+				  <VariableType>Byte</VariableType>
+				  <Address>[pplayer_base]+288</Address>
+				  <Offsets>
+					<Offset>9A</Offset>
+				  </Offsets>
+				</CheatEntry>
+				<CheatEntry>
+				  <ID>172</ID>
+				  <Description>"Job Type"</Description>
+				  <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">0:Free
+	1:Player
+	2:Coach
+	3:Player/Coach
+	4:Chairman
+	6:Director
+	8:Managing Director
+	10:Director of Football
+	12:Physiotherapist
+	14:Scout
+	16:Manager
+	17:Player/Manager
+	20:Assistant Manager
+	21:Player/Assistant Manager
+	22:Media Pundit
+	24:General Manager
+	26:Fitness Coach
+	27:Player/Fitness Coach
+	34:Goalkeeper Coach
+	35:Player/Goalkeeper Coach
+	36:Chief Data Analyst
+	38:Chief Doctor
+	40:Head of Sports Science
+	42:U18 Data Analyst
+	44:Chief Scout
+	45:Player/Chief Scout
+	46:U18 Sports Scientis
+	48:U23 Sports Scientist
+	49:Player/Youth Team Coach
+	50:Head of Physiotherapy
+	52:U19 Manager
+	54:First Team Coach
+	64:Head of Youth Development
+	65:Player/Head of Youth Development
+	66:Owner
+	70:President
+	144:Caretaker Manager
+	</DropDownList>
+				  <LastState Value="1" RealAddress="68C14B04"/>
+				  <VariableType>Byte</VariableType>
+				  <Address>[pplayer_base]+288</Address>
+				  <Offsets>
+					<Offset>1C</Offset>
+				  </Offsets>
+				</CheatEntry>
+				<CheatEntry>
+				  <ID>117</ID>
+				  <Description>"Value"</Description>
+				  <LastState Value="56990420" RealAddress="68CFD670"/>
+				  <ShowAsSigned>0</ShowAsSigned>
+				  <VariableType>4 Bytes</VariableType>
+				  <Address>[pplayer_base]+128</Address>
+				</CheatEntry>
+				<CheatEntry>
+				  <ID>163</ID>
+				  <Description>"Asking Price (aprox)"</Description>
+				  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">-1:Not Set
+	</DropDownList>
+				  <LastState Value="-1" RealAddress="68CFD674"/>
+				  <ShowAsSigned>1</ShowAsSigned>
+				  <VariableType>4 Bytes</VariableType>
+				  <Address>[pplayer_base]+12C</Address>
+				</CheatEntry>
+				<CheatEntry>
+				  <ID>170</ID>
+				  <Description>"Weekly Wage"</Description>
+				  <LastState Value="14568" RealAddress="68C14B00"/>
+				  <VariableType>4 Bytes</VariableType>
+				  <Address>[pplayer_base]+288</Address>
+				  <Offsets>
+					<Offset>18</Offset>
+				  </Offsets>
+				</CheatEntry>
+				<CheatEntry>
+				  <ID>185</ID>
+				  <Description>"Start Date[3] -&gt;"</Description>
+				  <Options moHideChildren="1"/>
+				  <LastState Value="" RealAddress="00000000"/>
+				  <Color>292CCC</Color>
+				  <GroupHeader>1</GroupHeader>
+				  <CheatEntries>
+					<CheatEntry>
+					  <ID>181</ID>
+					  <Description>"Day of Year"</Description>
+					  <LastState Value="32" RealAddress="68C14B24"/>
+					  <VariableType>Byte</VariableType>
+					  <Address>[pplayer_base]+288</Address>
+					  <Offsets>
+						<Offset>3C</Offset>
+					  </Offsets>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>184</ID>
+					  <Description>"Year"</Description>
+					  <LastState Value="2018" RealAddress="68C14B26"/>
+					  <VariableType>2 Bytes</VariableType>
+					  <Address>[pplayer_base]+288</Address>
+					  <Offsets>
+						<Offset>3E</Offset>
+					  </Offsets>
+					</CheatEntry>
+				  </CheatEntries>
+				</CheatEntry>
+				<CheatEntry>
+				  <ID>186</ID>
+				  <Description>"End Date[3] -&gt;"</Description>
+				  <Options moHideChildren="1"/>
+				  <LastState Value="" RealAddress="00000000"/>
+				  <Color>292CCC</Color>
+				  <GroupHeader>1</GroupHeader>
+				  <CheatEntries>
+					<CheatEntry>
+					  <ID>183</ID>
+					  <Description>"Day of Year"</Description>
+					  <LastState Value="347" RealAddress="68C14B28"/>
+					  <VariableType>2 Bytes</VariableType>
+					  <Address>[pplayer_base]+288</Address>
+					  <Offsets>
+						<Offset>40</Offset>
+					  </Offsets>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>182</ID>
+					  <Description>"Year"</Description>
+					  <LastState Value="2023" RealAddress="68C14B2A"/>
+					  <VariableType>2 Bytes</VariableType>
+					  <Address>[pplayer_base]+288</Address>
+					  <Offsets>
+						<Offset>42</Offset>
+					  </Offsets>
+					</CheatEntry>
+				  </CheatEntries>
+				</CheatEntry>
+				<CheatEntry>
+				  <ID>187</ID>
+				  <Description>"Join Date[3] -&gt;"</Description>
+				  <Options moHideChildren="1"/>
+				  <LastState Value="" RealAddress="00000000"/>
+				  <Color>292CCC</Color>
+				  <GroupHeader>1</GroupHeader>
+				  <CheatEntries>
+					<CheatEntry>
+					  <ID>189</ID>
+					  <Description>"Day of Year"</Description>
+					  <LastState Value="32" RealAddress="68C14B2C"/>
+					  <VariableType>Byte</VariableType>
+					  <Address>[pplayer_base]+288</Address>
+					  <Offsets>
+						<Offset>44</Offset>
+					  </Offsets>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>188</ID>
+					  <Description>"Year"</Description>
+					  <LastState Value="2018" RealAddress="68C14B2E"/>
+					  <VariableType>2 Bytes</VariableType>
+					  <Address>[pplayer_base]+288</Address>
+					  <Offsets>
+						<Offset>46</Offset>
+					  </Offsets>
+					</CheatEntry>
+				  </CheatEntries>
+				</CheatEntry>
+				<CheatEntry>
+				  <ID>178</ID>
+				  <Description>"Loyalty Bonus"</Description>
+				  <LastState Value="628694" RealAddress="68C14B78"/>
+				  <VariableType>4 Bytes</VariableType>
+				  <Address>[pplayer_base]+288</Address>
+				  <Offsets>
+					<Offset>90</Offset>
+				  </Offsets>
+				</CheatEntry>
+				<CheatEntry>
+				  <ID>176</ID>
+				  <Description>"Squad Status"</Description>
+				  <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">-1:Invalid
+	0:Not Set
+	1:Key Player
+	2:First Team Regular
+	3:Squad Rotation
+	4:Backup Player
+	5:Hot Prospect
+	6:Decent Youngster
+	7:Not Needed
+	8:Squad Status Count
+	</DropDownList>
+				  <LastState Value="1" RealAddress="68C14B34"/>
+				  <VariableType>Byte</VariableType>
+				  <Address>[pplayer_base]+288</Address>
+				  <Offsets>
+					<Offset>4C</Offset>
+				  </Offsets>
+				</CheatEntry>
+				<CheatEntry>
+				  <ID>174</ID>
+				  <Description>"Squad Number"</Description>
+				  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">-1:Not Set
+	</DropDownList>
+				  <LastState Value="-1" RealAddress="68C14B3B"/>
+				  <ShowAsSigned>1</ShowAsSigned>
+				  <VariableType>Byte</VariableType>
+				  <Address>[pplayer_base]+288</Address>
+				  <Offsets>
+					<Offset>53</Offset>
+				  </Offsets>
+				</CheatEntry>
+				<CheatEntry>
+				  <ID>175</ID>
+				  <Description>"Transfer Status"</Description>
+				  <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">4:Not Set
+	5:Transfer Listed
+	6:Listed for Loan
+	7:Transfer and Load Listed
+	12:Transfer Lister by Request
+	15:Listed by Request &amp; Loan Listed
+	68:Not Available for Loan
+	69:Transfer Listed / NA for Loan
+	76:Listed by Request / NA for Loan
+	</DropDownList>
+				  <LastState Value="4" RealAddress="68C14B36"/>
+				  <VariableType>Byte</VariableType>
+				  <Address>[pplayer_base]+288</Address>
+				  <Offsets>
+					<Offset>4E</Offset>
+				  </Offsets>
+				</CheatEntry>
+				<CheatEntry>
+				  <ID>1002</ID>
+				  <Description>"Clauses &amp; Bonuses -&gt;"</Description>
+				  <Options moHideChildren="1"/>
+				  <LastState Value="" RealAddress="00000000"/>
+				  <Color>292CCC</Color>
+				  <GroupHeader>1</GroupHeader>
+				  <CheatEntries>
+					<CheatEntry>
+					  <ID>1026</ID>
+					  <Description>"1 -&gt;"</Description>
+					  <Options moHideChildren="1"/>
+					  <LastState Value="" RealAddress="00000000"/>
+					  <Color>16CC1C</Color>
+					  <GroupHeader>1</GroupHeader>
+					  <CheatEntries>
+						<CheatEntry>
+						  <ID>1003</ID>
+						  <Description>"Type"</Description>
+						  <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">0:Minimum Fee Release / None
+	1:Relegation Release
+	2:Non Promotion Release
+	3:Yearly Wage Rise (%)
+	4:Promotion Wage Rise
+	5:Relegation Wage Drop
+	6:Non-Playing Job Offer Release
+	7:Sell On Fee (%)
+	8:Sell On Fee (%)
+	9:Sell On Fee Profit (%)
+	10:Seasonal Landmark Goal Bonus
+	11:One-Year Extension After League Games (Final Season)
+	12:Match Highest Earner
+	13:Wage After Reaching Club League Games
+	14:Top Division Promotion Wage Rise
+	15:Top Division Relegation Wage Drop
+	16:Minimum Fee Release Clause (Foreign Clubs)
+	17:Minimum Fee Release Clause (Domestic Clubs in Higher Division)
+	18:Minimum Fee Release Clause (Domestic Clubs)
+	19:Wage After Reaching International Appearances
+	22:Optional Contract Extension By Club
+	25:One-Year Extension After League Games (Promoted Final Season)
+	26:One-Year Extension After League Games (Avoid Relegation Final Season)
+	27:Minimum Fee Release Clause (Clubs in a Major Continental Competition)
+	29:Contract Extension After Promotion
+	30:Injury Release Clause
+	31:Minimum Fee Release Clause (Clubs in a Continental Competition)
+	32:Appearance Fee
+	33:Goal Bonus
+	34:Clean Sheet Bonus
+	35:Team of the Year Bonus (Division)
+	36:Top Goalscorer Bonus (Division)
+	37:International Cap Bonus
+	38:Unused Substitute Fee
+	54:Will Leave At End Of Contract
+	55:Active Relegation Release Clause
+	56:Active Non Promotion Release Clause
+	57:Committee Assigned Minimum Fee Release Clause
+	</DropDownList>
+						  <LastState Value="15" RealAddress="68B7A166"/>
+						  <VariableType>2 Bytes</VariableType>
+						  <Address>[pplayer_base]+288</Address>
+						  <Offsets>
+							<Offset>6</Offset>
+							<Offset>58</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>1001</ID>
+						  <Description>"Value"</Description>
+						  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">-1:N/A
+	0:None
+	</DropDownList>
+						  <LastState Value="-1" RealAddress="68B7A160"/>
+						  <ShowAsSigned>1</ShowAsSigned>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>[pplayer_base]+288</Address>
+						  <Offsets>
+							<Offset>0</Offset>
+							<Offset>58</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>1004</ID>
+						  <Description>"Info"</Description>
+						  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">-1:N/A
+	0:None
+	</DropDownList>
+						  <LastState Value="25" RealAddress="68B7A164"/>
+						  <ShowAsSigned>1</ShowAsSigned>
+						  <VariableType>2 Bytes</VariableType>
+						  <Address>[pplayer_base]+288</Address>
+						  <Offsets>
+							<Offset>4</Offset>
+							<Offset>58</Offset>
+						  </Offsets>
+						</CheatEntry>
+					  </CheatEntries>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>1027</ID>
+					  <Description>"2 -&gt;"</Description>
+					  <Options moHideChildren="1"/>
+					  <LastState Value="" RealAddress="00000000"/>
+					  <Color>16CC1C</Color>
+					  <GroupHeader>1</GroupHeader>
+					  <CheatEntries>
+						<CheatEntry>
+						  <ID>1025</ID>
+						  <Description>"Type"</Description>
+						  <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">0:Minimum Fee Release / None
+	1:Relegation Release
+	2:Non Promotion Release
+	3:Yearly Wage Rise (%)
+	4:Promotion Wage Rise
+	5:Relegation Wage Drop
+	6:Non-Playing Job Offer Release
+	7:Sell On Fee (%)
+	8:Sell On Fee (%)
+	9:Sell On Fee Profit (%)
+	10:Seasonal Landmark Goal Bonus
+	11:One-Year Extension After League Games (Final Season)
+	12:Match Highest Earner
+	13:Wage After Reaching Club League Games
+	14:Top Division Promotion Wage Rise
+	15:Top Division Relegation Wage Drop
+	16:Minimum Fee Release Clause (Foreign Clubs)
+	17:Minimum Fee Release Clause (Domestic Clubs in Higher Division)
+	18:Minimum Fee Release Clause (Domestic Clubs)
+	19:Wage After Reaching International Appearances
+	22:Optional Contract Extension By Club
+	25:One-Year Extension After League Games (Promoted Final Season)
+	26:One-Year Extension After League Games (Avoid Relegation Final Season)
+	27:Minimum Fee Release Clause (Clubs in a Major Continental Competition)
+	29:Contract Extension After Promotion
+	30:Injury Release Clause
+	31:Minimum Fee Release Clause (Clubs in a Continental Competition)
+	32:Appearance Fee
+	33:Goal Bonus
+	34:Clean Sheet Bonus
+	35:Team of the Year Bonus (Division)
+	36:Top Goalscorer Bonus (Division)
+	37:International Cap Bonus
+	38:Unused Substitute Fee
+	54:Will Leave At End Of Contract
+	55:Active Relegation Release Clause
+	56:Active Non Promotion Release Clause
+	57:Committee Assigned Minimum Fee Release Clause
+	</DropDownList>
+						  <LastState Value="32" RealAddress="68B7A16E"/>
+						  <VariableType>2 Bytes</VariableType>
+						  <Address>[pplayer_base]+288</Address>
+						  <Offsets>
+							<Offset>E</Offset>
+							<Offset>58</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>1023</ID>
+						  <Description>"Value"</Description>
+						  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">-1:N/A
+	0:None
+	</DropDownList>
+						  <LastState Value="2913" RealAddress="68B7A168"/>
+						  <ShowAsSigned>1</ShowAsSigned>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>[pplayer_base]+288</Address>
+						  <Offsets>
+							<Offset>8</Offset>
+							<Offset>58</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>1024</ID>
+						  <Description>"Info"</Description>
+						  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">-1:N/A
+	0:None
+	</DropDownList>
+						  <LastState Value="-1" RealAddress="68B7A16C"/>
+						  <ShowAsSigned>1</ShowAsSigned>
+						  <VariableType>2 Bytes</VariableType>
+						  <Address>[pplayer_base]+288</Address>
+						  <Offsets>
+							<Offset>C</Offset>
+							<Offset>58</Offset>
+						  </Offsets>
+						</CheatEntry>
+					  </CheatEntries>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>1028</ID>
+					  <Description>"3 -&gt;"</Description>
+					  <Options moHideChildren="1"/>
+					  <LastState Value="" RealAddress="00000000"/>
+					  <Color>16CC1C</Color>
+					  <GroupHeader>1</GroupHeader>
+					  <CheatEntries>
+						<CheatEntry>
+						  <ID>1022</ID>
+						  <Description>"Type"</Description>
+						  <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">0:Minimum Fee Release / None
+	1:Relegation Release
+	2:Non Promotion Release
+	3:Yearly Wage Rise (%)
+	4:Promotion Wage Rise
+	5:Relegation Wage Drop
+	6:Non-Playing Job Offer Release
+	7:Sell On Fee (%)
+	8:Sell On Fee (%)
+	9:Sell On Fee Profit (%)
+	10:Seasonal Landmark Goal Bonus
+	11:One-Year Extension After League Games (Final Season)
+	12:Match Highest Earner
+	13:Wage After Reaching Club League Games
+	14:Top Division Promotion Wage Rise
+	15:Top Division Relegation Wage Drop
+	16:Minimum Fee Release Clause (Foreign Clubs)
+	17:Minimum Fee Release Clause (Domestic Clubs in Higher Division)
+	18:Minimum Fee Release Clause (Domestic Clubs)
+	19:Wage After Reaching International Appearances
+	22:Optional Contract Extension By Club
+	25:One-Year Extension After League Games (Promoted Final Season)
+	26:One-Year Extension After League Games (Avoid Relegation Final Season)
+	27:Minimum Fee Release Clause (Clubs in a Major Continental Competition)
+	29:Contract Extension After Promotion
+	30:Injury Release Clause
+	31:Minimum Fee Release Clause (Clubs in a Continental Competition)
+	32:Appearance Fee
+	33:Goal Bonus
+	34:Clean Sheet Bonus
+	35:Team of the Year Bonus (Division)
+	36:Top Goalscorer Bonus (Division)
+	37:International Cap Bonus
+	38:Unused Substitute Fee
+	54:Will Leave At End Of Contract
+	55:Active Relegation Release Clause
+	56:Active Non Promotion Release Clause
+	57:Committee Assigned Minimum Fee Release Clause
+	</DropDownList>
+						  <LastState Value="33" RealAddress="68B7A176"/>
+						  <VariableType>2 Bytes</VariableType>
+						  <Address>[pplayer_base]+288</Address>
+						  <Offsets>
+							<Offset>16</Offset>
+							<Offset>58</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>1020</ID>
+						  <Description>"Value"</Description>
+						  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">-1:N/A
+	0:None
+	</DropDownList>
+						  <LastState Value="1456" RealAddress="68B7A170"/>
+						  <ShowAsSigned>1</ShowAsSigned>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>[pplayer_base]+288</Address>
+						  <Offsets>
+							<Offset>10</Offset>
+							<Offset>58</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>1021</ID>
+						  <Description>"Info"</Description>
+						  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">-1:N/A
+	0:None
+	</DropDownList>
+						  <LastState Value="-1" RealAddress="68B7A174"/>
+						  <ShowAsSigned>1</ShowAsSigned>
+						  <VariableType>2 Bytes</VariableType>
+						  <Address>[pplayer_base]+288</Address>
+						  <Offsets>
+							<Offset>14</Offset>
+							<Offset>58</Offset>
+						  </Offsets>
+						</CheatEntry>
+					  </CheatEntries>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>1029</ID>
+					  <Description>"4 -&gt;"</Description>
+					  <Options moHideChildren="1"/>
+					  <LastState Value="" RealAddress="00000000"/>
+					  <Color>16CC1C</Color>
+					  <GroupHeader>1</GroupHeader>
+					  <CheatEntries>
+						<CheatEntry>
+						  <ID>1019</ID>
+						  <Description>"Type"</Description>
+						  <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">0:Minimum Fee Release / None
+	1:Relegation Release
+	2:Non Promotion Release
+	3:Yearly Wage Rise (%)
+	4:Promotion Wage Rise
+	5:Relegation Wage Drop
+	6:Non-Playing Job Offer Release
+	7:Sell On Fee (%)
+	8:Sell On Fee (%)
+	9:Sell On Fee Profit (%)
+	10:Seasonal Landmark Goal Bonus
+	11:One-Year Extension After League Games (Final Season)
+	12:Match Highest Earner
+	13:Wage After Reaching Club League Games
+	14:Top Division Promotion Wage Rise
+	15:Top Division Relegation Wage Drop
+	16:Minimum Fee Release Clause (Foreign Clubs)
+	17:Minimum Fee Release Clause (Domestic Clubs in Higher Division)
+	18:Minimum Fee Release Clause (Domestic Clubs)
+	19:Wage After Reaching International Appearances
+	22:Optional Contract Extension By Club
+	25:One-Year Extension After League Games (Promoted Final Season)
+	26:One-Year Extension After League Games (Avoid Relegation Final Season)
+	27:Minimum Fee Release Clause (Clubs in a Major Continental Competition)
+	29:Contract Extension After Promotion
+	30:Injury Release Clause
+	31:Minimum Fee Release Clause (Clubs in a Continental Competition)
+	32:Appearance Fee
+	33:Goal Bonus
+	34:Clean Sheet Bonus
+	35:Team of the Year Bonus (Division)
+	36:Top Goalscorer Bonus (Division)
+	37:International Cap Bonus
+	38:Unused Substitute Fee
+	54:Will Leave At End Of Contract
+	55:Active Relegation Release Clause
+	56:Active Non Promotion Release Clause
+	57:Committee Assigned Minimum Fee Release Clause
+	</DropDownList>
+						  <LastState Value="38" RealAddress="68B7A17E"/>
+						  <VariableType>2 Bytes</VariableType>
+						  <Address>[pplayer_base]+288</Address>
+						  <Offsets>
+							<Offset>1E</Offset>
+							<Offset>58</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>1017</ID>
+						  <Description>"Value"</Description>
+						  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">-1:N/A
+	0:None
+	</DropDownList>
+						  <LastState Value="728" RealAddress="68B7A178"/>
+						  <ShowAsSigned>1</ShowAsSigned>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>[pplayer_base]+288</Address>
+						  <Offsets>
+							<Offset>18</Offset>
+							<Offset>58</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>1018</ID>
+						  <Description>"Info"</Description>
+						  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">-1:N/A
+	0:None
+	</DropDownList>
+						  <LastState Value="-1" RealAddress="68B7A17C"/>
+						  <ShowAsSigned>1</ShowAsSigned>
+						  <VariableType>2 Bytes</VariableType>
+						  <Address>[pplayer_base]+288</Address>
+						  <Offsets>
+							<Offset>1C</Offset>
+							<Offset>58</Offset>
+						  </Offsets>
+						</CheatEntry>
+					  </CheatEntries>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>1030</ID>
+					  <Description>"5 -&gt;"</Description>
+					  <Options moHideChildren="1"/>
+					  <LastState Value="" RealAddress="00000000"/>
+					  <Color>16CC1C</Color>
+					  <GroupHeader>1</GroupHeader>
+					  <CheatEntries>
+						<CheatEntry>
+						  <ID>1016</ID>
+						  <Description>"Type"</Description>
+						  <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">0:Minimum Fee Release / None
+	1:Relegation Release
+	2:Non Promotion Release
+	3:Yearly Wage Rise (%)
+	4:Promotion Wage Rise
+	5:Relegation Wage Drop
+	6:Non-Playing Job Offer Release
+	7:Sell On Fee (%)
+	8:Sell On Fee (%)
+	9:Sell On Fee Profit (%)
+	10:Seasonal Landmark Goal Bonus
+	11:One-Year Extension After League Games (Final Season)
+	12:Match Highest Earner
+	13:Wage After Reaching Club League Games
+	14:Top Division Promotion Wage Rise
+	15:Top Division Relegation Wage Drop
+	16:Minimum Fee Release Clause (Foreign Clubs)
+	17:Minimum Fee Release Clause (Domestic Clubs in Higher Division)
+	18:Minimum Fee Release Clause (Domestic Clubs)
+	19:Wage After Reaching International Appearances
+	22:Optional Contract Extension By Club
+	25:One-Year Extension After League Games (Promoted Final Season)
+	26:One-Year Extension After League Games (Avoid Relegation Final Season)
+	27:Minimum Fee Release Clause (Clubs in a Major Continental Competition)
+	29:Contract Extension After Promotion
+	30:Injury Release Clause
+	31:Minimum Fee Release Clause (Clubs in a Continental Competition)
+	32:Appearance Fee
+	33:Goal Bonus
+	34:Clean Sheet Bonus
+	35:Team of the Year Bonus (Division)
+	36:Top Goalscorer Bonus (Division)
+	37:International Cap Bonus
+	38:Unused Substitute Fee
+	54:Will Leave At End Of Contract
+	55:Active Relegation Release Clause
+	56:Active Non Promotion Release Clause
+	57:Committee Assigned Minimum Fee Release Clause
+	</DropDownList>
+						  <LastState Value="0" RealAddress="68B7A186"/>
+						  <VariableType>2 Bytes</VariableType>
+						  <Address>[pplayer_base]+288</Address>
+						  <Offsets>
+							<Offset>26</Offset>
+							<Offset>58</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>1014</ID>
+						  <Description>"Value"</Description>
+						  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">-1:N/A
+	0:None
+	</DropDownList>
+						  <LastState Value="1757639504" RealAddress="68B7A180"/>
+						  <ShowAsSigned>1</ShowAsSigned>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>[pplayer_base]+288</Address>
+						  <Offsets>
+							<Offset>20</Offset>
+							<Offset>58</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>1015</ID>
+						  <Description>"Info"</Description>
+						  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">-1:N/A
+	0:None
+	</DropDownList>
+						  <LastState Value="0" RealAddress="68B7A184"/>
+						  <ShowAsSigned>1</ShowAsSigned>
+						  <VariableType>2 Bytes</VariableType>
+						  <Address>[pplayer_base]+288</Address>
+						  <Offsets>
+							<Offset>24</Offset>
+							<Offset>58</Offset>
+						  </Offsets>
+						</CheatEntry>
+					  </CheatEntries>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>1031</ID>
+					  <Description>"6 -&gt;"</Description>
+					  <Options moHideChildren="1"/>
+					  <LastState Value="" RealAddress="00000000"/>
+					  <Color>16CC1C</Color>
+					  <GroupHeader>1</GroupHeader>
+					  <CheatEntries>
+						<CheatEntry>
+						  <ID>1013</ID>
+						  <Description>"Type"</Description>
+						  <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">0:Minimum Fee Release / None
+	1:Relegation Release
+	2:Non Promotion Release
+	3:Yearly Wage Rise (%)
+	4:Promotion Wage Rise
+	5:Relegation Wage Drop
+	6:Non-Playing Job Offer Release
+	7:Sell On Fee (%)
+	8:Sell On Fee (%)
+	9:Sell On Fee Profit (%)
+	10:Seasonal Landmark Goal Bonus
+	11:One-Year Extension After League Games (Final Season)
+	12:Match Highest Earner
+	13:Wage After Reaching Club League Games
+	14:Top Division Promotion Wage Rise
+	15:Top Division Relegation Wage Drop
+	16:Minimum Fee Release Clause (Foreign Clubs)
+	17:Minimum Fee Release Clause (Domestic Clubs in Higher Division)
+	18:Minimum Fee Release Clause (Domestic Clubs)
+	19:Wage After Reaching International Appearances
+	22:Optional Contract Extension By Club
+	25:One-Year Extension After League Games (Promoted Final Season)
+	26:One-Year Extension After League Games (Avoid Relegation Final Season)
+	27:Minimum Fee Release Clause (Clubs in a Major Continental Competition)
+	29:Contract Extension After Promotion
+	30:Injury Release Clause
+	31:Minimum Fee Release Clause (Clubs in a Continental Competition)
+	32:Appearance Fee
+	33:Goal Bonus
+	34:Clean Sheet Bonus
+	35:Team of the Year Bonus (Division)
+	36:Top Goalscorer Bonus (Division)
+	37:International Cap Bonus
+	38:Unused Substitute Fee
+	54:Will Leave At End Of Contract
+	55:Active Relegation Release Clause
+	56:Active Non Promotion Release Clause
+	57:Committee Assigned Minimum Fee Release Clause
+	</DropDownList>
+						  <LastState Value="0" RealAddress="68B7A18E"/>
+						  <VariableType>2 Bytes</VariableType>
+						  <Address>[pplayer_base]+288</Address>
+						  <Offsets>
+							<Offset>2E</Offset>
+							<Offset>58</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>1011</ID>
+						  <Description>"Value"</Description>
+						  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">-1:N/A
+	0:None
+	</DropDownList>
+						  <LastState Value="1757639520" RealAddress="68B7A188"/>
+						  <ShowAsSigned>1</ShowAsSigned>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>[pplayer_base]+288</Address>
+						  <Offsets>
+							<Offset>28</Offset>
+							<Offset>58</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>1012</ID>
+						  <Description>"Info"</Description>
+						  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">-1:N/A
+	0:None
+	</DropDownList>
+						  <LastState Value="0" RealAddress="68B7A18C"/>
+						  <ShowAsSigned>1</ShowAsSigned>
+						  <VariableType>2 Bytes</VariableType>
+						  <Address>[pplayer_base]+288</Address>
+						  <Offsets>
+							<Offset>2C</Offset>
+							<Offset>58</Offset>
+						  </Offsets>
+						</CheatEntry>
+					  </CheatEntries>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>1032</ID>
+					  <Description>"7 -&gt;"</Description>
+					  <Options moHideChildren="1"/>
+					  <LastState Value="" RealAddress="00000000"/>
+					  <Color>16CC1C</Color>
+					  <GroupHeader>1</GroupHeader>
+					  <CheatEntries>
+						<CheatEntry>
+						  <ID>1010</ID>
+						  <Description>"Type"</Description>
+						  <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">0:Minimum Fee Release / None
+	1:Relegation Release
+	2:Non Promotion Release
+	3:Yearly Wage Rise (%)
+	4:Promotion Wage Rise
+	5:Relegation Wage Drop
+	6:Non-Playing Job Offer Release
+	7:Sell On Fee (%)
+	8:Sell On Fee (%)
+	9:Sell On Fee Profit (%)
+	10:Seasonal Landmark Goal Bonus
+	11:One-Year Extension After League Games (Final Season)
+	12:Match Highest Earner
+	13:Wage After Reaching Club League Games
+	14:Top Division Promotion Wage Rise
+	15:Top Division Relegation Wage Drop
+	16:Minimum Fee Release Clause (Foreign Clubs)
+	17:Minimum Fee Release Clause (Domestic Clubs in Higher Division)
+	18:Minimum Fee Release Clause (Domestic Clubs)
+	19:Wage After Reaching International Appearances
+	22:Optional Contract Extension By Club
+	25:One-Year Extension After League Games (Promoted Final Season)
+	26:One-Year Extension After League Games (Avoid Relegation Final Season)
+	27:Minimum Fee Release Clause (Clubs in a Major Continental Competition)
+	29:Contract Extension After Promotion
+	30:Injury Release Clause
+	31:Minimum Fee Release Clause (Clubs in a Continental Competition)
+	32:Appearance Fee
+	33:Goal Bonus
+	34:Clean Sheet Bonus
+	35:Team of the Year Bonus (Division)
+	36:Top Goalscorer Bonus (Division)
+	37:International Cap Bonus
+	38:Unused Substitute Fee
+	54:Will Leave At End Of Contract
+	55:Active Relegation Release Clause
+	56:Active Non Promotion Release Clause
+	57:Committee Assigned Minimum Fee Release Clause
+	</DropDownList>
+						  <LastState Value="0" RealAddress="68B7A196"/>
+						  <VariableType>2 Bytes</VariableType>
+						  <Address>[pplayer_base]+288</Address>
+						  <Offsets>
+							<Offset>36</Offset>
+							<Offset>58</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>1008</ID>
+						  <Description>"Value"</Description>
+						  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">-1:N/A
+	0:None
+	</DropDownList>
+						  <LastState Value="1757639520" RealAddress="68B7A190"/>
+						  <ShowAsSigned>1</ShowAsSigned>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>[pplayer_base]+288</Address>
+						  <Offsets>
+							<Offset>30</Offset>
+							<Offset>58</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>1009</ID>
+						  <Description>"Info"</Description>
+						  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">-1:N/A
+	0:None
+	</DropDownList>
+						  <ShowAsSigned>1</ShowAsSigned>
+						  <VariableType>2 Bytes</VariableType>
+						  <Address>"fm.exe"+17743D10</Address>
+						  <Offsets>
+							<Offset>34</Offset>
+							<Offset>58</Offset>
+							<Offset>288</Offset>
+							<Offset>38</Offset>
+						  </Offsets>
+						</CheatEntry>
+					  </CheatEntries>
+					</CheatEntry>
+					<CheatEntry>
+					  <ID>1033</ID>
+					  <Description>"8 -&gt;"</Description>
+					  <Options moHideChildren="1"/>
+					  <LastState Value="" RealAddress="00000000"/>
+					  <Color>16CC1C</Color>
+					  <GroupHeader>1</GroupHeader>
+					  <CheatEntries>
+						<CheatEntry>
+						  <ID>1007</ID>
+						  <Description>"Type"</Description>
+						  <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">0:Minimum Fee Release / None
+	1:Relegation Release
+	2:Non Promotion Release
+	3:Yearly Wage Rise (%)
+	4:Promotion Wage Rise
+	5:Relegation Wage Drop
+	6:Non-Playing Job Offer Release
+	7:Sell On Fee (%)
+	8:Sell On Fee (%)
+	9:Sell On Fee Profit (%)
+	10:Seasonal Landmark Goal Bonus
+	11:One-Year Extension After League Games (Final Season)
+	12:Match Highest Earner
+	13:Wage After Reaching Club League Games
+	14:Top Division Promotion Wage Rise
+	15:Top Division Relegation Wage Drop
+	16:Minimum Fee Release Clause (Foreign Clubs)
+	17:Minimum Fee Release Clause (Domestic Clubs in Higher Division)
+	18:Minimum Fee Release Clause (Domestic Clubs)
+	19:Wage After Reaching International Appearances
+	22:Optional Contract Extension By Club
+	25:One-Year Extension After League Games (Promoted Final Season)
+	26:One-Year Extension After League Games (Avoid Relegation Final Season)
+	27:Minimum Fee Release Clause (Clubs in a Major Continental Competition)
+	29:Contract Extension After Promotion
+	30:Injury Release Clause
+	31:Minimum Fee Release Clause (Clubs in a Continental Competition)
+	32:Appearance Fee
+	33:Goal Bonus
+	34:Clean Sheet Bonus
+	35:Team of the Year Bonus (Division)
+	36:Top Goalscorer Bonus (Division)
+	37:International Cap Bonus
+	38:Unused Substitute Fee
+	54:Will Leave At End Of Contract
+	55:Active Relegation Release Clause
+	56:Active Non Promotion Release Clause
+	57:Committee Assigned Minimum Fee Release Clause
+	</DropDownList>
+						  <LastState Value="0" RealAddress="68B7A19E"/>
+						  <VariableType>2 Bytes</VariableType>
+						  <Address>[pplayer_base]+288</Address>
+						  <Offsets>
+							<Offset>3E</Offset>
+							<Offset>58</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>1005</ID>
+						  <Description>"Value"</Description>
+						  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">-1:N/A
+	0:None
+	</DropDownList>
+						  <LastState Value="0" RealAddress="68B7A198"/>
+						  <ShowAsSigned>1</ShowAsSigned>
+						  <VariableType>4 Bytes</VariableType>
+						  <Address>[pplayer_base]+288</Address>
+						  <Offsets>
+							<Offset>38</Offset>
+							<Offset>58</Offset>
+						  </Offsets>
+						</CheatEntry>
+						<CheatEntry>
+						  <ID>1006</ID>
+						  <Description>"Info"</Description>
+						  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">-1:N/A
+	0:None
+	</DropDownList>
+						  <LastState Value="0" RealAddress="68B7A19C"/>
+						  <ShowAsSigned>1</ShowAsSigned>
+						  <VariableType>2 Bytes</VariableType>
+						  <Address>[pplayer_base]+288</Address>
+						  <Offsets>
+							<Offset>3C</Offset>
+							<Offset>58</Offset>
+						  </Offsets>
+						</CheatEntry>
+					  </CheatEntries>
+					</CheatEntry>
+				  </CheatEntries>
+				</CheatEntry>
+			  </CheatEntries>
+			</CheatEntry>
+		*/
 	};
 	Attributes attributes;
 	Positions positions;

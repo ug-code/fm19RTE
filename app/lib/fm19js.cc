@@ -148,6 +148,20 @@ void currentClub(const FunctionCallbackInfo<Value>& args) {
 
 }
 
+void mapEthnicity(const FunctionCallbackInfo<Value>& args) {
+    Isolate* isolate = Isolate::GetCurrent();
+
+    //std::map<int,std::string> results = ServicePlayer::mapEthnicity();
+
+
+    Local<Object> myArray = Object::New(isolate);
+
+    args.GetReturnValue().Set(myArray);
+}
+
+
+
+
 void player(const FunctionCallbackInfo<Value>& args) {
     Isolate* isolate = args.GetIsolate();
 
@@ -320,6 +334,8 @@ void init(Local<Object> exports) {
   NODE_SET_METHOD(exports, "myProfile", myProfile);
   NODE_SET_METHOD(exports, "currentClub", currentClub);
   NODE_SET_METHOD(exports, "player", player);
+ //NODE_SET_METHOD(exports, "mapEthnicity", mapEthnicity);
+
 }
 
 NODE_MODULE(fm19js, init)
