@@ -138,10 +138,29 @@ struct PlayerDetail
 
 	};
 
+	struct Contract {
+		int getClubUniqueID;
+		short getType;
+		short getJobType;
+		int getValue;
+		int getAskingPrice;
+		int getWeeklyWage;
+		short getStartDayOfYear;
+		short getStartYear;
+		short getEndDayOfYear;
+		short getEndYear;
+		short getJoinDayOfYear;
+		short getJoinYear;
+		int getLoyaltyBonus;
+		short getSquadStatus;
+		short getSquadNumber;
+	};
+
 	Attributes attributes;
 	Positions positions;
 	Abilities abilities;
 	Personality personality;
+	Contract contract;
 };
 
 class ServicePlayer
@@ -269,6 +288,22 @@ public:
 		playerDetail.personality.getProfessionalism = personality.getProfessionalism(phandle, playerUniqueAdress);
 		playerDetail.personality.getSportmanship = personality.getSportmanship(phandle, playerUniqueAdress);
 		playerDetail.personality.getTemperament = personality.getTemperament(phandle, playerUniqueAdress);
+		//contract
+		playerDetail.contract.getClubUniqueID = contract.getClubUniqueID(phandle, playerUniqueAdress);
+		playerDetail.contract.getType = contract.getType(phandle, playerUniqueAdress);
+		playerDetail.contract.getJobType = contract.getJobType(phandle, playerUniqueAdress);
+		playerDetail.contract.getValue = contract.getValue(phandle, playerUniqueAdress);
+		playerDetail.contract.getAskingPrice = contract.getAskingPrice(phandle, playerUniqueAdress);
+		playerDetail.contract.getWeeklyWage = contract.getWeeklyWage(phandle, playerUniqueAdress);
+		playerDetail.contract.getStartDayOfYear = contract.getStartDayOfYear(phandle, playerUniqueAdress);
+		playerDetail.contract.getStartYear = contract.getStartYear(phandle, playerUniqueAdress);
+		playerDetail.contract.getEndDayOfYear = contract.getEndDayOfYear(phandle, playerUniqueAdress);
+		playerDetail.contract.getEndYear = contract.getEndYear(phandle, playerUniqueAdress);
+		playerDetail.contract.getJoinDayOfYear = contract.getJoinDayOfYear(phandle, playerUniqueAdress);
+		playerDetail.contract.getJoinYear = contract.getJoinYear(phandle, playerUniqueAdress);
+		playerDetail.contract.getLoyaltyBonus = contract.getLoyaltyBonus(phandle, playerUniqueAdress);
+		playerDetail.contract.getSquadStatus = contract.getSquadStatus(phandle, playerUniqueAdress);
+		playerDetail.contract.getSquadNumber = contract.getSquadNumber(phandle, playerUniqueAdress);
 
 		return playerDetail;
 	}
@@ -779,6 +814,7 @@ public:
 		Hidden hidden;
 
 	};
+
 	struct Positions {
 
 		//mapRoleUsedToFillEmptyAttributes
@@ -903,266 +939,128 @@ public:
 	};
 
 	struct Contract {
+
+		int getClubUniqueID(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+			DWORD_PTR pplayer = getBasePlayer(playerUniqueAdress);
+			DWORD_PTR offset[2] = { 0x10,0xC };
+
+			CurrentMemory memory = FindDmaAddy(phandle, (pplayer + 0x288), offset, 2);
+			return memory.currentValue;
+		}
+
+		//mapType
+		short getType(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+			DWORD_PTR pplayer = getBasePlayer(playerUniqueAdress);
+			DWORD_PTR offset[1] = { 0x9A };
+
+			CurrentMemory memory = FindDmaAddy(phandle, (pplayer + 0x288), offset, 1);
+			return (char)memory.currentValue;
+		}
+
+		//mapJobType
+		short getJobType(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+			DWORD_PTR pplayer = getBasePlayer(playerUniqueAdress);
+			DWORD_PTR offset[1] = { 0x1C };
+
+			CurrentMemory memory = FindDmaAddy(phandle, (pplayer + 0x288), offset, 1);
+			return (char)memory.currentValue;
+		}
+
+		int getValue(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+			DWORD_PTR pplayer = getBasePlayer(playerUniqueAdress);
+			DWORD_PTR offset[2] = { 0x10,0xC };
+
+			CurrentMemory memory = FindDmaAddy(phandle, (pplayer + 0x128), offset, 2);
+			return memory.currentValue;
+		}
+
 		/*
-				<CheatEntry>
-			  <ID>177</ID>
-			  <Description>"Contract -&gt;"</Description>
-			  <Options moHideChildren="1"/>
-			  <LastState Value="" RealAddress="00000000"/>
-			  <Color>16CC1C</Color>
-			  <GroupHeader>1</GroupHeader>
-			  <CheatEntries>
-				<CheatEntry>
-				  <ID>180</ID>
-				  <Description>"Club (Unique ID)[4]"</Description>
-				  <DropDownList ReadOnly="1" DescriptionOnly="1">:
-	</DropDownList>
-				  <LastState Value="2082082528" RealAddress="5E2D9594"/>
-				  <VariableType>4 Bytes</VariableType>
-				  <Address>[pplayer_base]+288</Address>
-				  <Offsets>
-					<Offset>C</Offset>
-					<Offset>10</Offset>
-				  </Offsets>
-				</CheatEntry>
-				<CheatEntry>
-				  <ID>179</ID>
-				  <Description>"Type"</Description>
-				  <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">-1:Invalid
-	0:Part Time
-	1:Full Time
-	2:Amateur
-	3:Youth
-	4:Non-Contract
-	5:Future Professional
-	7:Generation Adidas (USA)
-	8:Senior Minimum Salary (USA)
-	9:Reserve (USA)
-	11:Designated Player (USA)
-	13:Designated Player
-	16:Guest Player (Australia)
-	18:Mature Age Rookie Player (Australia)
-	</DropDownList>
-				  <LastState Value="1" RealAddress="68C14B82"/>
-				  <ShowAsSigned>1</ShowAsSigned>
-				  <VariableType>Byte</VariableType>
-				  <Address>[pplayer_base]+288</Address>
-				  <Offsets>
-					<Offset>9A</Offset>
-				  </Offsets>
-				</CheatEntry>
-				<CheatEntry>
-				  <ID>172</ID>
-				  <Description>"Job Type"</Description>
-				  <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">0:Free
-	1:Player
-	2:Coach
-	3:Player/Coach
-	4:Chairman
-	6:Director
-	8:Managing Director
-	10:Director of Football
-	12:Physiotherapist
-	14:Scout
-	16:Manager
-	17:Player/Manager
-	20:Assistant Manager
-	21:Player/Assistant Manager
-	22:Media Pundit
-	24:General Manager
-	26:Fitness Coach
-	27:Player/Fitness Coach
-	34:Goalkeeper Coach
-	35:Player/Goalkeeper Coach
-	36:Chief Data Analyst
-	38:Chief Doctor
-	40:Head of Sports Science
-	42:U18 Data Analyst
-	44:Chief Scout
-	45:Player/Chief Scout
-	46:U18 Sports Scientis
-	48:U23 Sports Scientist
-	49:Player/Youth Team Coach
-	50:Head of Physiotherapy
-	52:U19 Manager
-	54:First Team Coach
-	64:Head of Youth Development
-	65:Player/Head of Youth Development
-	66:Owner
-	70:President
-	144:Caretaker Manager
-	</DropDownList>
-				  <LastState Value="1" RealAddress="68C14B04"/>
-				  <VariableType>Byte</VariableType>
-				  <Address>[pplayer_base]+288</Address>
-				  <Offsets>
-					<Offset>1C</Offset>
-				  </Offsets>
-				</CheatEntry>
-				<CheatEntry>
-				  <ID>117</ID>
-				  <Description>"Value"</Description>
-				  <LastState Value="56990420" RealAddress="68CFD670"/>
-				  <ShowAsSigned>0</ShowAsSigned>
-				  <VariableType>4 Bytes</VariableType>
-				  <Address>[pplayer_base]+128</Address>
-				</CheatEntry>
-				<CheatEntry>
-				  <ID>163</ID>
-				  <Description>"Asking Price (aprox)"</Description>
-				  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">-1:Not Set
-	</DropDownList>
-				  <LastState Value="-1" RealAddress="68CFD674"/>
-				  <ShowAsSigned>1</ShowAsSigned>
-				  <VariableType>4 Bytes</VariableType>
-				  <Address>[pplayer_base]+12C</Address>
-				</CheatEntry>
-				<CheatEntry>
-				  <ID>170</ID>
-				  <Description>"Weekly Wage"</Description>
-				  <LastState Value="14568" RealAddress="68C14B00"/>
-				  <VariableType>4 Bytes</VariableType>
-				  <Address>[pplayer_base]+288</Address>
-				  <Offsets>
-					<Offset>18</Offset>
-				  </Offsets>
-				</CheatEntry>
-				<CheatEntry>
-				  <ID>185</ID>
-				  <Description>"Start Date[3] -&gt;"</Description>
-				  <Options moHideChildren="1"/>
-				  <LastState Value="" RealAddress="00000000"/>
-				  <Color>292CCC</Color>
-				  <GroupHeader>1</GroupHeader>
-				  <CheatEntries>
-					<CheatEntry>
-					  <ID>181</ID>
-					  <Description>"Day of Year"</Description>
-					  <LastState Value="32" RealAddress="68C14B24"/>
-					  <VariableType>Byte</VariableType>
-					  <Address>[pplayer_base]+288</Address>
-					  <Offsets>
-						<Offset>3C</Offset>
-					  </Offsets>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>184</ID>
-					  <Description>"Year"</Description>
-					  <LastState Value="2018" RealAddress="68C14B26"/>
-					  <VariableType>2 Bytes</VariableType>
-					  <Address>[pplayer_base]+288</Address>
-					  <Offsets>
-						<Offset>3E</Offset>
-					  </Offsets>
-					</CheatEntry>
-				  </CheatEntries>
-				</CheatEntry>
-				<CheatEntry>
-				  <ID>186</ID>
-				  <Description>"End Date[3] -&gt;"</Description>
-				  <Options moHideChildren="1"/>
-				  <LastState Value="" RealAddress="00000000"/>
-				  <Color>292CCC</Color>
-				  <GroupHeader>1</GroupHeader>
-				  <CheatEntries>
-					<CheatEntry>
-					  <ID>183</ID>
-					  <Description>"Day of Year"</Description>
-					  <LastState Value="347" RealAddress="68C14B28"/>
-					  <VariableType>2 Bytes</VariableType>
-					  <Address>[pplayer_base]+288</Address>
-					  <Offsets>
-						<Offset>40</Offset>
-					  </Offsets>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>182</ID>
-					  <Description>"Year"</Description>
-					  <LastState Value="2023" RealAddress="68C14B2A"/>
-					  <VariableType>2 Bytes</VariableType>
-					  <Address>[pplayer_base]+288</Address>
-					  <Offsets>
-						<Offset>42</Offset>
-					  </Offsets>
-					</CheatEntry>
-				  </CheatEntries>
-				</CheatEntry>
-				<CheatEntry>
-				  <ID>187</ID>
-				  <Description>"Join Date[3] -&gt;"</Description>
-				  <Options moHideChildren="1"/>
-				  <LastState Value="" RealAddress="00000000"/>
-				  <Color>292CCC</Color>
-				  <GroupHeader>1</GroupHeader>
-				  <CheatEntries>
-					<CheatEntry>
-					  <ID>189</ID>
-					  <Description>"Day of Year"</Description>
-					  <LastState Value="32" RealAddress="68C14B2C"/>
-					  <VariableType>Byte</VariableType>
-					  <Address>[pplayer_base]+288</Address>
-					  <Offsets>
-						<Offset>44</Offset>
-					  </Offsets>
-					</CheatEntry>
-					<CheatEntry>
-					  <ID>188</ID>
-					  <Description>"Year"</Description>
-					  <LastState Value="2018" RealAddress="68C14B2E"/>
-					  <VariableType>2 Bytes</VariableType>
-					  <Address>[pplayer_base]+288</Address>
-					  <Offsets>
-						<Offset>46</Offset>
-					  </Offsets>
-					</CheatEntry>
-				  </CheatEntries>
-				</CheatEntry>
-				<CheatEntry>
-				  <ID>178</ID>
-				  <Description>"Loyalty Bonus"</Description>
-				  <LastState Value="628694" RealAddress="68C14B78"/>
-				  <VariableType>4 Bytes</VariableType>
-				  <Address>[pplayer_base]+288</Address>
-				  <Offsets>
-					<Offset>90</Offset>
-				  </Offsets>
-				</CheatEntry>
-				<CheatEntry>
-				  <ID>176</ID>
-				  <Description>"Squad Status"</Description>
-				  <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">-1:Invalid
-	0:Not Set
-	1:Key Player
-	2:First Team Regular
-	3:Squad Rotation
-	4:Backup Player
-	5:Hot Prospect
-	6:Decent Youngster
-	7:Not Needed
-	8:Squad Status Count
-	</DropDownList>
-				  <LastState Value="1" RealAddress="68C14B34"/>
-				  <VariableType>Byte</VariableType>
-				  <Address>[pplayer_base]+288</Address>
-				  <Offsets>
-					<Offset>4C</Offset>
-				  </Offsets>
-				</CheatEntry>
-				<CheatEntry>
-				  <ID>174</ID>
-				  <Description>"Squad Number"</Description>
-				  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">-1:Not Set
-	</DropDownList>
-				  <LastState Value="-1" RealAddress="68C14B3B"/>
-				  <ShowAsSigned>1</ShowAsSigned>
-				  <VariableType>Byte</VariableType>
-				  <Address>[pplayer_base]+288</Address>
-				  <Offsets>
-					<Offset>53</Offset>
-				  </Offsets>
-				</CheatEntry>
-				<CheatEntry>
-				  <ID>175</ID>
+		-1:Not Set
+		mapAskingPrice
+		*/
+		int getAskingPrice(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+			return readIntPUA(phandle, playerUniqueAdress, 0x12C);
+		}
+
+		int getWeeklyWage(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+			DWORD_PTR pplayer = getBasePlayer(playerUniqueAdress);
+			DWORD_PTR offset[1] = { 0x18 };
+
+			CurrentMemory memory = FindDmaAddy(phandle, (pplayer + 0x288), offset, 1);
+			return memory.currentValue;
+		}
+
+		short getStartDayOfYear(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+			DWORD_PTR pplayer = getBasePlayer(playerUniqueAdress);
+			DWORD_PTR offset[1] = { 0x3C };
+
+			CurrentMemory memory = FindDmaAddy(phandle, (pplayer + 0x288), offset, 1);
+			return (char)memory.currentValue;
+		}
+
+		short getStartYear(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+			DWORD_PTR pplayer = getBasePlayer(playerUniqueAdress);
+			DWORD_PTR offset[1] = { 0x3E };
+			CurrentMemory memory = FindDmaAddy(phandle, (pplayer + 0x288), offset, 1);
+			return memory.currentValue;
+		}
+
+		short getEndDayOfYear(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+			DWORD_PTR pplayer = getBasePlayer(playerUniqueAdress);
+			DWORD_PTR offset[1] = { 0x40 };
+
+			CurrentMemory memory = FindDmaAddy(phandle, (pplayer + 0x288), offset, 1);
+			return memory.currentValue;
+		}
+
+		short getEndYear(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+			DWORD_PTR pplayer = getBasePlayer(playerUniqueAdress);
+			DWORD_PTR offset[1] = { 0x42 };
+			CurrentMemory memory = FindDmaAddy(phandle, (pplayer + 0x288), offset, 1);
+			return memory.currentValue;
+		}
+
+		short getJoinDayOfYear(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+			DWORD_PTR pplayer = getBasePlayer(playerUniqueAdress);
+			DWORD_PTR offset[1] = { 0x44 };
+
+			CurrentMemory memory = FindDmaAddy(phandle, (pplayer + 0x288), offset, 1);
+			return (char)memory.currentValue;
+		}
+
+		short getJoinYear(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+			DWORD_PTR pplayer = getBasePlayer(playerUniqueAdress);
+			DWORD_PTR offset[1] = { 0x46 };
+			CurrentMemory memory = FindDmaAddy(phandle, (pplayer + 0x288), offset, 1);
+			return memory.currentValue;
+		}
+
+		int getLoyaltyBonus(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+			DWORD_PTR pplayer = getBasePlayer(playerUniqueAdress);
+			DWORD_PTR offset[1] = { 0x90 };
+
+			CurrentMemory memory = FindDmaAddy(phandle, (pplayer + 0x288), offset, 1);
+			return memory.currentValue;
+		}
+
+		//mapSquadStatus
+		short getSquadStatus(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+			DWORD_PTR pplayer = getBasePlayer(playerUniqueAdress);
+			DWORD_PTR offset[1] = { 0x4C };
+
+			CurrentMemory memory = FindDmaAddy(phandle, (pplayer + 0x288), offset, 1);
+			return (char)memory.currentValue;
+		}
+
+		//-1:Not Set
+		short getSquadNumber(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+			DWORD_PTR pplayer = getBasePlayer(playerUniqueAdress);
+			DWORD_PTR offset[1] = { 0x53 };
+
+			CurrentMemory memory = FindDmaAddy(phandle, (pplayer + 0x288), offset, 1);
+			return (char)memory.currentValue;
+		}
+		/*
 				  <Description>"Transfer Status"</Description>
 				  <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">4:Not Set
 	5:Transfer Listed
@@ -1174,15 +1072,11 @@ public:
 	69:Transfer Listed / NA for Loan
 	76:Listed by Request / NA for Loan
 	</DropDownList>
-				  <LastState Value="4" RealAddress="68C14B36"/>
 				  <VariableType>Byte</VariableType>
 				  <Address>[pplayer_base]+288</Address>
 				  <Offsets>
 					<Offset>4E</Offset>
 				  </Offsets>
-				</CheatEntry>
-				<CheatEntry>
-				  <ID>1002</ID>
 				  <Description>"Clauses &amp; Bonuses -&gt;"</Description>
 				  <Options moHideChildren="1"/>
 				  <LastState Value="" RealAddress="00000000"/>

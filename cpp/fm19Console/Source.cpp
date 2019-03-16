@@ -223,6 +223,22 @@ void playerDetail(HANDLE phandle) {
 	cout << "getRushingOut                  : " << player.attributes.goalkeeping.getRushingOut << endl;
 	cout << "getTendencyToPunch             : " << player.attributes.goalkeeping.getTendencyToPunch << endl;
 	cout << "getThrowing                    : " << player.attributes.goalkeeping.getThrowing << endl;
+	cout << "|--------------^Player Contract-------------------||" << endl;
+	cout << "getClubUniqueID               : " << player.contract.getClubUniqueID << endl;
+	cout << "getType                       : " << player.contract.getType << endl;
+	cout << "getJobType                    : " << player.contract.getJobType << endl;
+	cout << "getValue                      : " << player.contract.getValue << endl;
+	cout << "getAskingPrice                : " << player.contract.getAskingPrice << endl;
+	cout << "getWeeklyWage                 : " << player.contract.getWeeklyWage << endl;
+	cout << "getStartDayOfYear             : " << player.contract.getStartDayOfYear << endl;
+	cout << "getStartYear                  : " << player.contract.getStartYear << endl;
+	cout << "getEndDayOfYear               : " << player.contract.getEndDayOfYear << endl;
+	cout << "getEndYear                    : " << player.contract.getEndYear << endl;
+	cout << "getJoinDayOfYear              : " << player.contract.getJoinDayOfYear << endl;
+	cout << "getJoinYear                   : " << player.contract.getJoinYear << endl;
+	cout << "getLoyaltyBonus               : " << player.contract.getLoyaltyBonus << endl;
+	cout << "getSquadStatus                : " << player.contract.getSquadStatus << endl;
+	cout << "getSquadNumber                : " << player.contract.getSquadNumber << endl;
 	//Close any handles once the program is over
 	CloseHandle(phandle);
 	system("pause");

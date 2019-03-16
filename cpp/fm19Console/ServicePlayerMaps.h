@@ -134,4 +134,76 @@ const static std::map<int, std::string> mapRoleUsedToFillEmptyAttributes = {
 	{ 7,"Left Of Two Or Left / Central When Three" },
 };
 
+const static std::map<int, std::string> mapType = {
+	{ -1, "Invalid" },
+	{ 0,"Part Time" },
+	{ 1,"Full Time" },
+	{ 2,"Amateur" },
+	{ 3,"Youth" },
+	{ 4,"Non-Contract" },
+	{ 5,"Future Professional" },
+	{ 7,"Generation Adidas (USA)" },
+	{ 8,"Senior Minimum Salary (USA)" },
+	{ 9,"Reserve (USA)" },
+	{ 11,"Designated Player (USA)" },
+	{ 13,"Designated Player" },
+	{ 16,"Guest Player (Australia)" },
+	{ 18,"Mature Age Rookie Player (Australia)" }
+};
+
+const static std::map<int, std::string> mapJobType = {
+
+{0, "Free"},
+{ 1,"Player" },
+{ 2,"Coach" },
+{ 3,"Player/Coach" },
+{ 4,"Chairman" },
+{ 6,"Director" },
+{ 8,"Managing Director" },
+{ 10,"Director of Football" },
+{ 12,"Physiotherapist" },
+{ 14,"Scout" },
+{ 16,"Manager" },
+{ 17,"Player/Manager" },
+{ 20,"Assistant Manager" },
+{ 21,"Player/Assistant Manager" },
+{ 22,"Media Pundit" },
+{ 24,"General Manager" },
+{ 26,"Fitness Coach" },
+{ 27,"Player/Fitness Coach" },
+{ 34,"Goalkeeper Coach" },
+{ 35,"Player/Goalkeeper Coach" },
+{ 36,"Chief Data Analyst" },
+{ 38,"Chief Doctor" },
+{ 40,"Head of Sports Science" },
+{ 42,"U18 Data Analyst" },
+{ 44,"Chief Scout" },
+{ 45,"Player/Chief Scout" },
+{ 46,"U18 Sports Scientis" },
+{ 48,"U23 Sports Scientist" },
+{ 49,"Player/Youth Team Coach" },
+{ 50,"Head of Physiotherapy" },
+{ 52,"U19 Manager" },
+{ 54,"First Team Coach" },
+{ 64,"Head of Youth Development" },
+{ 65,"Player/Head of Youth Development" },
+{ 66,"Owner" },
+{ 70,"President" },
+{ 144,"Caretaker Manager" }
+};
+
+const static std::map<int, std::string> mapSquadStatus = {
+	{ -1,"Invalid" },
+	{ 0,"Not Set" },
+	{ 1,"Key Player" },
+	{ 2,"First Team Regular" },
+	{ 3,"Squad Rotation" },
+	{ 4,"Backup Player" },
+	{ 5,"Hot Prospect" },
+	{ 6,"Decent Youngster" },
+	{ 7,"Not Needed" },
+	{ 8,"Squad Status Count" },
+	
+};
+
 #endif

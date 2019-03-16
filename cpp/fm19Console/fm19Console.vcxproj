@@ -147,6 +147,7 @@
   <ItemGroup>
     <ClInclude Include="GameVersions.h" />
     <ClInclude Include="Helpers.h" />
+    <ClInclude Include="ServicePlayerMaps.h" />
     <ClInclude Include="service\ServiceClub.h" />
     <ClInclude Include="service\ServiceMyProfile.h" />
     <ClInclude Include="service\ServicePlayer.h" />

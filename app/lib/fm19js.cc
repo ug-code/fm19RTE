@@ -192,6 +192,7 @@ void player(const FunctionCallbackInfo<Value>& args) {
     Local<Object> positions = Object::New(isolate);
     Local<Object> abilities = Object::New(isolate);
     Local<Object> personality = Object::New(isolate);
+    Local<Object> contract = Object::New(isolate);
 
     //information
     information->Set(String::NewFromUtf8(isolate, "getRowId"), Integer::New(isolate,  player.getRowID));
@@ -319,11 +320,31 @@ void player(const FunctionCallbackInfo<Value>& args) {
     personality->Set(String::NewFromUtf8(isolate, "getSportmanship"), Integer::New(isolate,  player.personality.getSportmanship));
     personality->Set(String::NewFromUtf8(isolate, "getTemperament"), Integer::New(isolate,  player.personality.getTemperament));
 
+    //contract
+    contract->Set(String::NewFromUtf8(isolate,"getClubUniqueID"), Integer::New(isolate,  player.contract.getClubUniqueID));
+    contract->Set(String::NewFromUtf8(isolate,"getType"), Integer::New(isolate,  player.contract.getType));
+    contract->Set(String::NewFromUtf8(isolate,"getJobType"), Integer::New(isolate,  player.contract.getJobType));
+    contract->Set(String::NewFromUtf8(isolate,"getValue"), Integer::New(isolate,  player.contract.getValue));
+    contract->Set(String::NewFromUtf8(isolate,"getAskingPrice"), Integer::New(isolate,  player.contract.getAskingPrice));
+    contract->Set(String::NewFromUtf8(isolate,"getWeeklyWage"), Integer::New(isolate,  player.contract.getWeeklyWage));
+    contract->Set(String::NewFromUtf8(isolate,"getStartDayOfYear"), Integer::New(isolate,  player.contract.getStartDayOfYear));
+    contract->Set(String::NewFromUtf8(isolate,"getStartYear"), Integer::New(isolate,  player.contract.getStartYear));
+    contract->Set(String::NewFromUtf8(isolate,"getEndDayOfYear"), Integer::New(isolate,  player.contract.getEndDayOfYear));
+    contract->Set(String::NewFromUtf8(isolate,"getEndYear"), Integer::New(isolate,  player.contract.getEndYear));
+    contract->Set(String::NewFromUtf8(isolate,"getJoinDayOfYear"), Integer::New(isolate,  player.contract.getJoinDayOfYear));
+    contract->Set(String::NewFromUtf8(isolate,"getJoinYear"), Integer::New(isolate,  player.contract.getJoinYear));
+    contract->Set(String::NewFromUtf8(isolate,"getLoyaltyBonus"), Integer::New(isolate,  player.contract.getLoyaltyBonus));
+    contract->Set(String::NewFromUtf8(isolate,"getSquadStatus"), Integer::New(isolate,  player.contract.getSquadStatus));
+    contract->Set(String::NewFromUtf8(isolate,"getSquadNumber"), Integer::New(isolate,  player.contract.getSquadNumber));
+
     obj->Set(String::NewFromUtf8(isolate, "information"), information);
     obj->Set(String::NewFromUtf8(isolate, "attributes"), attributes);
     obj->Set(String::NewFromUtf8(isolate, "positions"), positions);
     obj->Set(String::NewFromUtf8(isolate, "abilities"), abilities);
     obj->Set(String::NewFromUtf8(isolate, "personality"), personality);
+    obj->Set(String::NewFromUtf8(isolate, "contract"), contract);
+
+
 
     args.GetReturnValue().Set(obj);
 
