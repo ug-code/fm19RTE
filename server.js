@@ -21,7 +21,7 @@ app.get('/api/service/player/:playerId', function (req, res) {
 
 app.get('/api/service/playerDatatable', function (req, res) {
     var fs = require('fs');
-    filePath = __dirname + '/app/assets/json/playerDt.json';
+    filePath = __dirname + '/app/assets/json/playerdt.json';
 
     fs.truncate(filePath, 0, function(){console.log('done')});
 
