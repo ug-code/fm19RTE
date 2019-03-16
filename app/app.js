@@ -97,7 +97,7 @@ myApp.controller('PlayerListController', ['$scope', '$http', '$q', '$timeout', f
         dTable.DataTable({
             "processing": true,
             responsive: true,
-            "ajax": '/assets/json/playerdt.json',
+            "ajax": 'assets/json/playerdt.json',
             "columns": [
                 { "data": "playerUniqueID" },
                 { "data": "getFirstname" },
