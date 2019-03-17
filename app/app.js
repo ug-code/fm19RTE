@@ -100,13 +100,11 @@ myApp.controller('PlayerListController', ['$scope', '$http', '$q', '$timeout', f
             "ajax": 'assets/json/playerdt.json',
             "columns": [
                 { "data": "playerUniqueID" },
-                { "data": "getFirstname" },
-                { "data": "getLastname" },
+                { "data": "getFullname" },
                 { "data": "getCA" },
                 { "data": "getPA" },
                 { "data": "getClubUniqueID" },
-                { "data": "getValue" },
-                { "data": "" }
+                { "data": "getValue", render: $.fn.dataTable.render.number(',', '.') },
 
             ]
         });

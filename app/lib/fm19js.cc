@@ -178,13 +178,20 @@ void playerDatatable(const FunctionCallbackInfo<Value>& args) {
 		int getClubUniqueID = servicePlayer.contract.getClubUniqueID(phandle, playerPointerAddress);
 		int getValue        = servicePlayer.contract.getValue(phandle, playerPointerAddress);
 
+
+
+        string getFullname( string(servicePlayer.getFirstname(phandle, playerPointerAddress)) +" "+ string(servicePlayer.getLastname
+                                                                                                             (phandle, playerPointerAddress)) );
         Local<Object> info = Object::New(isolate);
 
 
-          info->Set(String::NewFromUtf8(isolate, "playerUniqueID"), Integer::New(isolate,   playerUniqueID ));
+         info->Set(String::NewFromUtf8(isolate, "playerUniqueID"), Integer::New(isolate,   playerUniqueID ));
+         info->Set(String::NewFromUtf8(isolate, "getFullname"), String::NewFromUtf8(isolate,getFullname.c_str() ));
+        /*
         info->Set(String::NewFromUtf8(isolate, "getFirstname"), String::NewFromUtf8(isolate,   servicePlayer.getFirstname(phandle, playerPointerAddress) ));
         info->Set(String::NewFromUtf8(isolate, "getLastname"), String::NewFromUtf8(isolate,  servicePlayer.getLastname
         (phandle, playerPointerAddress ) ));
+        */
 
         info->Set(String::NewFromUtf8(isolate, "getCA"), Integer::New(isolate,  servicePlayer.abilities.getCA(phandle, playerPointerAddress)));
         info->Set(String::NewFromUtf8(isolate, "getPA"), Integer::New(isolate,  servicePlayer.abilities.getPA(phandle,
@@ -221,7 +228,6 @@ void playerDatatable(const FunctionCallbackInfo<Value>& args) {
 
 
 }
-
 
 void player(const FunctionCallbackInfo<Value>& args) {
     Isolate* isolate = args.GetIsolate();

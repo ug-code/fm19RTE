@@ -92,6 +92,12 @@ short readShort(HANDLE hProcess, DWORD_PTR address) {
 	return tempAdress;
 }
 
+uint8_t readByte(HANDLE hProcess, DWORD_PTR address) {
+	uint8_t tempAdress;
+	ReadProcessMemory(hProcess, (LPVOID)address, &tempAdress, sizeof(uint8_t), NULL);
+	return tempAdress;
+}
+
 string myInt2text(SIZE_T value) {
 
 	string  temp = "";

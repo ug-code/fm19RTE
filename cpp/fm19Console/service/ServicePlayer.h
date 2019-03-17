@@ -322,9 +322,9 @@ public:
 		return readInt(phandle, (pplayer + offset));
 	}
 
-	static short readBytePUA(HANDLE phandle, DWORD_PTR playerUniqueAdress, DWORD_PTR offset) {
+	static uint8_t readBytePUA(HANDLE phandle, DWORD_PTR playerUniqueAdress, DWORD_PTR offset) {
 		DWORD_PTR pplayer = getBasePlayer(playerUniqueAdress);
-		return (char)readShort(phandle, (pplayer + offset));
+		return readByte(phandle, (pplayer + offset));
 	}
 
 	static short readShortPUA(HANDLE phandle, DWORD_PTR playerUniqueAdress, DWORD_PTR offset) {
