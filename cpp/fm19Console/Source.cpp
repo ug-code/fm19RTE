@@ -201,6 +201,18 @@ void benchmarkFindPlayerUniqueAdress(HANDLE phandle, int playerUniqueID = 701031
 	DWORD_PTR playerUniqueAdress = servicePlayer.findPlayerUniqueAdress(phandle, playerUniqueID);
 }
 
+void testFullPlayer(HANDLE phandle) {
+	ServicePlayer servicePlayer;
+	PlayerDetail* playersDetail = servicePlayer.getPlayersWithDetail(phandle);
+
+
+	for (int i = 0; i<sizeof(playersDetail); i++) {
+		cout << "player id" << playersDetail[i].getFirstname << endl;
+		//PlayerDetail player = playersDetail[i];
+
+	}
+}
+
 int main() {
 
 	const clock_t begin_time = clock();
@@ -210,7 +222,8 @@ int main() {
 	HANDLE phandle = GameLoad(windowName);
 	//MyProfileGroup(phandle);
 	//scanPlayerList(phandle);
-	playerDetail(phandle, 7458500);
+	//playerDetail(phandle, 7458500);
+	testFullPlayer(phandle);
 	//playerDatatable(phandle);
 	//benchmarkFindPlayerUniqueAdress(phandle);
 	CloseHandle(phandle);

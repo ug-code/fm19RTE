@@ -1,0 +1,411 @@
+<div class="container-fluid fixed-size">
+    <div class="row">
+        <div class="col-lg-2 col-md-12 mb-2">
+            <div class="list-group" id="list-tab" role="tablist">
+                <a class="list-group-item list-group-item-action active" id="list-information-list" data-toggle="list" data-target="#list-information" role="tab" aria-controls="information">
+                    <i class="fa fa-user"></i> Information</a>
+                <a class="list-group-item list-group-item-action" id="list-contract-list" data-toggle="list" data-target="#list-contract" role="tab" aria-controls="contract">
+                    <i class="fas fa-user-secret"></i> Contract</a>
+            </div>
+        </div>
+        <div class="col-lg-10 col-md-12">
+            <div class="tab-content" id="nav-tabContent">
+                <!-- Start information -->
+                <div class="tab-pane fade show active" id="list-information" role="tabpanel" aria-labelledby="list-information-list">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-12 col-sm-12">
+                            <div class="row">
+                                <!-- s Information -->
+                                <div class="col-md-12">
+                                    <div class="card border-secondary mb-3">
+                                        <div class="card-header">Information</div>
+                                        <div class="card-body text-secondary">
+                                            <form>
+                                                <div class="form-group row">
+                                                    <label for="firstName" class="col-sm-6 font-weight-bold col-form-label">First Name</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="text" class="text-right form-control-plaintext" id="firstName" ng-model="player.information.getFirstname">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="lastName" class="col-sm-6 font-weight-bold col-form-label">Last Name</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="text" class="text-right form-control-plaintext" id="lastName" ng-model="player.information.getLastname">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="uniqueID" class="col-sm-6 font-weight-bold col-form-label">Unique ID </label>
+                                                    <div class="col-sm-6">
+                                                        <input type="number" class="text-right form-control-plaintext" id="uniqueID" ng-model="player.information.getUniqeID">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="getBirthYear" class="col-sm-6 font-weight-bold col-form-label">Bourn </label>
+                                                    <div class="col-sm-6">
+                                                        <input type="number" class="text-right form-control-plaintext" id="getBirthYear" ng-model="player.information.getBirthYear">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="getHeight" class="col-sm-6 font-weight-bold col-form-label">Height </label>
+                                                    <div class="col-sm-6">
+                                                        <input type="number" class="text-right form-control-plaintext" id="getHeight" ng-model="player.information.getHeight">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="getWeight" class="col-sm-6 font-weight-bold col-form-label">Weight </label>
+                                                    <div class="col-sm-6">
+                                                        <input type="number" class="text-right form-control-plaintext" id="getWeight" ng-model="player.information.getWeight">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="getBirthYear" class="col-sm-6 font-weight-bold col-form-label">Left Foot/Right Foot </label>
+                                                    <div class="col-sm-6">
+                                                        <input type="number" class="text-right form-control-plaintext" id="getBirthYear" ng-model="player.information.getBirthYear">
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- s Information -->
+                                <!-- s Ability -->
+                                <div class="col-md-12">
+                                    <div class="card border-secondary mb-3">
+                                        <div class="card-header">Ability</div>
+                                        <div class="card-body text-secondary">
+                                            <form>
+                                                <div class="form-group row">
+                                                    <label for="getCA" class="col-sm-7 font-weight-bold col-form-label">CA</label>
+                                                    <div class="col-sm-5">
+                                                        <input type="number" class="text-right form-control-plaintext" id="getCA" max="200" ng-model="player.abilities.getCA">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="getPA" class="col-sm-7 font-weight-bold col-form-label">PA</label>
+                                                    <div class="col-sm-5">
+                                                        <input type="number" class="text-right form-control-plaintext" id="getPA" max="200" ng-model="player.abilities.getPA">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="difference" class="col-sm-7 font-weight-bold col-form-label">Difference</label>
+                                                    <div class="col-sm-5">
+                                                        <input type="number" class="text-right form-control-plaintext" id="difference" value="{{+player.abilities.getPA-player.abilities.getPA}}">
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- e Ability -->
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-12 col-sm-12">
+                            <div class="row">
+                                <!-- s Technical -->
+                                <div class="col-md-12">
+                                    <div class="card border-secondary mb-3">
+                                        <div class="card-header">Technical</div>
+                                        <div class="card-body text-secondary">
+                                            <form>
+                                                <div class="form-group row">
+                                                    <label for="getCrossing" class="col-sm-7 font-weight-bold col-form-label"> getCrossing</label>
+                                                    <div class="col-sm-5">
+                                                        <input type="number" class="text-right form-control-plaintext" id="getCrossing" ng-model="player.attributes.technical.getCrossing">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="getDribbling" class="col-sm-7 font-weight-bold col-form-label">getDribbling</label>
+                                                    <div class="col-sm-5">
+                                                        <input type="number" class="text-right form-control-plaintext" id="getDribbling" ng-model="player.attributes.technical.getDribbling">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="getDribbling" class="col-sm-7 font-weight-bold col-form-label">getFinishing</label>
+                                                    <div class="col-sm-5">
+                                                        <input type="number" class="text-right form-control-plaintext" id="getFinishing" ng-model="player.attributes.technical.getFinishing">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="getDribbling" class="col-sm-7 font-weight-bold col-form-label">getHeading</label>
+                                                    <div class="col-sm-5">
+                                                        <input type="number" class="text-right form-control-plaintext" id="getHeading" ng-model="player.attributes.technical.getHeading">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="getDribbling" class="col-sm-7 font-weight-bold col-form-label">getLongShots</label>
+                                                    <div class="col-sm-5">
+                                                        <input type="number" class="text-right form-control-plaintext" id="getLongShots" ng-model="player.attributes.technical.getLongShots">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="getDribbling" class="col-sm-7 font-weight-bold col-form-label">getMarking</label>
+                                                    <div class="col-sm-5">
+                                                        <input type="number" class="text-right form-control-plaintext" id="getMarking" ng-model="player.attributes.technical.getMarking">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="getDribbling" class="col-sm-7 font-weight-bold col-form-label">getPassing</label>
+                                                    <div class="col-sm-5">
+                                                        <input type="number" class="text-right form-control-plaintext" id="getPassing" ng-model="player.attributes.technical.getPassing">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="getDribbling" class="col-sm-7 font-weight-bold col-form-label">getTackling</label>
+                                                    <div class="col-sm-5">
+                                                        <input type="number" class="text-right form-control-plaintext" id="getTackling" ng-model="player.attributes.technical.getTackling">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="getDribbling" class="col-sm-7 font-weight-bold col-form-label">getFirstTouch</label>
+                                                    <div class="col-sm-5">
+                                                        <input type="number" class="text-right form-control-plaintext" id="getFirstTouch" ng-model="player.attributes.technical.getFirstTouch">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="getDribbling" class="col-sm-7 font-weight-bold col-form-label">getTechnique</label>
+                                                    <div class="col-sm-5">
+                                                        <input type="number" class="text-right form-control-plaintext" id="getTechnique" ng-model="player.attributes.technical.getTechnique">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="getDribbling" class="col-sm-7 font-weight-bold col-form-label">getPenaltyTaking</label>
+                                                    <div class="col-sm-5">
+                                                        <input type="number" class="text-right form-control-plaintext" id="getPenaltyTaking" ng-model="player.attributes.technical.getPenaltyTaking">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="getCorners" class="col-sm-7 font-weight-bold col-form-label">corner </label>
+                                                    <div class="col-sm-5">
+                                                        <input type="number" class="text-right form-control-plaintext" id="getCorners" ng-model="player.attributes.technical.getCorners">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="getDribbling" class="col-sm-7 font-weight-bold col-form-label">getFreeKickTaking</label>
+                                                    <div class="col-sm-5">
+                                                        <input type="number" class="text-right form-control-plaintext" id="getFreeKickTaking" ng-model="player.attributes.technical.getFreeKickTaking">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="getDribbling" class="col-sm-7 font-weight-bold col-form-label">getLongThrows</label>
+                                                    <div class="col-sm-5">
+                                                        <input type="number" class="text-right form-control-plaintext" id="getLongThrows" ng-model="player.attributes.technical.getLongThrows">
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- e Technical -->
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-12 col-sm-12">
+                            <div class="row">
+                                <!-- s Mental -->
+                                <div class="col-md-12">
+                                    <div class="card border-secondary mb-3">
+                                        <div class="card-header">Mental</div>
+                                        <div class="card-body text-secondary">
+                                            <form>
+                                                <div class="form-group row">
+                                                    <label for="getAggression" class="col-sm-7 font-weight-bold col-form-label">getAggression</label>
+                                                    <div class="col-sm-5">
+                                                        <input type="number" class="text-right form-control-plaintext" id="getAggression" ng-model="player.attributes.mental.getAggression">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="getAggression" class="col-sm-7 font-weight-bold col-form-label">getAnticipation</label>
+                                                    <div class="col-sm-5">
+                                                        <input type="number" class="text-right form-control-plaintext" id="getAnticipation" ng-model="player.attributes.mental.getAnticipation">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="getAggression" class="col-sm-7 font-weight-bold col-form-label">getBravery</label>
+                                                    <div class="col-sm-5">
+                                                        <input type="number" class="text-right form-control-plaintext" id="getBravery" ng-model="player.attributes.mental.getBravery">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="getAggression" class="col-sm-7 font-weight-bold col-form-label">getComposure</label>
+                                                    <div class="col-sm-5">
+                                                        <input type="number" class="text-right form-control-plaintext" id="getComposure" ng-model="player.attributes.mental.getComposure">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="getAggression" class="col-sm-7 font-weight-bold col-form-label">getConcentration</label>
+                                                    <div class="col-sm-5">
+                                                        <input type="number" class="text-right form-control-plaintext" id="getConcentration" ng-model="player.attributes.mental.getConcentration">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="getAggression" class="col-sm-7 font-weight-bold col-form-label">getVision</label>
+                                                    <div class="col-sm-5">
+                                                        <input type="number" class="text-right form-control-plaintext" id="getVision" ng-model="player.attributes.mental.getVision">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="getAggression" class="col-sm-7 font-weight-bold col-form-label">getDecision</label>
+                                                    <div class="col-sm-5">
+                                                        <input type="number" class="text-right form-control-plaintext" id="getDecision" ng-model="player.attributes.mental.getDecision">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="getAggression" class="col-sm-7 font-weight-bold col-form-label">getDetermination</label>
+                                                    <div class="col-sm-5">
+                                                        <input type="number" class="text-right form-control-plaintext" id="getDetermination" ng-model="player.attributes.mental.getDetermination">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="getAggression" class="col-sm-7 font-weight-bold col-form-label">getFlair</label>
+                                                    <div class="col-sm-5">
+                                                        <input type="number" class="text-right form-control-plaintext" id="getFlair" ng-model="player.attributes.mental.getFlair">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="getAggression" class="col-sm-7 font-weight-bold col-form-label">getLeadership</label>
+                                                    <div class="col-sm-5">
+                                                        <input type="number" class="text-right form-control-plaintext" id="getLeadership" ng-model="player.attributes.mental.getLeadership">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="getAggression" class="col-sm-7 font-weight-bold col-form-label">getOffTheBall</label>
+                                                    <div class="col-sm-5">
+                                                        <input type="number" class="text-right form-control-plaintext" id="getOffTheBall" ng-model="player.attributes.mental.getOffTheBall">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="getAggression" class="col-sm-7 font-weight-bold col-form-label">getPositioning</label>
+                                                    <div class="col-sm-5">
+                                                        <input type="number" class="text-right form-control-plaintext" id="getPositioning" ng-model="player.attributes.mental.getPositioning">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="getAggression" class="col-sm-7 font-weight-bold col-form-label">getTeamwork</label>
+                                                    <div class="col-sm-5">
+                                                        <input type="number" class="text-right form-control-plaintext" id="getTeamwork" ng-model="player.attributes.mental.getTeamwork">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="getAggression" class="col-sm-7 font-weight-bold col-form-label">getWorkRate</label>
+                                                    <div class="col-sm-5">
+                                                        <input type="number" class="text-right form-control-plaintext" id="getWorkRate" ng-model="player.attributes.mental.getWorkRate">
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- e Mental -->
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-12 col-sm-12">
+                            <div class="row">
+                                <!-- s Physical -->
+                                <div class="col-md-12">
+                                    <div class="card border-secondary mb-3">
+                                        <div class="card-header">Physical</div>
+                                        <div class="card-body text-secondary">
+                                            <form>
+                                                <div class="form-group row">
+                                                    <label for="getAcceleration" class="col-sm-7 font-weight-bold col-form-label">getAcceleration</label>
+                                                    <div class="col-sm-5">
+                                                        <input type="number" class="text-right form-control-plaintext" id="getAcceleration" ng-model="player.attributes.physical.getAcceleration">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="getAgility" class="col-sm-7 font-weight-bold col-form-label">getAgility</label>
+                                                    <div class="col-sm-5">
+                                                        <input type="number" class="text-right form-control-plaintext" id="getAgility" ng-model="player.attributes.physical.getAgility">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="getBalance" class="col-sm-7 font-weight-bold col-form-label">getBalance</label>
+                                                    <div class="col-sm-5">
+                                                        <input type="number" class="text-right form-control-plaintext" id="getBalance" ng-model="player.attributes.physical.getBalance">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="getJumpingReach" class="col-sm-7 font-weight-bold col-form-label">getJumpingReach</label>
+                                                    <div class="col-sm-5">
+                                                        <input type="number" class="text-right form-control-plaintext" id="getJumpingReach" ng-model="player.attributes.physical.getJumpingReach">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="getNaturalFitness" class="col-sm-7 font-weight-bold col-form-label">getNaturalFitness</label>
+                                                    <div class="col-sm-5">
+                                                        <input type="number" class="text-right form-control-plaintext" id="getNaturalFitness" ng-model="player.attributes.physical.getNaturalFitness">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="getPace" class="col-sm-7 font-weight-bold col-form-label">getPace</label>
+                                                    <div class="col-sm-5">
+                                                        <input type="number" class="text-right form-control-plaintext" id="getPace" ng-model="player.attributes.physical.getPace">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="getStamina" class="col-sm-7 font-weight-bold col-form-label">getStamina</label>
+                                                    <div class="col-sm-5">
+                                                        <input type="number" class="text-right form-control-plaintext" id="getStamina" ng-model="player.attributes.physical.getStamina">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="getStrength" class="col-sm-7 font-weight-bold col-form-label">getStrength</label>
+                                                    <div class="col-sm-5">
+                                                        <input type="number"
+                                                                class="text-right form-control-plaintext" id="getStrength" ng-model="player.attributes.physical.getStrength">
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- e Physical -->
+                                <!-- s Hidden -->
+                                <div class="col-md-12">
+                                    <div class="card border-secondary mb-3">
+                                        <div class="card-header">Hidden</div>
+                                        <div class="card-body text-secondary">
+                                            <form>
+                                                <div class="form-group row">
+                                                    <label for="getInjuryProneness" class="col-sm-7 font-weight-bold col-form-label">getInjuryProneness </label>
+                                                    <div class="col-sm-5">
+                                                        <input type="number" class="text-right form-control-plaintext" id="getInjuryProneness" ng-model="player.attributes.hidden.getInjuryProneness">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="getConsistency" class="col-sm-7 font-weight-bold col-form-label">getConsistency </label>
+                                                    <div class="col-sm-5">
+                                                        <input type="number" class="text-right form-control-plaintext" id="getConsistency" ng-model="player.attributes.hidden.getConsistency">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="getDirtiness" class="col-sm-7 font-weight-bold col-form-label">getDirtiness </label>
+                                                    <div class="col-sm-5">
+                                                        <input type="number" class="text-right form-control-plaintext" id="getDirtiness" ng-model="player.attributes.hidden.getDirtiness">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="getVersatility" class="col-sm-7 font-weight-bold col-form-label">getVersatility </label>
+                                                    <div class="col-sm-5">
+                                                        <input type="number" class="text-right form-control-plaintext" id="getVersatility" ng-model="player.attributes.hidden.getVersatility">
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- e Hidden -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End information -->
+                <!-- Start contract -->
+                <div class="tab-pane fade" id="list-contract" role="tabpanel" aria-labelledby="list-contract-list">
+                    contract
+                </div>
+                <!-- End contract -->
+                <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">settings</div>
+            </div>
+        </div>
+    </div>
+</div>

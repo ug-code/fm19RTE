@@ -10,7 +10,7 @@ struct PlayerDetail
 	int getUniqeID;
 	char* getFirstname;
 	char* getLastname;
-	char* getFullname;
+	//char* getFullname = "";
 	short getBirthYear;
 	short getEthnicity;
 	short getHairColour;
@@ -182,7 +182,7 @@ public:
 		playerDetail.getUniqeID = PlayerID;
 		playerDetail.getFirstname = getFirstname(phandle, playerUniqueAdress);
 		playerDetail.getLastname = getLastname(phandle, playerUniqueAdress);
-		playerDetail.getFullname = getFullname(phandle, playerUniqueAdress);
+		//playerDetail.getFullname = getFullname(phandle, playerUniqueAdress);
 		playerDetail.getBirthYear = getBirthYear(phandle, playerUniqueAdress);
 		playerDetail.getEthnicity = getEthnicity(phandle, playerUniqueAdress);
 		playerDetail.getHairColour = getHairColour(phandle, playerUniqueAdress);
@@ -455,6 +455,27 @@ public:
 
 		return playersList;
 	}// while 
+
+
+
+	PlayerDetail* getPlayersWithDetail(HANDLE pHandle) {
+		map<int, DWORD_PTR> playersList = getPlayerList(pHandle);
+		// Iterating the map and printing ordered values 
+		DWORD_PTR playerPointerAddress;
+		int playerUniqueID;
+		PlayerDetail *pDetail;
+		PlayerDetail player;
+		int x = 0;
+		for (auto i = playersList.begin(); i != playersList.end(); i++) {
+			playerUniqueID = i->first;
+			playerPointerAddress = playersList[playerUniqueID];
+
+			pDetail[x] = getPlayerDetail(pHandle, playerUniqueID, playerPointerAddress);
+			x++;
+		}
+		return pDetail;
+
+	}
 
 	void testPlayerList(HANDLE pHandle) {
 		map<int, DWORD_PTR> playersList = getPlayerList(pHandle);

@@ -68,33 +68,39 @@ myApp.directive('appHeader', function () {
     };
 });
 
-/**----------PlayerListController----------**/
-myApp.controller('PlayerListController', ['$scope', '$http', '$q', '$timeout', function ($scope, $http, $q, $timeout) {
 
-    $scope.users = [
-        {
-            email: 'email@address.com',
-            name: {
-                first: 'User',
-                last: 'Last Name'
-            },
-            phone: '(416) 555-5555',
-            permissions: 'Admin'
-        },
-        {
-            email: 'example@email.com',
-            name: {
-                first: 'First',
-                last: 'Last'
-            },
-            phone: '(514) 222-1111',
-            permissions: 'User'
+//listener.
+/*
+myApp.directive('input', function() {
+        return {
+            restrict: 'E',
+            link: Link
+        };
+
+        function Link(scope, elem, attrs) {
+            if(attrs.class==='md-input form-control'){
+
+                scope.$watch(attrs.ngModel, function (v) {
+                    if(v!==''){
+                        elem.addClass('edited');
+                    }
+                });
+                elem.on('focus', function() {
+                    // do stuff
+                    console.log(elem[0].name + ' has been focused!');
+                });
+            }
         }
-    ];
+    });
+    */
+
+/**----------PlayerListController----------**/
+myApp.controller('PlayerListController', ['$scope','$location' ,'$http', '$q', '$timeout', function ($scope,$location, $http, $q, $timeout) {
+
 
     angular.element(document).ready(function () {
-        const dTable = $('#player_table');
-        dTable.DataTable({
+        const dtEl = '#player_table';
+        const dtable =$(dtEl).DataTable({
             "processing": true,
             responsive: true,
             "ajax": 'assets/json/playerdt.json',
@@ -106,8 +112,21 @@ myApp.controller('PlayerListController', ['$scope', '$http', '$q', '$timeout', f
                 { "data": "getClubUniqueID" },
                 { "data": "getValue", render: $.fn.dataTable.render.number(',', '.') },
 
-            ]
+            ],
+            rowId: 'playerUniqueID'
         });
+
+
+        $(dtEl+' tbody').on('click', 'tr', function () {
+            var id = dtable.row( this ).id();
+            console.log("id",id);
+            $scope.$apply(function() {
+                $location.path('/player/' + id);
+            });
+            //console.log( 'You clicked on '+data[0]+'\'s row' );
+        } );
+
+
     });
 
 }]);
@@ -118,6 +137,18 @@ myApp.controller('MyClubController', ['$scope', '$http', '$q', '$timeout', funct
     $http.get('api/service/currentClub').then(function (response) {
         console.log("response", response.data);
         $scope.myClub = response.data;
+    });
+
+}]);
+
+/**----------MyClubController----------**/
+myApp.controller('PlayerController', ['$scope', '$http', '$routeParams', function ($scope, $http, $routeParams) {
+
+    const param = $routeParams.id;
+    console.log("PlayerController param",param);
+    $http.get('api/service/player/'+param).then(function (response) {
+        console.log("response", response.data);
+        $scope.player = response.data;
     });
 
 }]);

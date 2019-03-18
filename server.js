@@ -2,7 +2,40 @@ const express = require('express');
 const fm19js = require('./build/Release/fm19js.node');
 const app     = express();
 const port    = 3000;
+const fs = require('fs');
+const path = require('path');
 
+
+
+
+function fmPlayerDetailLoader() {
+    const filePath = __dirname + '/app/assets/json/player-details/fullplayer.json';
+    console.log("fm19js.playerIDList()",fm19js.playerIDList());
+    return;
+
+    fs.truncate(filePath, 0, function(){console.log('done')});
+
+    fs.appendFile(filePath,  JSON.stringify(fm19js.playerIDList()), function(err) {
+        if (err) { throw err }
+    });
+
+
+}
+function fmPlayerDtLoader(){
+    const filePath = __dirname + '/app/assets/json/playerdt.json';
+
+    fs.truncate(filePath, 0, function(){console.log('done')});
+
+    fs.appendFile(filePath,  JSON.stringify(fm19js.playerDatatable()), function(err) {
+        if (err) { throw err }
+    });
+}
+
+app.route('/api/service/fmLoader').get((req, res) => {
+    fmPlayerDetailLoader();
+    //fmPlayerDtLoader();
+    res.send("ok");
+});
 
 
 app.route('/api/service/myProfile').get((req, res) => {
@@ -19,15 +52,9 @@ app.get('/api/service/player/:playerId', function (req, res) {
     res.send(fm19js.player(playerId));
 });
 
+
 app.get('/api/service/playerDatatable', function (req, res) {
-    var fs = require('fs');
-    filePath = __dirname + '/app/assets/json/playerdt.json';
 
-    fs.truncate(filePath, 0, function(){console.log('done')});
-
-    fs.appendFile(filePath,  JSON.stringify(fm19js.playerDatatable()), function(err) {
-        if (err) { throw err }
-    });
 
     res.send("ok");
 });
