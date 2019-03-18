@@ -1,5 +1,8 @@
 'use strict';
 
+const env = {
+    production:'dev'
+};
 const myApp = angular.module('myApp', [
     'ngRoute'
 ]);
@@ -146,10 +149,21 @@ myApp.controller('PlayerController', ['$scope', '$http', '$routeParams', functio
 
     const param = $routeParams.id;
     console.log("PlayerController param",param);
-    $http.get('api/service/player/'+param).then(function (response) {
+    $http.get('api/service/player/'+param).then(successCallback, errorCallback);
+
+    function successCallback(response){
         console.log("response", response.data);
         $scope.player = response.data;
-    });
+    }
+    function errorCallback(error){
+        if(env.production==='dev'&& error.status ===404){
+            $http.get('assets/json/player-details/fake-player.json').then(function (response) {
+                $scope.player = response.data;
+            });
+        }
+        console.log("error", error.status);
+
+    }
 
 }]);
 
