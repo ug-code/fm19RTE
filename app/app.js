@@ -65,7 +65,7 @@ myApp.config(['$locationProvider', '$routeProvider', function ($locationProvider
     $routeProvider.when('/myProfile', {
         title: 'otherView',
         templateUrl: 'view/staff/myProfile.html',
-        //controller: 'PlayerController'
+        controller: 'MyProfileController'
 
     });
 
@@ -113,7 +113,7 @@ myApp.directive('colorValue', function (HelperService) {
     function Link(scope, elem, attrs) {
 
         scope.$watch(attrs.ngModel, function (v) {
-            if (v && v !== null ) {
+            if (v && v !== null) {
                 console.log("value", v);
                 elem.addClass(HelperService.getColor(v));
 
@@ -172,7 +172,29 @@ myApp.controller('MyClubController', ['$scope', '$http', '$q', '$timeout', funct
 
 }]);
 
-/**----------MyClubController----------**/
+/**----------MyProfileController----------**/
+myApp.controller('MyProfileController', ['$scope', '$http', '$q', '$timeout', function ($scope, $http, $q, $timeout) {
+
+    $http.get('api/service/myProfile').then(successCallback, errorCallback);
+
+    function successCallback(response) {
+        console.log("response", response.data);
+        $scope.myProfile = response.data;
+    }
+
+    function errorCallback(error) {
+        if (env.production === 'dev' && error.status === 404) {
+            console.log("Fake Data?");
+        }
+
+        console.log("error", error.status);
+
+    }
+
+}]);
+
+
+/**----------PlayerController----------**/
 myApp.controller('PlayerController', ['$scope', '$http', '$routeParams', 'HelperService', function ($scope, $http, $routeParams, HelperService) {
 
     const param = $routeParams.id;
