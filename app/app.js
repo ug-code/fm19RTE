@@ -1,11 +1,42 @@
 'use strict';
 
-const env = {
-    production:'dev'
+const env   = {
+    production: 'dev'
 };
 const myApp = angular.module('myApp', [
     'ngRoute'
 ]);
+
+
+myApp.factory('HelperService', function () {
+    return {
+        getColor: function (val) {
+            let colorClass;
+            if (val === 100) {
+                colorClass = 'text-success';
+            }
+            else if (60 <= val && val < 100) {
+                colorClass = 'text-success';
+            }
+            else if (40 <= val && val < 60) {
+                colorClass = 'text-secondary';
+            }
+            else if (20 <= val && val < 40) {
+                colorClass = 'text-secondary';
+            }
+            else if (1 <= val && val < 20) {
+                colorClass = 'text-danger';
+            }
+            else if (val === 0) {
+                colorClass = 'text-danger';
+            }
+            console.log("colorClass", colorClass);
+            return colorClass;
+
+        }
+    };
+});
+
 
 /**----------Routing----------**/
 myApp.config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
@@ -73,61 +104,58 @@ myApp.directive('appHeader', function () {
 
 
 //listener.
-/*
-myApp.directive('input', function() {
-        return {
-            restrict: 'E',
-            link: Link
-        };
 
-        function Link(scope, elem, attrs) {
-            if(attrs.class==='md-input form-control'){
+myApp.directive('colorValue', function (HelperService) {
+    return {
+        link: Link
+    };
 
-                scope.$watch(attrs.ngModel, function (v) {
-                    if(v!==''){
-                        elem.addClass('edited');
-                    }
-                });
-                elem.on('focus', function() {
-                    // do stuff
-                    console.log(elem[0].name + ' has been focused!');
-                });
+    function Link(scope, elem, attrs) {
+
+        scope.$watch(attrs.ngModel, function (v) {
+            if (v && v !== null ) {
+                console.log("value", v);
+                elem.addClass(HelperService.getColor(v));
+
             }
-        }
-    });
-    */
+        });
+
+
+    }
+});
+
 
 /**----------PlayerListController----------**/
-myApp.controller('PlayerListController', ['$scope','$location' ,'$http', '$q', '$timeout', function ($scope,$location, $http, $q, $timeout) {
+myApp.controller('PlayerListController', ['$scope', '$location', '$http', '$q', '$timeout', function ($scope, $location, $http, $q, $timeout) {
 
 
     angular.element(document).ready(function () {
-        const dtEl = '#player_table';
-        const dtable =$(dtEl).DataTable({
+        const dtEl   = '#player_table';
+        const dtable = $(dtEl).DataTable({
             "processing": true,
             responsive: true,
             "ajax": 'assets/json/playerdt.json',
             "columns": [
-                { "data": "playerUniqueID" },
-                { "data": "getFullname" },
-                { "data": "getCA" },
-                { "data": "getPA" },
-                { "data": "getClubUniqueID" },
-                { "data": "getValue", render: $.fn.dataTable.render.number(',', '.') },
+                {"data": "playerUniqueID"},
+                {"data": "getFullname"},
+                {"data": "getCA"},
+                {"data": "getPA"},
+                {"data": "getClubUniqueID"},
+                {"data": "getValue", render: $.fn.dataTable.render.number(',', '.')},
 
             ],
             rowId: 'playerUniqueID'
         });
 
 
-        $(dtEl+' tbody').on('click', 'tr', function () {
-            var id = dtable.row( this ).id();
-            console.log("id",id);
-            $scope.$apply(function() {
+        $(dtEl + ' tbody').on('click', 'tr', function () {
+            var id = dtable.row(this).id();
+            console.log("id", id);
+            $scope.$apply(function () {
                 $location.path('/player/' + id);
             });
             //console.log( 'You clicked on '+data[0]+'\'s row' );
-        } );
+        });
 
 
     });
@@ -145,18 +173,26 @@ myApp.controller('MyClubController', ['$scope', '$http', '$q', '$timeout', funct
 }]);
 
 /**----------MyClubController----------**/
-myApp.controller('PlayerController', ['$scope', '$http', '$routeParams', function ($scope, $http, $routeParams) {
+myApp.controller('PlayerController', ['$scope', '$http', '$routeParams', 'HelperService', function ($scope, $http, $routeParams, HelperService) {
 
     const param = $routeParams.id;
-    console.log("PlayerController param",param);
-    $http.get('api/service/player/'+param).then(successCallback, errorCallback);
+    console.log("PlayerController param", param);
 
-    function successCallback(response){
+    $scope.getColor = function (val) {
+        console.log("val", val);
+        return HelperService.getColor(val);
+    };
+
+
+    $http.get('api/service/player/' + param).then(successCallback, errorCallback);
+
+    function successCallback(response) {
         console.log("response", response.data);
         $scope.player = response.data;
     }
-    function errorCallback(error){
-        if(env.production==='dev'&& error.status ===404){
+
+    function errorCallback(error) {
+        if (env.production === 'dev' && error.status === 404) {
             $http.get('assets/json/player-details/fake-player.json').then(function (response) {
                 $scope.player = response.data;
             });
