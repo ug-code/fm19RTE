@@ -953,7 +953,7 @@ public:
 			DWORD_PTR pplayer = getBasePlayer(playerUniqueAdress);
 			DWORD_PTR offset[4] = { 0x10,0x18,0xB8,0x4 };
 			CurrentMemory memory = FindDmaAddy(phandle, (pplayer + 0x288), offset, 4);
-			return readBuffer(phandle, memory.currentAddress, 32);
+			return readBuffer(phandle, memory.currentAddress, 64);
 
 		}
 
