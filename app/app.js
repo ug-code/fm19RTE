@@ -49,21 +49,28 @@ myApp.config(['$locationProvider', '$routeProvider', function ($locationProvider
     });
 
     $routeProvider.when('/player', {
-        title: 'otherView',
+        title: 'Player',
         templateUrl: 'view/player/player-list.html',
         controller: 'PlayerListController'
 
     });
 
+    $routeProvider.when('/club', {
+        title: 'Club',
+        templateUrl: 'view/club/club-list.html',
+        controller: 'ClubListController'
+
+    });
+
     $routeProvider.when('/player/:id', {
-        title: 'otherView',
+        title: 'Player Detail',
         templateUrl: 'view/player/player.html',
         controller: 'PlayerController'
 
     });
 
     $routeProvider.when('/myProfile', {
-        title: 'otherView',
+        title: 'My Profile',
         templateUrl: 'view/staff/myProfile.html',
         controller: 'MyProfileController'
 
@@ -99,6 +106,7 @@ myApp.directive('appHeader', function () {
         restrict: 'E',
         replace: true,
         templateUrl: 'view/shared/header/header.html',
+        controller: 'HeaderController'
     };
 });
 
@@ -123,7 +131,26 @@ myApp.directive('colorValue', function (HelperService) {
 
     }
 });
+/**----------HeaderController----------**/
+myApp.controller('HeaderController', ['$scope', '$http', '$q', '$timeout', function ($scope, $http, $q, $timeout) {
 
+    $scope.getLoad = function () {
+
+
+        $http.get('api/service/fmLoader').then(successCallback, errorCallback);
+
+        function successCallback(response) {
+            console.log("response", response.data);
+        }
+
+        function errorCallback(error) {
+            console.log("error", error.status);
+        }
+
+    };
+
+
+}]);
 
 /**----------PlayerListController----------**/
 myApp.controller('PlayerListController', ['$scope', '$location', '$http', '$q', '$timeout', function ($scope, $location, $http, $q, $timeout) {
@@ -135,12 +162,14 @@ myApp.controller('PlayerListController', ['$scope', '$location', '$http', '$q', 
             "processing": true,
             responsive: true,
             "ajax": 'assets/json/playerdt.json',
+            "deferRender": true,
             "columns": [
                 {"data": "playerUniqueID"},
                 {"data": "getFullname"},
                 {"data": "getCA"},
                 {"data": "getPA"},
                 {"data": "getClubUniqueID"},
+                {"data": "getClubName"},
                 {"data": "getValue", render: $.fn.dataTable.render.number(',', '.')},
 
             ],
@@ -157,6 +186,30 @@ myApp.controller('PlayerListController', ['$scope', '$location', '$http', '$q', 
             //console.log( 'You clicked on '+data[0]+'\'s row' );
         });
 
+
+    });
+
+}]);
+
+
+/**----------ClubListController----------**/
+myApp.controller('ClubListController', ['$scope', '$location', '$http', '$q', '$timeout', function ($scope, $location, $http, $q, $timeout) {
+
+
+    angular.element(document).ready(function () {
+        const dtEl   = '#club_table';
+        const dtable = $(dtEl).DataTable({
+            "processing": true,
+            responsive: true,
+            "ajax": 'assets/json/clubdt.json',
+            "deferRender": true,
+            "columns": [
+                {"data": "getClubUniqueID"},
+                {"data": "getFullname"},
+
+            ],
+            rowId: 'getClubUniqueID'
+        });
 
     });
 

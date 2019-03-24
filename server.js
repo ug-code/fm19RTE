@@ -21,21 +21,36 @@ function fmPlayerDetailLoader() {
 
 
 }
-function fmPlayerDtLoader(){
+async function fmPlayerDtLoader(){
     const filePath = __dirname + '/app/assets/json/playerdt.json';
 
-    fs.truncate(filePath, 0, function(){console.log('done')});
+    fs.truncate(filePath, 0, function(){console.log('fmPlayerDtLoader done')});
 
     fs.appendFile(filePath,  JSON.stringify(fm19js.playerDatatable()), function(err) {
         if (err) { throw err }
     });
 }
 
-app.route('/api/service/fmLoader').get((req, res) => {
-    fmPlayerDetailLoader();
-    //fmPlayerDtLoader();
-    res.send("ok");
-});
+
+async function fmClubDtLoader(){
+    const filePath = __dirname + '/app/assets/json/clubdt.json';
+
+    fs.truncate(filePath, 0, function(){console.log('fmClubDtLoader done')});
+
+    fs.appendFile(filePath,  JSON.stringify(fm19js.clubDatatable()), function(err) {
+        if (err) { throw err }
+    });
+}
+
+async function loader(){
+ await fmPlayerDtLoader();
+ await fmClubDtLoader();
+ return "ok";
+}
+
+
+
+
 
 
 app.route('/api/service/myProfile').get((req, res) => {
@@ -44,6 +59,11 @@ app.route('/api/service/myProfile').get((req, res) => {
 
 app.route('/api/service/currentClub').get((req, res) => {
     res.send(fm19js.currentClub());
+});
+
+app.get('/api/service/fmLoader', function (req, res) {
+    loader();
+    res.send("OK");
 });
 
 
@@ -55,7 +75,13 @@ app.get('/api/service/player/:playerId', function (req, res) {
 
 app.get('/api/service/playerDatatable', function (req, res) {
 
+    fmPlayerDtLoader();
+    res.send("ok");
+});
 
+app.get('/api/service/clubDatatable', function (req, res) {
+
+    fmClubDtLoader();
     res.send("ok");
 });
 

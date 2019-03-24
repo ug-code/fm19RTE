@@ -6,8 +6,9 @@
       "cpp/fm19Console/GameVersions.h",
       "cpp/fm19Console/Helpers.h",
       "cpp/fm19Console/service/ServiceMyProfile.h",
-      "cpp/fm19Console/service/ServiceCurrentClub.h"
-      "cpp/fm19Console/service/ServicePlayer.h"
+      "cpp/fm19Console/service/ServiceCurrentClub.h",
+      "cpp/fm19Console/service/ServicePlayer.h",
+      "cpp/fm19Console/service/ServiceClub.h",
       ],
         "include_dirs": [
           "cpp"

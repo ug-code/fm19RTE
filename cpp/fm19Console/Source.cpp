@@ -33,7 +33,7 @@ void CurrenTeamGroup() {
 	cin >> newMoney;
 
 	serviceCurrentClub.setClubMoney(phandle, newMoney);
-	cout << "New money value : " <<fixed << newMoney << endl;
+	cout << "New money value : " << fixed << newMoney << endl;
 
 	//Close any handles once the program is over
 	CloseHandle(phandle);
@@ -80,14 +80,16 @@ void scanPlayerList(HANDLE phandle) {
 	CloseHandle(phandle);
 	system("pause");
 }
-void playerDetail(HANDLE phandle,int playerUniqueID= 70103100, DWORD_PTR playerUniqueAdress=0) {
+
+
+void playerDetail(HANDLE phandle, int playerUniqueID = 70103100, DWORD_PTR playerUniqueAdress = 0) {
 	ServicePlayer servicePlayer;
 	DWORD_PTR playerUA;
 	if (playerUniqueAdress == 0) {
-		 playerUA = servicePlayer.findPlayerUniqueAdress(phandle, playerUniqueID);
+		playerUA = servicePlayer.findPlayerUniqueAdress(phandle, playerUniqueID);
 	}
 	else {
-		 playerUA = playerUniqueAdress;
+		playerUA = playerUniqueAdress;
 	}
 	PlayerDetail player = servicePlayer.getPlayerDetail(phandle, playerUniqueID, playerUA);
 	cout << "|--------------Player Detail-------------------||" << endl;
@@ -179,22 +181,39 @@ void playerDatatable(HANDLE phandle) {
 		short getPA = servicePlayer.abilities.getPA(phandle, playerPointerAddress);
 		int getClubUniqueID = servicePlayer.contract.getClubUniqueID(phandle, playerPointerAddress);
 		int getValue = servicePlayer.contract.getValue(phandle, playerPointerAddress);
-		
+
 		//PlayerDetail player = servicePlayer.getPlayerDetail(phandle, PlayerUniqueID, playerPointerAddress);
 		//playerDetail(phandle, PlayerUniqueID, playerPointerAddress);
-		std::cout << PlayerUniqueID << " " 
+		std::cout << PlayerUniqueID << " "
 			<< getFirstname << " "
-			<< getLastname<< " "
-			<< getCA<< " "
+			<< getLastname << " "
+			<< getCA << " "
 			<< getPA << " "
 			<< getClubUniqueID << " "
-			<< getValue <<" "
-			
-			<<'\n';
+			<< getValue << " "
+
+			<< '\n';
 	}
 	//DWORD_PTR playerUniqueAdress = servicePlayer.findPlayerUniqueAdress(phandle, 70103100);
 }
 
+
+void clubDetail(HANDLE phandle, int clubUniqueID = 1725, DWORD_PTR clubUniqueAdress = 0) {
+	ServiceClub serviceClub;
+	DWORD_PTR clubUA;
+	if (clubUniqueAdress == 0) {
+		clubUA = serviceClub.findClubUniqueAdress(phandle, clubUniqueID);
+	}
+	else {
+		clubUA = clubUniqueAdress;
+	}
+	cout << "|--------------Player Detail-------------------||" << endl;
+	cout << "getRowID                       : " << serviceClub.getRowID(phandle, clubUA) << endl;
+	cout << "getUniqeID                     : " << serviceClub.getUniqeID(phandle, clubUA) << endl;
+	cout << "getFullname                    : " << serviceClub.getFullname(phandle, clubUA) << endl;
+
+
+}
 
 void benchmarkFindPlayerUniqueAdress(HANDLE phandle, int playerUniqueID = 70103100) {
 	ServicePlayer servicePlayer;
@@ -206,13 +225,23 @@ void testFullPlayer(HANDLE phandle) {
 	PlayerDetail* playersDetail = servicePlayer.getPlayersWithDetail(phandle);
 
 
-	for (int i = 0; i<sizeof(playersDetail); i++) {
+	for (int i = 0; i < sizeof(playersDetail); i++) {
 		cout << "player id" << playersDetail[i].getFirstname << endl;
 		//PlayerDetail player = playersDetail[i];
 
 	}
 }
 
+void hardcodeClubLis(HANDLE phandle) {
+	ServiceClub serviceClub;
+	serviceClub.scanClubList(phandle);
+
+}
+
+void testFullClub(HANDLE phandle) {
+	ServiceClub serviceClub;
+	serviceClub.testClubList(phandle);
+}
 int main() {
 
 	const clock_t begin_time = clock();
@@ -223,7 +252,10 @@ int main() {
 	//MyProfileGroup(phandle);
 	//scanPlayerList(phandle);
 	//playerDetail(phandle, 7458500);
-	testFullPlayer(phandle);
+	//testFullPlayer(phandle);
+	//testFullClub(phandle);
+	//hardcodeClubLis(phandle);
+	clubDetail(phandle);
 	//playerDatatable(phandle);
 	//benchmarkFindPlayerUniqueAdress(phandle);
 	CloseHandle(phandle);

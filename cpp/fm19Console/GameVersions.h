@@ -246,7 +246,7 @@ struct Club {
 
 	struct Information
 	{
-		int  guidingID = 1177833896;
+		int  guidingID = 1177780600;
 		DWORD_PTR nationOffset[2] = { 0xB8, 0x4 };
 
 

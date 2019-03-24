@@ -6,6 +6,7 @@
 #include "fm19Console\service\ServiceMyProfile.h"
 #include "fm19Console\service\ServiceCurrentClub.h"
 #include "fm19Console\service\ServicePlayer.h"
+#include "fm19Console\service\ServiceClub.h"
 
 using namespace v8;
 using namespace std;
@@ -159,7 +160,42 @@ void mapEthnicity(const FunctionCallbackInfo<Value>& args) {
     args.GetReturnValue().Set(myArray);
 }
 
+void clubDatatable(const FunctionCallbackInfo<Value>& args){
+    Isolate* isolate = Isolate::GetCurrent();
+	HANDLE phandle = GameLoad(windowName);
+	ServiceClub serviceClub;
 
+    map<int, DWORD_PTR> clubList = serviceClub.getClubList(phandle);
+
+    Local<Object> obj = Object::New(isolate);
+    Local<Array> data = Array::New(isolate);
+
+    int x = 0;
+    for (auto i = clubList.begin(); i != clubList.end(); i++) {
+
+        int clubUniqueID             = i->first;
+        DWORD_PTR clubPointerAddress = i->second;
+
+        int getClubUniqueID = serviceClub.getUniqeID(phandle, clubPointerAddress) ;
+        char* getFullname   = serviceClub.getFullname(phandle, clubPointerAddress) ;
+
+        Local<Object> info = Object::New(isolate);
+
+
+        info->Set(String::NewFromUtf8(isolate, "getClubUniqueID"), Integer::New(isolate,   getClubUniqueID ));
+        info->Set(String::NewFromUtf8(isolate, "getFullname"), String::NewFromUtf8(isolate, getFullname ));
+
+        data->Set(x, info);
+
+        x++;
+
+    }
+    obj->Set(String::NewFromUtf8(isolate, "data"), data);
+
+    args.GetReturnValue().Set(obj);
+
+
+}
 
 void playerDatatable(const FunctionCallbackInfo<Value>& args) {
     Isolate* isolate = Isolate::GetCurrent();
@@ -176,8 +212,9 @@ void playerDatatable(const FunctionCallbackInfo<Value>& args) {
 
         int playerUniqueID             = i->first;
         DWORD_PTR playerPointerAddress = i->second;
+		int getClubUniqueID = (int)servicePlayer.contract.getClubUniqueID(phandle, playerPointerAddress);
 
-		int getClubUniqueID = servicePlayer.contract.getClubUniqueID(phandle, playerPointerAddress);
+	    char* getClubName   = getClubUniqueID>0?servicePlayer.contract.getClubName(phandle, playerPointerAddress):"";
 		int getValue        = servicePlayer.contract.getValue(phandle, playerPointerAddress);
 
 
@@ -200,6 +237,8 @@ void playerDatatable(const FunctionCallbackInfo<Value>& args) {
         playerPointerAddress)));
 
         info->Set(String::NewFromUtf8(isolate, "getClubUniqueID"), Integer::New(isolate,  getClubUniqueID));
+        info->Set(String::NewFromUtf8(isolate, "getClubName"), String::NewFromUtf8(isolate,getClubName ));
+
         info->Set(String::NewFromUtf8(isolate, "getValue"), Integer::New(isolate,  getValue));
 
 
@@ -452,6 +491,7 @@ void init(Local<Object> exports) {
   NODE_SET_METHOD(exports, "currentClub", currentClub);
   NODE_SET_METHOD(exports, "player", player);
   NODE_SET_METHOD(exports, "playerDatatable", playerDatatable);
+  NODE_SET_METHOD(exports, "clubDatatable", clubDatatable);
   //NODE_SET_METHOD(exports, "playerIDList", playerIDList);
 
 

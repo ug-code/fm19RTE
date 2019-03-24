@@ -140,6 +140,7 @@ struct PlayerDetail
 
 	struct Contract {
 		int getClubUniqueID;
+		char* getClubName;
 		short getType;
 		short getJobType;
 		int getValue;
@@ -182,6 +183,7 @@ public:
 		playerDetail.getUniqeID = PlayerID;
 		playerDetail.getFirstname = getFirstname(phandle, playerUniqueAdress);
 		playerDetail.getLastname = getLastname(phandle, playerUniqueAdress);
+
 		//playerDetail.getFullname = getFullname(phandle, playerUniqueAdress);
 		playerDetail.getBirthYear = getBirthYear(phandle, playerUniqueAdress);
 		playerDetail.getEthnicity = getEthnicity(phandle, playerUniqueAdress);
@@ -294,7 +296,10 @@ public:
 		playerDetail.personality.getSportmanship = personality.getSportmanship(phandle, playerUniqueAdress);
 		playerDetail.personality.getTemperament = personality.getTemperament(phandle, playerUniqueAdress);
 		//contract
-		playerDetail.contract.getClubUniqueID = contract.getClubUniqueID(phandle, playerUniqueAdress);
+		int getClubUniqueID = (int)contract.getClubUniqueID(phandle, playerUniqueAdress);
+		playerDetail.contract.getClubUniqueID = getClubUniqueID;
+		playerDetail.contract.getClubName = (getClubUniqueID && getClubUniqueID >0) ? contract.getClubName(phandle, playerUniqueAdress)  : "";
+
 		playerDetail.contract.getType = contract.getType(phandle, playerUniqueAdress);
 		playerDetail.contract.getJobType = contract.getJobType(phandle, playerUniqueAdress);
 		playerDetail.contract.getValue = contract.getValue(phandle, playerUniqueAdress);
@@ -509,6 +514,7 @@ public:
 		return readBuffer(phandle, memory.currentAddress, 32);
 
 	}
+
 
 	char* getFullname(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
 		DWORD_PTR pplayer = getBasePlayer(playerUniqueAdress);
@@ -941,6 +947,16 @@ public:
 			CurrentMemory memory = FindDmaAddy(phandle, (pplayer + 0x288), offset, 2);
 			return memory.currentValue;
 		}
+
+		char* getClubName(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
+
+			DWORD_PTR pplayer = getBasePlayer(playerUniqueAdress);
+			DWORD_PTR offset[4] = { 0x10,0x18,0xB8,0x4 };
+			CurrentMemory memory = FindDmaAddy(phandle, (pplayer + 0x288), offset, 4);
+			return readBuffer(phandle, memory.currentAddress, 32);
+
+		}
+
 
 		//mapType
 		short getType(HANDLE phandle, DWORD_PTR playerUniqueAdress) {
